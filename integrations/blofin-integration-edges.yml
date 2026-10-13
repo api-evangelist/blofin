@@ -1,20 +1,50 @@
 generated: '2026-10-13'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/blofin/integrations
 - https://n8n.io/integrations/blofin/
 - https://composio.dev/toolkits/blofin
 - https://monid.ai/tools/blofin
 checked:
+- https://api.coingecko.com/api/v3/exchanges
 - https://composio.dev/toolkits/blofin
 - https://docs.blofin.com/index.html
 - https://github.com/blofin
 - https://monid.ai/tools/blofin
 - https://n8n.io/integrations/blofin/
+- https://raw.githubusercontent.com/ccxt/ccxt/master/exchanges.json
 - https://zapier.com/apps/blofin/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: CCXT
+  partner: null
+  partner_match: null
+  type: coverage
+  channel: open-source-node
+  relationship: connector-coverage
+  direction: partner-built
+  evidence: https://github.com/ccxt/ccxt/blob/master/ts/src/blofin.ts
+  ccxt_id: blofin
+  ccxt_certified: null
+  ccxt_pro: true
+  matched_by: domain:blofin.com
+  partner_gap: no ccxt repo in all/* (catalog gap)
+  detected_by: sweep-crypto.py
+  first_seen: '2026-10-13'
+- partner_name: CoinGecko
+  partner: coingecko
+  partner_match: aggregator
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://api.coingecko.com/api/v3/exchanges/blofin_spot
+  matched_by: domain:blofin.com
+  coingecko_id: blofin_spot
+  trust_score: 6
+  detected_by: sweep-crypto.py
+  first_seen: '2026-10-13'
 templates: []
 note: No marketplace listing or integrations page found; the MCP server targets generic MCP clients (Claude, Cursor,
   Windsurf, Cline) rather than named partner integrations.
