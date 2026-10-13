@@ -1,23 +1,165 @@
 aid: blofin
+
 name: BloFin
-description: 'BloFin is a company surfaced via the API Evangelist harvest backlog (source: market-gap:crypto-exchanges)
-  and added to the network as a stub for full-pipeline profiling.'
+
+description: 'BloFin is a cryptocurrency exchange offering spot, perpetual futures and copy trading. Its public Open API (base https://openapi.blofin.com,
+  demo https://demo-trading-openapi.blofin.com) exposes REST endpoints for public market data, account, trading, asset management, affiliate and
+  copy trading, plus public and private WebSocket channels, authenticated with ACCESS-KEY / ACCESS-SIGN HMAC-signed headers; a separate OAuth
+  broker API runs at oauth.blofin.com. BloFin also publishes an official MCP server (blofin-mcp), an agent-first CLI (blofin-cli), a Python SDK
+  and an agent skills hub on GitHub. Surfaced via the API Evangelist harvest backlog (source: market-gap:crypto-exchanges).'
+
+image: https://s2.blofin.com/icons/blofin/favicon-v2.ico
+
 url: https://raw.githubusercontent.com/api-evangelist/blofin/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:market-gap:crypto-exchanges
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+
+x-tier-reason: enrichment pass 2026-10-13 (local-v5; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-13'
+
 modified: '2026-10-13'
+
 tags:
 - Company
-apis: []
+- Cryptocurrency
+- Crypto Exchange
+- Trading
+- Futures
+- Spot Trading
+- Copy Trading
+- WebSocket
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: RateLimits
+  url: rate-limits/blofin-rate-limits.yml
+- type: Spectral
+  url: rules/blofin-rules.yml
+- type: JSONLD
+  url: json-ld/blofin-context.jsonld
+- type: Vocabulary
+  url: vocabulary/blofin-vocabulary.yml
+- type: DataModel
+  url: data-model/blofin-data-model.yml
+- type: CLI
+  url: cli/blofin-cli.yml
+- type: ChangeLog
+  url: changelog/blofin-changelog.yml
+- type: Idempotency
+  url: conventions/blofin-conventions.yml
+- type: Conventions
+  url: conventions/blofin-conventions.yml
+- type: Sandbox
+  url: sandbox/blofin-sandbox.yml
+- type: Authentication
+  url: authentication/blofin-authentication.yml
+- type: Lifecycle
+  url: lifecycle/blofin-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/blofin-error-codes.yml
+- type: Conformance
+  url: conformance/blofin-conformance.yml
+- type: LLMsTxt
+  url: llms/blofin-llms.txt
+- type: MCPServer
+  url: mcp/blofin-mcp.yml
+- type: WellKnown
+  url: well-known/blofin-well-known.yml
+- type: Hosts
+  url: hosts/blofin-hosts.yml
+- type: Vendors
+  url: vendors/blofin-vendors.yml
+- type: SDKs
+  url: packages/blofin-packages.yml
+- type: Packages
+  url: packages/blofin-packages.yml
+- type: DomainSecurity
+  url: security/blofin-domain-security.yml
 - type: Website
   url: https://blofin.com
+- type: Documentation
+  url: https://docs.blofin.com/index.html
+- type: APIReference
+  url: https://docs.blofin.com/index.html
+- type: ChangeLog
+  url: https://docs.blofin.com/changelog.html
+- type: GitHubOrganization
+  url: https://github.com/blofin
+- type: Support
+  url: https://support.blofin.com/hc/en-us
+
+apis:
+- aid: blofin:blofin-api
+  name: BloFin API
+  description: 'BloFin REST API (futures, spot, account, asset, affiliate, copy trading and the oauth.blofin.com broker endpoints) as documented
+    publicly: 110 operations. Contract generated from the documentation by API Evangelist (2026-10-13); not the provider''s own document.'
+  humanURL: https://docs.blofin.com/index.html
+  baseURL: https://openapi.blofin.com
+  tags:
+  - Futures
+  - Spot Trading
+  - Market Data
+  - Trading
+  properties:
+  - type: OpenAPI
+    url: openapi/_ae-authored/blofin-openapi-generated.yml
+    x-provenance: generated
+  - type: Documentation
+    url: https://docs.blofin.com/index.html
+  - type: Documentation
+    url: https://docs.blofin.com/spot.html
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-batch-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-affiliate-invitees-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-tpsl-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json
+- aid: blofin:blofin-broker-api
+  name: BloFin Broker API
+  description: OAuth-based broker API at oauth.blofin.com for brokers to obtain tokens and user info, create API keys on a user's behalf and query
+    deposit addresses and status. Its operations are in the generated BloFin API contract under the oauth.blofin.com server.
+  humanURL: https://docs.blofin.com/broker.html
+  baseURL: https://oauth.blofin.com
+  tags:
+  - Broker
+  - OAuth
+  properties:
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+- aid: blofin:blofin-websocket-api
+  name: BloFin WebSocket API
+  description: Public and private WebSocket channels for futures (wss://openapi.blofin.com/ws/public, /ws/private), spot (/ws/spot/public, /ws/spot/private)
+    and copy trading (/ws/copytrading/private); demo equivalents on wss://demo-trading-openapi.blofin.com.
+  humanURL: https://docs.blofin.com/index.html
+  baseURL: https://openapi.blofin.com
+  tags:
+  - WebSocket
+  - Streaming
+  properties:
+  - type: Documentation
+    url: https://docs.blofin.com/index.html
+x-enrichment:
+  date: '2026-10-13'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v5

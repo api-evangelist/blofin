@@ -1,0 +1,10 @@
+name: BloFin API lifecycle
+generated: '2026-10-13'
+method: searched
+source: https://docs.blofin.com/changelog.html
+versioning: URL path version /api/v1 with a dated change log and an Upcoming Changes section.
+deprecation: Individual operations are marked (Deprecated) in the reference, e.g. GET Leverage (Deprecated) in favour of GET
+  Multiple Leverage; no deprecation policy or Sunset headers are documented.
+changelog: https://docs.blofin.com/changelog.html
+status_page: null
+status_page_note: 'No status page found: status.blofin.com and blofin.statuspage.io did not resolve (2026-10-13).'

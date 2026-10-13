@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blofin/main/json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json",
+  "title": "GetApiV1TradeOrdersHistoryResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1TradeOrdersHistoryResponse",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "string",
+      "description": "Order ID"
+    },
+    "clientOrderId": {
+      "type": "string",
+      "description": "Client Order ID as assigned by the client."
+    },
+    "instId": {
+      "type": "string",
+      "description": "Instrument ID"
+    },
+    "marginMode": {
+      "type": "string",
+      "description": "Margin mode"
+    },
+    "positionSide": {
+      "type": "string",
+      "description": "Position side"
+    },
+    "side": {
+      "type": "string",
+      "description": "Order side"
+    },
+    "orderType": {
+      "type": "string",
+      "description": "Order type"
+    },
+    "price": {
+      "type": "string",
+      "description": "Price"
+    },
+    "size": {
+      "type": "string",
+      "description": "Number of contracts to buy or sell."
+    },
+    "reduceOnly": {
+      "type": "string",
+      "description": "Whether orders can only reduce in position size."
+    },
+    "leverage": {
+      "type": "string",
+      "description": "Leverage"
+    },
+    "state": {
+      "type": "string",
+      "description": "State"
+    },
+    "filledSize": {
+      "type": "string",
+      "description": "Filled size"
+    },
+    "pnl": {
+      "type": "string",
+      "description": "PnL"
+    },
+    "averagePrice": {
+      "type": "string",
+      "description": "Average price"
+    },
+    "fee": {
+      "type": "string",
+      "description": "Fee"
+    },
+    "createTime": {
+      "type": "string",
+      "description": "Creation time, Unix timestamp format in milliseconds"
+    },
+    "updateTime": {
+      "type": "string",
+      "description": "Update time"
+    },
+    "orderCategory": {
+      "type": "string",
+      "description": "Order category"
+    },
+    "tpTriggerPrice": {
+      "type": "string",
+      "description": "Take-profit trigger price"
+    },
+    "tpOrderPrice": {
+      "type": "string",
+      "description": "Take-profit order price"
+    },
+    "tpTriggerPriceType": {
+      "type": "string",
+      "description": "Take-profit trigger price type"
+    },
+    "slTriggerPrice": {
+      "type": "string",
+      "description": "Stop-loss trigger price"
+    },
+    "slOrderPrice": {
+      "type": "string",
+      "description": "Stop-loss order price"
+    },
+    "slTriggerPriceType": {
+      "type": "string",
+      "description": "Stop-loss trigger price type"
+    },
+    "cancelSource": {
+      "type": "string",
+      "description": "Cancel source"
+    },
+    "cancelSourceReason": {
+      "type": "string",
+      "description": "Cancel source reason"
+    },
+    "algoClientOrderId": {
+      "type": "string",
+      "description": "Algo client order ID"
+    },
+    "algoId": {
+      "type": "string",
+      "description": "Algo ID"
+    },
+    "brokerId": {
+      "type": "string",
+      "description": "Broker ID provided by BloFin."
+    },
+    "positionId": {
+      "type": "string",
+      "description": "Position ID. Empty when Multi-Position is not enabled."
+    }
+  }
+}

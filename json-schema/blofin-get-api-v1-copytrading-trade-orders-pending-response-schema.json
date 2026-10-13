@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blofin/main/json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json",
+  "title": "GetApiV1CopytradingTradeOrdersPendingResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingTradeOrdersPendingResponse",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "string",
+      "description": "Order ID"
+    },
+    "instId": {
+      "type": "string",
+      "description": "Instrument ID"
+    },
+    "marginMode": {
+      "type": "string",
+      "description": "Margin mode"
+    },
+    "positionSide": {
+      "type": "string",
+      "description": "Position side"
+    },
+    "side": {
+      "type": "string",
+      "description": "Order side"
+    },
+    "orderType": {
+      "type": "string",
+      "description": "Order type"
+    },
+    "price": {
+      "type": "string",
+      "description": "Price"
+    },
+    "size": {
+      "type": "string",
+      "description": "Number of contracts to buy or sell. For contract size details, refer to the /api/v1/market/instruments endpoint"
+    },
+    "reduceOnly": {
+      "type": "string",
+      "description": "Whether orders can only reduce in position size."
+    },
+    "leverage": {
+      "type": "string",
+      "description": "Leverage"
+    },
+    "state": {
+      "type": "string",
+      "description": "State"
+    },
+    "filledSize": {
+      "type": "string",
+      "description": "Accumulated fill quantity."
+    },
+    "averagePrice": {
+      "type": "string",
+      "description": "Average filled price. If none is filled, it will return \"\"."
+    },
+    "pnl": {
+      "type": "string",
+      "description": "Profit and loss, Applicable to orders which have a trade and aim to close position."
+    },
+    "createTime": {
+      "type": "string",
+      "description": "Creation time, Unix timestamp format in milliseconds, e.g. 1597026383085"
+    },
+    "updateTime": {
+      "type": "string",
+      "description": "Update time, Unix timestamp format in milliseconds, e.g. 1597026383085"
+    },
+    "tpTriggerPrice": {
+      "type": "string",
+      "description": "Take-profit trigger price"
+    },
+    "tpOrderPrice": {
+      "type": "string",
+      "description": "Take-profit order price. If the price is -1 , take-profit will be executed at the market price."
+    },
+    "slTriggerPrice": {
+      "type": "string",
+      "description": "Stop-loss trigger price"
+    },
+    "slOrderPrice": {
+      "type": "string",
+      "description": "Stop-loss order price. If the price is -1 , stop-loss will be executed at the market price."
+    },
+    "brokerId": {
+      "type": "string",
+      "description": "Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters."
+    }
+  }
+}

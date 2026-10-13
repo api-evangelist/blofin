@@ -1,0 +1,1111 @@
+{
+  "@context": {
+    "@vocab": "https://blofin.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "blofin": "https://blofin.com/schema#",
+    "GetApiV1AccountBalanceResponse": "blofin:GetApiV1AccountBalanceResponse",
+    "ts": {
+      "@id": "blofin:ts",
+      "@type": "xsd:string"
+    },
+    "totalEquity": {
+      "@id": "blofin:totalEquity",
+      "@type": "xsd:string"
+    },
+    "isolatedEquity": {
+      "@id": "blofin:isolatedEquity",
+      "@type": "xsd:string"
+    },
+    "details": {
+      "@id": "blofin:details",
+      "@container": "@list"
+    },
+    "currency": {
+      "@id": "blofin:currency",
+      "@type": "xsd:string"
+    },
+    "equity": {
+      "@id": "blofin:equity",
+      "@type": "xsd:string"
+    },
+    "balance": {
+      "@id": "blofin:balance",
+      "@type": "xsd:string"
+    },
+    "available": {
+      "@id": "blofin:available",
+      "@type": "xsd:string"
+    },
+    "availableEquity": {
+      "@id": "blofin:availableEquity",
+      "@type": "xsd:string"
+    },
+    "frozen": {
+      "@id": "blofin:frozen",
+      "@type": "xsd:string"
+    },
+    "orderFrozen": {
+      "@id": "blofin:orderFrozen",
+      "@type": "xsd:string"
+    },
+    "equityUsd": {
+      "@id": "blofin:equityUsd",
+      "@type": "xsd:string"
+    },
+    "isolatedUnrealizedPnl": {
+      "@id": "blofin:isolatedUnrealizedPnl",
+      "@type": "xsd:string"
+    },
+    "bonus": {
+      "@id": "blofin:bonus",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AccountBatchLeverageInfoResponse": "blofin:GetApiV1AccountBatchLeverageInfoResponse",
+    "instId": {
+      "@id": "blofin:instId",
+      "@type": "xsd:string"
+    },
+    "leverage": {
+      "@id": "blofin:leverage",
+      "@type": "xsd:string"
+    },
+    "marginMode": {
+      "@id": "blofin:marginMode",
+      "@type": "xsd:string"
+    },
+    "positionSide": {
+      "@id": "blofin:positionSide",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AccountConfigResponse": "blofin:GetApiV1AccountConfigResponse",
+    "accountLevel": {
+      "@id": "blofin:accountLevel",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AccountFundingFeesResponse": "blofin:GetApiV1AccountFundingFeesResponse",
+    "billId": {
+      "@id": "blofin:billId",
+      "@type": "xsd:string"
+    },
+    "fundingFee": {
+      "@id": "blofin:fundingFee",
+      "@type": "xsd:string"
+    },
+    "fundingTime": {
+      "@id": "blofin:fundingTime",
+      "@type": "xsd:string"
+    },
+    "positionSize": {
+      "@id": "blofin:positionSize",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AccountLeverageInfoResponse": "blofin:GetApiV1AccountLeverageInfoResponse",
+    "GetApiV1AccountMarginModeResponse": "blofin:GetApiV1AccountMarginModeResponse",
+    "GetApiV1AccountPositionModeResponse": "blofin:GetApiV1AccountPositionModeResponse",
+    "positionMode": {
+      "@id": "blofin:positionMode",
+      "@type": "xsd:string"
+    },
+    "multiPosition": {
+      "@id": "blofin:multiPosition",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AccountPositionsResponse": "blofin:GetApiV1AccountPositionsResponse",
+    "positionId": {
+      "@id": "blofin:positionId",
+      "@type": "xsd:string"
+    },
+    "instType": {
+      "@id": "blofin:instType",
+      "@type": "xsd:string"
+    },
+    "positions": {
+      "@id": "blofin:positions",
+      "@type": "xsd:string"
+    },
+    "availablePositions": {
+      "@id": "blofin:availablePositions",
+      "@type": "xsd:string"
+    },
+    "averagePrice": {
+      "@id": "blofin:averagePrice",
+      "@type": "xsd:string"
+    },
+    "markPrice": {
+      "@id": "blofin:markPrice",
+      "@type": "xsd:string"
+    },
+    "marginRatio": {
+      "@id": "blofin:marginRatio",
+      "@type": "xsd:string"
+    },
+    "liquidationPrice": {
+      "@id": "blofin:liquidationPrice",
+      "@type": "xsd:string"
+    },
+    "unrealizedPnl": {
+      "@id": "blofin:unrealizedPnl",
+      "@type": "xsd:string"
+    },
+    "unrealizedPnlRatio": {
+      "@id": "blofin:unrealizedPnlRatio",
+      "@type": "xsd:string"
+    },
+    "initialMargin": {
+      "@id": "blofin:initialMargin",
+      "@type": "xsd:string"
+    },
+    "maintenanceMargin": {
+      "@id": "blofin:maintenanceMargin",
+      "@type": "xsd:string"
+    },
+    "realizedPnl": {
+      "@id": "blofin:realizedPnl",
+      "@type": "xsd:string"
+    },
+    "createTime": {
+      "@id": "blofin:createTime",
+      "@type": "xsd:string"
+    },
+    "updateTime": {
+      "@id": "blofin:updateTime",
+      "@type": "xsd:string"
+    },
+    "adl": {
+      "@id": "blofin:adl",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AccountPositionsHistoryResponse": "blofin:GetApiV1AccountPositionsHistoryResponse",
+    "historyId": {
+      "@id": "blofin:historyId",
+      "@type": "xsd:string"
+    },
+    "side": {
+      "@id": "blofin:side",
+      "@type": "xsd:string"
+    },
+    "closePositions": {
+      "@id": "blofin:closePositions",
+      "@type": "xsd:string"
+    },
+    "maxPositions": {
+      "@id": "blofin:maxPositions",
+      "@type": "xsd:string"
+    },
+    "liquidationPositions": {
+      "@id": "blofin:liquidationPositions",
+      "@type": "xsd:string"
+    },
+    "openAveragePrice": {
+      "@id": "blofin:openAveragePrice",
+      "@type": "xsd:string"
+    },
+    "closeAveragePrice": {
+      "@id": "blofin:closeAveragePrice",
+      "@type": "xsd:string"
+    },
+    "realizedPnlRatio": {
+      "@id": "blofin:realizedPnlRatio",
+      "@type": "xsd:string"
+    },
+    "fee": {
+      "@id": "blofin:fee",
+      "@type": "xsd:string"
+    },
+    "PostApiV1AccountSetLeverageRequest": "blofin:PostApiV1AccountSetLeverageRequest",
+    "PostApiV1AccountSetLeverageResponse": "blofin:PostApiV1AccountSetLeverageResponse",
+    "PostApiV1AccountSetMarginModeRequest": "blofin:PostApiV1AccountSetMarginModeRequest",
+    "PostApiV1AccountSetMarginModeResponse": "blofin:PostApiV1AccountSetMarginModeResponse",
+    "PostApiV1AccountSetPositionModeRequest": "blofin:PostApiV1AccountSetPositionModeRequest",
+    "PostApiV1AccountSetPositionModeResponse": "blofin:PostApiV1AccountSetPositionModeResponse",
+    "GetApiV1AffiliateBasicResponse": "blofin:GetApiV1AffiliateBasicResponse",
+    "commissionRate": {
+      "@id": "blofin:commissionRate",
+      "@type": "xsd:string"
+    },
+    "cashbackRate": {
+      "@id": "blofin:cashbackRate",
+      "@type": "xsd:string"
+    },
+    "totalCommission": {
+      "@id": "blofin:totalCommission",
+      "@type": "xsd:string"
+    },
+    "referralCode": {
+      "@id": "blofin:referralCode",
+      "@type": "xsd:string"
+    },
+    "referralLink": {
+      "@id": "blofin:referralLink",
+      "@type": "xsd:string"
+    },
+    "directInvitees": {
+      "@id": "blofin:directInvitees",
+      "@type": "xsd:string"
+    },
+    "subInvitees": {
+      "@id": "blofin:subInvitees",
+      "@type": "xsd:string"
+    },
+    "tradeInvitees": {
+      "@id": "blofin:tradeInvitees",
+      "@type": "xsd:string"
+    },
+    "totalTradingVolume": {
+      "@id": "blofin:totalTradingVolume",
+      "@type": "xsd:string"
+    },
+    "directCommission7d": {
+      "@id": "blofin:directCommission7d",
+      "@type": "xsd:string"
+    },
+    "directCommission30d": {
+      "@id": "blofin:directCommission30d",
+      "@type": "xsd:string"
+    },
+    "subCommission7d": {
+      "@id": "blofin:subCommission7d",
+      "@type": "xsd:string"
+    },
+    "subCommission30d": {
+      "@id": "blofin:subCommission30d",
+      "@type": "xsd:string"
+    },
+    "directInvitee7d": {
+      "@id": "blofin:directInvitee7d",
+      "@type": "xsd:string"
+    },
+    "directInvitee30d": {
+      "@id": "blofin:directInvitee30d",
+      "@type": "xsd:string"
+    },
+    "subInvitee7d": {
+      "@id": "blofin:subInvitee7d",
+      "@type": "xsd:string"
+    },
+    "subInvitee30d": {
+      "@id": "blofin:subInvitee30d",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AffiliateInviteesResponse": "blofin:GetApiV1AffiliateInviteesResponse",
+    "id": {
+      "@id": "blofin:id",
+      "@type": "xsd:string"
+    },
+    "uid": {
+      "@id": "blofin:uid",
+      "@type": "xsd:string"
+    },
+    "registerTime": {
+      "@id": "blofin:registerTime",
+      "@type": "xsd:string"
+    },
+    "totalTradingFee": {
+      "@id": "blofin:totalTradingFee",
+      "@type": "xsd:string"
+    },
+    "totalCommision": {
+      "@id": "blofin:totalCommision",
+      "@type": "xsd:string"
+    },
+    "totalDeposit": {
+      "@id": "blofin:totalDeposit",
+      "@type": "xsd:string"
+    },
+    "totalWithdrawal": {
+      "@id": "blofin:totalWithdrawal",
+      "@type": "xsd:string"
+    },
+    "kycLevel": {
+      "@id": "blofin:kycLevel",
+      "@type": "xsd:string"
+    },
+    "couponDiscount": {
+      "@id": "blofin:couponDiscount",
+      "@type": "xsd:string"
+    },
+    "takerVol30Day": {
+      "@id": "blofin:takerVol30Day",
+      "@type": "xsd:string"
+    },
+    "makerVol30Day": {
+      "@id": "blofin:makerVol30Day",
+      "@type": "xsd:string"
+    },
+    "tradeVol30Day": {
+      "@id": "blofin:tradeVol30Day",
+      "@type": "xsd:string"
+    },
+    "depositAmount30Day": {
+      "@id": "blofin:depositAmount30Day",
+      "@type": "xsd:string"
+    },
+    "takerVol90Day": {
+      "@id": "blofin:takerVol90Day",
+      "@type": "xsd:string"
+    },
+    "makerVol90Day": {
+      "@id": "blofin:makerVol90Day",
+      "@type": "xsd:string"
+    },
+    "tradeVol90Day": {
+      "@id": "blofin:tradeVol90Day",
+      "@type": "xsd:string"
+    },
+    "vipLevel": {
+      "@id": "blofin:vipLevel",
+      "@type": "xsd:integer"
+    },
+    "GetApiV1AffiliateInviteesDailyInfoResponse": "blofin:GetApiV1AffiliateInviteesDailyInfoResponse",
+    "commission": {
+      "@id": "blofin:commission",
+      "@type": "xsd:string"
+    },
+    "commissionTime": {
+      "@id": "blofin:commissionTime",
+      "@type": "xsd:string"
+    },
+    "cashback": {
+      "@id": "blofin:cashback",
+      "@type": "xsd:string"
+    },
+    "tradingVolume": {
+      "@id": "blofin:tradingVolume",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AffiliateReferralCodeResponse": "blofin:GetApiV1AffiliateReferralCodeResponse",
+    "invitees": {
+      "@id": "blofin:invitees",
+      "@type": "xsd:string"
+    },
+    "remark": {
+      "@id": "blofin:remark",
+      "@type": "xsd:string"
+    },
+    "isDefaultReferralCode": {
+      "@id": "blofin:isDefaultReferralCode",
+      "@type": "xsd:string"
+    },
+    "makerFeeRate": {
+      "@id": "blofin:makerFeeRate",
+      "@type": "xsd:string"
+    },
+    "takerFeeRate": {
+      "@id": "blofin:takerFeeRate",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AffiliateSubAffiliatesResponse": "blofin:GetApiV1AffiliateSubAffiliatesResponse",
+    "upperAffiliate": {
+      "@id": "blofin:upperAffiliate",
+      "@type": "xsd:string"
+    },
+    "totalTradedUsers": {
+      "@id": "blofin:totalTradedUsers",
+      "@type": "xsd:string"
+    },
+    "myCommision": {
+      "@id": "blofin:myCommision",
+      "@type": "xsd:string"
+    },
+    "tag": {
+      "@id": "blofin:tag",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AffiliateSubInviteesResponse": "blofin:GetApiV1AffiliateSubInviteesResponse",
+    "subAffiliateUid": {
+      "@id": "blofin:subAffiliateUid",
+      "@type": "xsd:string"
+    },
+    "subAffiliateLevel": {
+      "@id": "blofin:subAffiliateLevel",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AssetBalancesResponse": "blofin:GetApiV1AssetBalancesResponse",
+    "code": {
+      "@id": "blofin:code",
+      "@type": "xsd:string"
+    },
+    "msg": {
+      "@id": "blofin:msg",
+      "@type": "xsd:string"
+    },
+    "data": {
+      "@id": "blofin:data"
+    },
+    "GetApiV1AssetBillsResponse": "blofin:GetApiV1AssetBillsResponse",
+    "transferId": {
+      "@id": "blofin:transferId",
+      "@type": "xsd:string"
+    },
+    "fromAccount": {
+      "@id": "blofin:fromAccount",
+      "@type": "xsd:string"
+    },
+    "toAccount": {
+      "@id": "blofin:toAccount",
+      "@type": "xsd:string"
+    },
+    "amount": {
+      "@id": "blofin:amount",
+      "@type": "xsd:string"
+    },
+    "clientId": {
+      "@id": "blofin:clientId",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AssetCurrenciesResponse": "blofin:GetApiV1AssetCurrenciesResponse",
+    "chain": {
+      "@id": "blofin:chain",
+      "@type": "xsd:string"
+    },
+    "depositMinAmount": {
+      "@id": "blofin:depositMinAmount",
+      "@type": "xsd:string"
+    },
+    "depositUnsafeConfirmation": {
+      "@id": "blofin:depositUnsafeConfirmation",
+      "@type": "xsd:integer"
+    },
+    "depositConfirmation": {
+      "@id": "blofin:depositConfirmation",
+      "@type": "xsd:integer"
+    },
+    "withdrawMinAmount": {
+      "@id": "blofin:withdrawMinAmount",
+      "@type": "xsd:string"
+    },
+    "withdrawFee": {
+      "@id": "blofin:withdrawFee",
+      "@type": "xsd:string"
+    },
+    "withdrawPrecision": {
+      "@id": "blofin:withdrawPrecision",
+      "@type": "xsd:integer"
+    },
+    "supportMemo": {
+      "@id": "blofin:supportMemo",
+      "@type": "xsd:integer"
+    },
+    "isDepositAvailable": {
+      "@id": "blofin:isDepositAvailable",
+      "@type": "xsd:integer"
+    },
+    "isWithdrawAvailable": {
+      "@id": "blofin:isWithdrawAvailable",
+      "@type": "xsd:integer"
+    },
+    "recoveryEtaDeposit": {
+      "@id": "blofin:recoveryEtaDeposit",
+      "@type": "xsd:string"
+    },
+    "recoveryEtaWithdraw": {
+      "@id": "blofin:recoveryEtaWithdraw",
+      "@type": "xsd:string"
+    },
+    "logo": {
+      "@id": "blofin:logo",
+      "@type": "xsd:string"
+    },
+    "PostApiV1AssetDemoApplyMoneyRequest": "blofin:PostApiV1AssetDemoApplyMoneyRequest",
+    "adjustType": {
+      "@id": "blofin:adjustType",
+      "@type": "xsd:integer"
+    },
+    "accountType": {
+      "@id": "blofin:accountType",
+      "@type": "xsd:string"
+    },
+    "demoApplyMoney": {
+      "@id": "blofin:demoApplyMoney",
+      "@container": "@list"
+    },
+    "amountStr": {
+      "@id": "blofin:amountStr",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AssetDepositAddressResponse": "blofin:GetApiV1AssetDepositAddressResponse",
+    "address": {
+      "@id": "blofin:address",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AssetDepositHistoryResponse": "blofin:GetApiV1AssetDepositHistoryResponse",
+    "type": {
+      "@id": "blofin:type",
+      "@type": "xsd:string"
+    },
+    "txId": {
+      "@id": "blofin:txId",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "blofin:state",
+      "@type": "xsd:string"
+    },
+    "confirm": {
+      "@id": "blofin:confirm",
+      "@type": "xsd:string"
+    },
+    "depositId": {
+      "@id": "blofin:depositId",
+      "@type": "xsd:string"
+    },
+    "PostApiV1AssetTransferRequest": "blofin:PostApiV1AssetTransferRequest",
+    "subAccount": {
+      "@id": "blofin:subAccount",
+      "@type": "xsd:string"
+    },
+    "mainToSubAccount": {
+      "@id": "blofin:mainToSubAccount",
+      "@type": "xsd:string"
+    },
+    "PostApiV1AssetTransferResponse": "blofin:PostApiV1AssetTransferResponse",
+    "PostApiV1AssetWithdrawalApplyRequest": "blofin:PostApiV1AssetWithdrawalApplyRequest",
+    "dest": {
+      "@id": "blofin:dest",
+      "@type": "xsd:string"
+    },
+    "addrType": {
+      "@id": "blofin:addrType",
+      "@type": "xsd:string"
+    },
+    "areaCode": {
+      "@id": "blofin:areaCode",
+      "@type": "xsd:string"
+    },
+    "PostApiV1AssetWithdrawalApplyResponse": "blofin:PostApiV1AssetWithdrawalApplyResponse",
+    "withdrawId": {
+      "@id": "blofin:withdrawId",
+      "@type": "xsd:string"
+    },
+    "GetApiV1AssetWithdrawalHistoryResponse": "blofin:GetApiV1AssetWithdrawalHistoryResponse",
+    "feeCurrency": {
+      "@id": "blofin:feeCurrency",
+      "@type": "xsd:string"
+    },
+    "memo": {
+      "@id": "blofin:memo",
+      "@type": "xsd:string"
+    },
+    "GetApiV1CopytradingAccountBalanceResponse": "blofin:GetApiV1CopytradingAccountBalanceResponse",
+    "GetApiV1CopytradingAccountLeverageInfoResponse": "blofin:GetApiV1CopytradingAccountLeverageInfoResponse",
+    "GetApiV1CopytradingAccountPositionModeResponse": "blofin:GetApiV1CopytradingAccountPositionModeResponse",
+    "GetApiV1CopytradingAccountPositionsByContractResponse": "blofin:GetApiV1CopytradingAccountPositionsByContractResponse",
+    "GetApiV1CopytradingAccountPositionsByOrderResponse": "blofin:GetApiV1CopytradingAccountPositionsByOrderResponse",
+    "orderId": {
+      "@id": "blofin:orderId",
+      "@type": "xsd:string"
+    },
+    "GetApiV1CopytradingAccountPositionsDetailsByOrderResponse": "blofin:GetApiV1CopytradingAccountPositionsDetailsByOrderResponse",
+    "closeOrderId": {
+      "@id": "blofin:closeOrderId",
+      "@type": "xsd:string"
+    },
+    "closeType": {
+      "@id": "blofin:closeType",
+      "@type": "xsd:string"
+    },
+    "orderTime": {
+      "@id": "blofin:orderTime",
+      "@type": "xsd:string"
+    },
+    "size": {
+      "@id": "blofin:size",
+      "@type": "xsd:string"
+    },
+    "filledAmount": {
+      "@id": "blofin:filledAmount",
+      "@type": "xsd:string"
+    },
+    "PostApiV1CopytradingAccountSetLeverageRequest": "blofin:PostApiV1CopytradingAccountSetLeverageRequest",
+    "PostApiV1CopytradingAccountSetLeverageResponse": "blofin:PostApiV1CopytradingAccountSetLeverageResponse",
+    "PostApiV1CopytradingAccountSetPositionModeRequest": "blofin:PostApiV1CopytradingAccountSetPositionModeRequest",
+    "PostApiV1CopytradingAccountSetPositionModeResponse": "blofin:PostApiV1CopytradingAccountSetPositionModeResponse",
+    "GetApiV1CopytradingConfigResponse": "blofin:GetApiV1CopytradingConfigResponse",
+    "nickName": {
+      "@id": "blofin:nickName",
+      "@type": "xsd:string"
+    },
+    "roleType": {
+      "@id": "blofin:roleType",
+      "@type": "xsd:string"
+    },
+    "GetApiV1CopytradingInstrumentsResponse": "blofin:GetApiV1CopytradingInstrumentsResponse",
+    "instIdList": {
+      "@id": "blofin:instIdList",
+      "@container": "@list"
+    },
+    "PostApiV1CopytradingTradeCancelOrderRequest": "blofin:PostApiV1CopytradingTradeCancelOrderRequest",
+    "PostApiV1CopytradingTradeCancelOrderResponse": "blofin:PostApiV1CopytradingTradeCancelOrderResponse",
+    "PostApiV1CopytradingTradeCancelTpslByContractRequest": "blofin:PostApiV1CopytradingTradeCancelTpslByContractRequest",
+    "algoId": {
+      "@id": "blofin:algoId",
+      "@type": "xsd:string"
+    },
+    "PostApiV1CopytradingTradeCancelTpslByContractResponse": "blofin:PostApiV1CopytradingTradeCancelTpslByContractResponse",
+    "PostApiV1CopytradingTradeCancelTpslByOrderRequest": "blofin:PostApiV1CopytradingTradeCancelTpslByOrderRequest",
+    "PostApiV1CopytradingTradeCancelTpslByOrderResponse": "blofin:PostApiV1CopytradingTradeCancelTpslByOrderResponse",
+    "PostApiV1CopytradingTradeClosePositionByContractRequest": "blofin:PostApiV1CopytradingTradeClosePositionByContractRequest",
+    "brokerId": {
+      "@id": "blofin:brokerId",
+      "@type": "xsd:string"
+    },
+    "PostApiV1CopytradingTradeClosePositionByContractResponse": "blofin:PostApiV1CopytradingTradeClosePositionByContractResponse",
+    "orderIds": {
+      "@id": "blofin:orderIds",
+      "@container": "@list"
+    },
+    "PostApiV1CopytradingTradeClosePositionByOrderRequest": "blofin:PostApiV1CopytradingTradeClosePositionByOrderRequest",
+    "PostApiV1CopytradingTradeClosePositionByOrderResponse": "blofin:PostApiV1CopytradingTradeClosePositionByOrderResponse",
+    "GetApiV1CopytradingTradeOrdersHistoryResponse": "blofin:GetApiV1CopytradingTradeOrdersHistoryResponse",
+    "orderType": {
+      "@id": "blofin:orderType",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "blofin:price",
+      "@type": "xsd:string"
+    },
+    "filledSize": {
+      "@id": "blofin:filledSize",
+      "@type": "xsd:string"
+    },
+    "pnl": {
+      "@id": "blofin:pnl",
+      "@type": "xsd:string"
+    },
+    "orderCategory": {
+      "@id": "blofin:orderCategory",
+      "@type": "xsd:string"
+    },
+    "GetApiV1CopytradingTradeOrdersPendingResponse": "blofin:GetApiV1CopytradingTradeOrdersPendingResponse",
+    "reduceOnly": {
+      "@id": "blofin:reduceOnly",
+      "@type": "xsd:string"
+    },
+    "tpTriggerPrice": {
+      "@id": "blofin:tpTriggerPrice",
+      "@type": "xsd:string"
+    },
+    "tpOrderPrice": {
+      "@id": "blofin:tpOrderPrice",
+      "@type": "xsd:string"
+    },
+    "slTriggerPrice": {
+      "@id": "blofin:slTriggerPrice",
+      "@type": "xsd:string"
+    },
+    "slOrderPrice": {
+      "@id": "blofin:slOrderPrice",
+      "@type": "xsd:string"
+    },
+    "GetApiV1CopytradingTradePendingTpslByContractResponse": "blofin:GetApiV1CopytradingTradePendingTpslByContractResponse",
+    "actualSize": {
+      "@id": "blofin:actualSize",
+      "@type": "xsd:string"
+    },
+    "GetApiV1CopytradingTradePendingTpslByOrderResponse": "blofin:GetApiV1CopytradingTradePendingTpslByOrderResponse",
+    "PostApiV1CopytradingTradePlaceOrderRequest": "blofin:PostApiV1CopytradingTradePlaceOrderRequest",
+    "PostApiV1CopytradingTradePlaceOrderResponse": "blofin:PostApiV1CopytradingTradePlaceOrderResponse",
+    "clientOrderId": {
+      "@id": "blofin:clientOrderId",
+      "@type": "xsd:string"
+    },
+    "PostApiV1CopytradingTradePlaceTpslByContractRequest": "blofin:PostApiV1CopytradingTradePlaceTpslByContractRequest",
+    "PostApiV1CopytradingTradePlaceTpslByContractResponse": "blofin:PostApiV1CopytradingTradePlaceTpslByContractResponse",
+    "PostApiV1CopytradingTradePlaceTpslByOrderRequest": "blofin:PostApiV1CopytradingTradePlaceTpslByOrderRequest",
+    "PostApiV1CopytradingTradePlaceTpslByOrderResponse": "blofin:PostApiV1CopytradingTradePlaceTpslByOrderResponse",
+    "GetApiV1CopytradingTradePositionHistoryByOrderResponse": "blofin:GetApiV1CopytradingTradePositionHistoryByOrderResponse",
+    "closeTime": {
+      "@id": "blofin:closeTime",
+      "@type": "xsd:string"
+    },
+    "pnlRatio": {
+      "@id": "blofin:pnlRatio",
+      "@type": "xsd:string"
+    },
+    "copiers": {
+      "@id": "blofin:copiers",
+      "@type": "xsd:string"
+    },
+    "preSharing": {
+      "@id": "blofin:preSharing",
+      "@type": "xsd:string"
+    },
+    "GetApiV1MarketBooksResponse": "blofin:GetApiV1MarketBooksResponse",
+    "asks": {
+      "@id": "blofin:asks",
+      "@container": "@list"
+    },
+    "bids": {
+      "@id": "blofin:bids",
+      "@container": "@list"
+    },
+    "GetApiV1MarketCandlesResponse": "blofin:GetApiV1MarketCandlesResponse",
+    "open": {
+      "@id": "blofin:open",
+      "@type": "xsd:string"
+    },
+    "high": {
+      "@id": "blofin:high",
+      "@type": "xsd:string"
+    },
+    "low": {
+      "@id": "blofin:low",
+      "@type": "xsd:string"
+    },
+    "close": {
+      "@id": "blofin:close",
+      "@type": "xsd:string"
+    },
+    "vol": {
+      "@id": "blofin:vol",
+      "@type": "xsd:string"
+    },
+    "volCurrency": {
+      "@id": "blofin:volCurrency",
+      "@type": "xsd:string"
+    },
+    "volCurrencyQuote": {
+      "@id": "blofin:volCurrencyQuote",
+      "@type": "xsd:string"
+    },
+    "GetApiV1MarketFundingRateResponse": "blofin:GetApiV1MarketFundingRateResponse",
+    "fundingRate": {
+      "@id": "blofin:fundingRate",
+      "@type": "xsd:string"
+    },
+    "fundingInterval": {
+      "@id": "blofin:fundingInterval",
+      "@type": "xsd:string"
+    },
+    "fundingIntervalUnit": {
+      "@id": "blofin:fundingIntervalUnit",
+      "@type": "xsd:string"
+    },
+    "fundingRateCap": {
+      "@id": "blofin:fundingRateCap",
+      "@type": "xsd:string"
+    },
+    "fundingRateFloor": {
+      "@id": "blofin:fundingRateFloor",
+      "@type": "xsd:string"
+    },
+    "GetApiV1MarketFundingRateHistoryResponse": "blofin:GetApiV1MarketFundingRateHistoryResponse",
+    "GetApiV1MarketIndexCandlesResponse": "blofin:GetApiV1MarketIndexCandlesResponse",
+    "GetApiV1MarketInstrumentsResponse": "blofin:GetApiV1MarketInstrumentsResponse",
+    "baseCurrency": {
+      "@id": "blofin:baseCurrency",
+      "@type": "xsd:string"
+    },
+    "quoteCurrency": {
+      "@id": "blofin:quoteCurrency",
+      "@type": "xsd:string"
+    },
+    "contractValue": {
+      "@id": "blofin:contractValue",
+      "@type": "xsd:string"
+    },
+    "listTime": {
+      "@id": "blofin:listTime",
+      "@type": "xsd:string"
+    },
+    "expireTime": {
+      "@id": "blofin:expireTime",
+      "@type": "xsd:string"
+    },
+    "offTime": {
+      "@id": "blofin:offTime",
+      "@type": "xsd:string"
+    },
+    "maxLeverage": {
+      "@id": "blofin:maxLeverage",
+      "@type": "xsd:string"
+    },
+    "minSize": {
+      "@id": "blofin:minSize",
+      "@type": "xsd:string"
+    },
+    "lotSize": {
+      "@id": "blofin:lotSize",
+      "@type": "xsd:string"
+    },
+    "tickSize": {
+      "@id": "blofin:tickSize",
+      "@type": "xsd:string"
+    },
+    "contractType": {
+      "@id": "blofin:contractType",
+      "@type": "xsd:string"
+    },
+    "maxLimitSize": {
+      "@id": "blofin:maxLimitSize",
+      "@type": "xsd:string"
+    },
+    "maxMarketSize": {
+      "@id": "blofin:maxMarketSize",
+      "@type": "xsd:string"
+    },
+    "settleCurrency": {
+      "@id": "blofin:settleCurrency",
+      "@type": "xsd:string"
+    },
+    "assetClass": {
+      "@id": "blofin:assetClass",
+      "@type": "xsd:string"
+    },
+    "GetApiV1MarketInstrumentsHistoryResponse": "blofin:GetApiV1MarketInstrumentsHistoryResponse",
+    "GetApiV1MarketMarkPriceResponse": "blofin:GetApiV1MarketMarkPriceResponse",
+    "indexPrice": {
+      "@id": "blofin:indexPrice",
+      "@type": "xsd:string"
+    },
+    "GetApiV1MarketMarkPriceCandlesResponse": "blofin:GetApiV1MarketMarkPriceCandlesResponse",
+    "GetApiV1MarketPositionTiersResponse": "blofin:GetApiV1MarketPositionTiersResponse",
+    "symbol": {
+      "@id": "blofin:symbol",
+      "@type": "xsd:string"
+    },
+    "maxSize": {
+      "@id": "blofin:maxSize",
+      "@type": "xsd:string"
+    },
+    "maintenanceMarginRate": {
+      "@id": "blofin:maintenanceMarginRate",
+      "@type": "xsd:string"
+    },
+    "GetApiV1MarketTickersResponse": "blofin:GetApiV1MarketTickersResponse",
+    "last": {
+      "@id": "blofin:last",
+      "@type": "xsd:string"
+    },
+    "lastSize": {
+      "@id": "blofin:lastSize",
+      "@type": "xsd:string"
+    },
+    "askPrice": {
+      "@id": "blofin:askPrice",
+      "@type": "xsd:string"
+    },
+    "askSize": {
+      "@id": "blofin:askSize",
+      "@type": "xsd:string"
+    },
+    "bidPrice": {
+      "@id": "blofin:bidPrice",
+      "@type": "xsd:string"
+    },
+    "bidSize": {
+      "@id": "blofin:bidSize",
+      "@type": "xsd:string"
+    },
+    "high24h": {
+      "@id": "blofin:high24h",
+      "@type": "xsd:string"
+    },
+    "open24h": {
+      "@id": "blofin:open24h",
+      "@type": "xsd:string"
+    },
+    "low24h": {
+      "@id": "blofin:low24h",
+      "@type": "xsd:string"
+    },
+    "volCurrency24h": {
+      "@id": "blofin:volCurrency24h",
+      "@type": "xsd:string"
+    },
+    "vol24h": {
+      "@id": "blofin:vol24h",
+      "@type": "xsd:string"
+    },
+    "GetApiV1MarketTradesResponse": "blofin:GetApiV1MarketTradesResponse",
+    "tradeId": {
+      "@id": "blofin:tradeId",
+      "@type": "xsd:string"
+    },
+    "GetApiV1SpotMarketBooksResponse": "blofin:GetApiV1SpotMarketBooksResponse",
+    "GetApiV1SpotMarketCandlesResponse": "blofin:GetApiV1SpotMarketCandlesResponse",
+    "GetApiV1SpotMarketInstrumentsResponse": "blofin:GetApiV1SpotMarketInstrumentsResponse",
+    "GetApiV1SpotMarketTickersResponse": "blofin:GetApiV1SpotMarketTickersResponse",
+    "GetApiV1SpotMarketTradesResponse": "blofin:GetApiV1SpotMarketTradesResponse",
+    "PostApiV1SpotTradeBatchOrdersRequest": "blofin:PostApiV1SpotTradeBatchOrdersRequest",
+    "targetCurrency": {
+      "@id": "blofin:targetCurrency",
+      "@type": "xsd:string"
+    },
+    "PostApiV1SpotTradeBatchOrdersResponse": "blofin:PostApiV1SpotTradeBatchOrdersResponse",
+    "PostApiV1SpotTradeCancelAlgoRequest": "blofin:PostApiV1SpotTradeCancelAlgoRequest",
+    "PostApiV1SpotTradeCancelAlgoResponse": "blofin:PostApiV1SpotTradeCancelAlgoResponse",
+    "PostApiV1SpotTradeCancelBatchOrdersRequest": "blofin:PostApiV1SpotTradeCancelBatchOrdersRequest",
+    "PostApiV1SpotTradeCancelBatchOrdersResponse": "blofin:PostApiV1SpotTradeCancelBatchOrdersResponse",
+    "PostApiV1SpotTradeCancelOrderRequest": "blofin:PostApiV1SpotTradeCancelOrderRequest",
+    "PostApiV1SpotTradeCancelOrderResponse": "blofin:PostApiV1SpotTradeCancelOrderResponse",
+    "GetApiV1SpotTradeFillsHistoryResponse": "blofin:GetApiV1SpotTradeFillsHistoryResponse",
+    "fillPrice": {
+      "@id": "blofin:fillPrice",
+      "@type": "xsd:string"
+    },
+    "fillSize": {
+      "@id": "blofin:fillSize",
+      "@type": "xsd:string"
+    },
+    "fillPnl": {
+      "@id": "blofin:fillPnl",
+      "@type": "xsd:string"
+    },
+    "PostApiV1SpotTradeOrderRequest": "blofin:PostApiV1SpotTradeOrderRequest",
+    "PostApiV1SpotTradeOrderResponse": "blofin:PostApiV1SpotTradeOrderResponse",
+    "PostApiV1SpotTradeOrderAlgoRequest": "blofin:PostApiV1SpotTradeOrderAlgoRequest",
+    "orderPrice": {
+      "@id": "blofin:orderPrice",
+      "@type": "xsd:string"
+    },
+    "triggerPrice": {
+      "@id": "blofin:triggerPrice",
+      "@type": "xsd:string"
+    },
+    "triggerPriceType": {
+      "@id": "blofin:triggerPriceType",
+      "@type": "xsd:string"
+    },
+    "PostApiV1SpotTradeOrderAlgoResponse": "blofin:PostApiV1SpotTradeOrderAlgoResponse",
+    "GetApiV1SpotTradeOrderDetailResponse": "blofin:GetApiV1SpotTradeOrderDetailResponse",
+    "algoClientOrderId": {
+      "@id": "blofin:algoClientOrderId",
+      "@type": "xsd:string"
+    },
+    "GetApiV1SpotTradeOrderPriceRangeResponse": "blofin:GetApiV1SpotTradeOrderPriceRangeResponse",
+    "maxPrice": {
+      "@id": "blofin:maxPrice",
+      "@type": "xsd:string"
+    },
+    "minPrice": {
+      "@id": "blofin:minPrice",
+      "@type": "xsd:string"
+    },
+    "GetApiV1SpotTradeOrdersAlgoHistoryResponse": "blofin:GetApiV1SpotTradeOrdersAlgoHistoryResponse",
+    "attachAlgoOrders": {
+      "@id": "blofin:attachAlgoOrders",
+      "@container": "@list"
+    },
+    "GetApiV1SpotTradeOrdersAlgoPendingResponse": "blofin:GetApiV1SpotTradeOrdersAlgoPendingResponse",
+    "GetApiV1SpotTradeOrdersHistoryResponse": "blofin:GetApiV1SpotTradeOrdersHistoryResponse",
+    "cancelSource": {
+      "@id": "blofin:cancelSource",
+      "@type": "xsd:string"
+    },
+    "cancelSourceReason": {
+      "@id": "blofin:cancelSourceReason",
+      "@type": "xsd:string"
+    },
+    "GetApiV1SpotTradeOrdersPendingResponse": "blofin:GetApiV1SpotTradeOrdersPendingResponse",
+    "filled_amount": {
+      "@id": "blofin:filled_amount",
+      "@type": "xsd:string"
+    },
+    "PostApiV1TradeAmendAlgoRequest": "blofin:PostApiV1TradeAmendAlgoRequest",
+    "requestId": {
+      "@id": "blofin:requestId",
+      "@type": "xsd:string"
+    },
+    "ttl": {
+      "@id": "blofin:ttl",
+      "@type": "xsd:string"
+    },
+    "newSize": {
+      "@id": "blofin:newSize",
+      "@type": "xsd:string"
+    },
+    "newTriggerPrice": {
+      "@id": "blofin:newTriggerPrice",
+      "@type": "xsd:string"
+    },
+    "newTriggerPriceType": {
+      "@id": "blofin:newTriggerPriceType",
+      "@type": "xsd:string"
+    },
+    "newOrderPrice": {
+      "@id": "blofin:newOrderPrice",
+      "@type": "xsd:string"
+    },
+    "newCallbackRatio": {
+      "@id": "blofin:newCallbackRatio",
+      "@type": "xsd:string"
+    },
+    "newCallbackSpread": {
+      "@id": "blofin:newCallbackSpread",
+      "@type": "xsd:string"
+    },
+    "newActivePrice": {
+      "@id": "blofin:newActivePrice",
+      "@type": "xsd:string"
+    },
+    "PostApiV1TradeAmendAlgoResponse": "blofin:PostApiV1TradeAmendAlgoResponse",
+    "PostApiV1TradeAmendBatchOrdersRequest": "blofin:PostApiV1TradeAmendBatchOrdersRequest",
+    "newPrice": {
+      "@id": "blofin:newPrice",
+      "@type": "xsd:string"
+    },
+    "PostApiV1TradeAmendBatchOrdersResponse": "blofin:PostApiV1TradeAmendBatchOrdersResponse",
+    "PostApiV1TradeAmendOrderRequest": "blofin:PostApiV1TradeAmendOrderRequest",
+    "newTpTriggerPrice": {
+      "@id": "blofin:newTpTriggerPrice",
+      "@type": "xsd:string"
+    },
+    "newTpTriggerPriceType": {
+      "@id": "blofin:newTpTriggerPriceType",
+      "@type": "xsd:string"
+    },
+    "newTpOrderPrice": {
+      "@id": "blofin:newTpOrderPrice",
+      "@type": "xsd:string"
+    },
+    "newSlTriggerPrice": {
+      "@id": "blofin:newSlTriggerPrice",
+      "@type": "xsd:string"
+    },
+    "newSlTriggerPriceType": {
+      "@id": "blofin:newSlTriggerPriceType",
+      "@type": "xsd:string"
+    },
+    "newSlOrderPrice": {
+      "@id": "blofin:newSlOrderPrice",
+      "@type": "xsd:string"
+    },
+    "PostApiV1TradeAmendOrderResponse": "blofin:PostApiV1TradeAmendOrderResponse",
+    "PostApiV1TradeAmendTpslRequest": "blofin:PostApiV1TradeAmendTpslRequest",
+    "tpslId": {
+      "@id": "blofin:tpslId",
+      "@type": "xsd:string"
+    },
+    "PostApiV1TradeAmendTpslResponse": "blofin:PostApiV1TradeAmendTpslResponse",
+    "PostApiV1TradeBatchOrdersRequest": "blofin:PostApiV1TradeBatchOrdersRequest",
+    "tpTriggerPriceType": {
+      "@id": "blofin:tpTriggerPriceType",
+      "@type": "xsd:string"
+    },
+    "slTriggerPriceType": {
+      "@id": "blofin:slTriggerPriceType",
+      "@type": "xsd:string"
+    },
+    "PostApiV1TradeBatchOrdersResponse": "blofin:PostApiV1TradeBatchOrdersResponse",
+    "PostApiV1TradeCancelAlgoRequest": "blofin:PostApiV1TradeCancelAlgoRequest",
+    "PostApiV1TradeCancelAlgoResponse": "blofin:PostApiV1TradeCancelAlgoResponse",
+    "PostApiV1TradeCancelBatchOrdersRequest": "blofin:PostApiV1TradeCancelBatchOrdersRequest",
+    "PostApiV1TradeCancelBatchOrdersResponse": "blofin:PostApiV1TradeCancelBatchOrdersResponse",
+    "PostApiV1TradeCancelOrderRequest": "blofin:PostApiV1TradeCancelOrderRequest",
+    "PostApiV1TradeCancelOrderResponse": "blofin:PostApiV1TradeCancelOrderResponse",
+    "PostApiV1TradeCancelTpslRequest": "blofin:PostApiV1TradeCancelTpslRequest",
+    "PostApiV1TradeCancelTpslResponse": "blofin:PostApiV1TradeCancelTpslResponse",
+    "PostApiV1TradeClosePositionRequest": "blofin:PostApiV1TradeClosePositionRequest"
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "BloFin API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects BloFin's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-13) from openapi/_ae-authored/blofin-openapi-generated.yml.",
+  "dcterms:created": "2026-10-13",
+  "dcterms:source": [
+    "openapi/_ae-authored/blofin-openapi-generated.yml"
+  ]
+}

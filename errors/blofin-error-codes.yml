@@ -1,0 +1,270 @@
+name: BloFin REST API error codes
+generated: '2026-10-13'
+method: searched
+source: https://docs.blofin.com/index.html#errors
+format: custom-json-envelope
+envelope:
+  fields:
+  - code
+  - msg
+  - data
+  note: Most errors return HTTP 200 with a non-zero code; 429 returns HTTP 429.
+problems:
+- status: 200
+  code: '400'
+  title: Bad Request
+- status: 200
+  code: '401'
+  title: Invalid signature.
+- status: 200
+  code: '500'
+  title: Internal Server Error
+- status: 200
+  code: '404'
+  title: not found
+- status: 200
+  code: '405'
+  title: Method Not Allowed
+- status: 200
+  code: '406'
+  title: Not Acceptable
+- status: 429
+  code: '429'
+  title: Too Many Requests
+- status: 200
+  code: '1'
+  title: All operations failed
+- status: 200
+  code: '2'
+  title: Batch operation partially succeeded.
+- status: 200
+  code: '152001'
+  title: Parameter {} cannot be empty.
+- status: 200
+  code: '152002'
+  title: Parameter {} error.
+- status: 200
+  code: '152003'
+  title: Either parameter {} or {} is required.
+- status: 200
+  code: '152004'
+  title: JSON syntax error, Please check if the parameter should be an array or an object.
+- status: 200
+  code: '152005'
+  title: 'Parameter error: wrong or empty'
+- status: 200
+  code: '152006'
+  title: Batch orders can be placed for up to 20 at once.
+- status: 200
+  code: '152007'
+  title: Batch orders can only be placed with the same instId and marginMode.
+- status: 200
+  code: '152008'
+  title: Only the same field is allowed for bulk cancellation of orders, orderId is preferred.
+- status: 200
+  code: '152009'
+  title: '{} must be a combination of numbers, letters, or underscores, and the maximum length of characters is 32.'
+- status: 200
+  code: '152011'
+  title: Transaction API Key does not support brokerId
+- status: 200
+  code: '152012'
+  title: BrokerId is required
+- status: 200
+  code: '152013'
+  title: Unmatched brokerId, please check your API key’s bound broker
+- status: 200
+  code: '152014'
+  title: Instrument ID does not exist
+- status: 200
+  code: '152015'
+  title: Number of instId values exceeds the maximum limit of 20
+- status: 200
+  code: '152020'
+  title: Address binding not found.
+- status: 200
+  code: '152022'
+  title: Current network is not available.
+- status: 200
+  code: '152023'
+  title: This address is still within the 24-hour withdrawal lock period.
+- status: 200
+  code: '152024'
+  title: Your account now can only withdraw to whitelist addresses.
+- status: 200
+  code: '152025'
+  title: Deposits not supported yet, contact customer support for details.
+- status: 200
+  code: '152026'
+  title: Amount precision error.
+- status: 200
+  code: '152027'
+  title: The withdrawal must exceed the minimum limit.
+- status: 200
+  code: '152028'
+  title: Insufficient balance.
+- status: 200
+  code: '152029'
+  title: The maximum daily withdrawal amount has been reached.
+- status: 200
+  code: '152030'
+  title: Duplicated clientId.
+- status: 200
+  code: '152031'
+  title: This address is not marked as verification-free.
+- status: 200
+  code: '152032'
+  title: Quick withdrawal daily limit exceeded. Please complete 2FA verification.
+- status: 200
+  code: '152401'
+  title: Access key does not exist, Please go to the API Management page and check if it exists and is in an active state.
+- status: 200
+  code: '152402'
+  title: Access key has expired, Please go to the API Management page and check if it exists and is in an active state.
+- status: 200
+  code: '152404'
+  title: This operation is not supported, Please check the requestPath or API key permissions.
+- status: 200
+  code: '152405'
+  title: Timestamp in header or signature has expired, need to be within 60s
+- status: 200
+  code: '152406'
+  title: Your IP is not included in your API key’s IP whitelist
+- status: 200
+  code: '152407'
+  title: Repeated nonce, Reusing within 60 seconds is not allowed.
+- status: 200
+  code: '152408'
+  title: Passphrase error
+- status: 200
+  code: '152409'
+  title: Signature verification failed, Please refer to Signature Verification Failed
+- status: 200
+  code: '152410'
+  title: 'The value of ACCESS-TIMESTAMP needs to be a millisecond timestamp, e.g: 1704038400000.'
+- status: 200
+  code: '152420'
+  title: Duplicate order in batch request
+- status: 200
+  code: '152421'
+  title: requestId already exists, please try again later
+- status: 200
+  code: '152422'
+  title: Exactly one of callbackRatio and callbackSpread must be provided
+- status: 200
+  code: '152423'
+  title: New size cannot be less than filled size
+- status: 200
+  code: '152428'
+  title: Invalid trigger price type
+- status: 200
+  code: '152429'
+  title: Request expired, ttl exceeded
+- status: 200
+  code: '150003'
+  title: clientId already exist
+- status: 200
+  code: '150004'
+  title: Insufficient balance. please adjust the amount and try again.
+- status: 200
+  code: '542'
+  title: Exceeded the maximum order size limit
+- status: 200
+  code: '102002'
+  title: Duplicate customized order ID
+- status: 200
+  code: '102005'
+  title: Position had been closed
+- status: 200
+  code: '102014'
+  title: Limit order exceeds maximum order size limit
+- status: 200
+  code: '102015'
+  title: Market order exceeds maximum order size limit
+- status: 200
+  code: '102022'
+  title: Failed to place order. You don’t have any positions of this contract. Turn off Reduce-only to continue.
+- status: 200
+  code: '102037'
+  title: TP trigger price should be higher than the latest trading price
+- status: 200
+  code: '102038'
+  title: SL trigger price should be lower than the latest trading price
+- status: 200
+  code: '102039'
+  title: TP trigger price should be lower than the latest trading price
+- status: 200
+  code: '102040'
+  title: SL trigger price should be higher than the latest trading price
+- status: 200
+  code: '102047'
+  title: Stop loss trigger price should be higher than the order price
+- status: 200
+  code: '102048'
+  title: stop loss trigger price must be higher than the best bid price
+- status: 200
+  code: '102049'
+  title: Take profit trigger price should be lower than the order price
+- status: 200
+  code: '102050'
+  title: stop loss trigger price must be lower than the best ask price
+- status: 200
+  code: '80001'
+  title: Parameters error
+- status: 200
+  code: '80006'
+  title: Affiliate do not exit. Please apply to be affiliate first.
+- status: 200
+  code: '102051'
+  title: stop loss trigger price should be lower than the order price
+- status: 200
+  code: '102052'
+  title: take profit trigger price should be higher than the order price
+- status: 200
+  code: '102053'
+  title: take profit trigger price should be lower than the best bid price
+- status: 200
+  code: '102054'
+  title: take profit trigger price should be higher than the best ask price
+- status: 200
+  code: '102055'
+  title: stop loss trigger price should be lower than the best ask price
+- status: 200
+  code: '102064'
+  title: 'Buy price is not within the price limit (Minimum: 310.40; Maximum:1,629.40)'
+- status: 200
+  code: '102065'
+  title: Sell price is not within the price limit
+- status: 200
+  code: '102067'
+  title: Order modification failed as the order has been filled, triggered, canceled or does not exist.
+- status: 200
+  code: '102068'
+  title: Cancel failed as the order has been filled, triggered, canceled or does not exist.
+- status: 200
+  code: '102089'
+  title: Position mode mismatch
+- status: 200
+  code: '102148'
+  title: Duplicate requestId, request ignored.
+- status: 200
+  code: '148082'
+  title: Callback percentage range 0.1% - 100%
+- status: 200
+  code: '148083'
+  title: Callback constant range
+- status: 200
+  code: '103003'
+  title: Order failed. Insufficient USDT margin in account
+- status: 200
+  code: '103013'
+  title: Internal error; unable to process your request. Please try again.
+- status: 200
+  code: '110006'
+  title: You have pending cross orders. Please cancel them before adjusting your leverage.
+- status: 200
+  code: '110019'
+  title: Setting failed. Cancel any open orders, and close positions first.
+- status: 200
+  code: '1000'
+  title: The order has been canceled.

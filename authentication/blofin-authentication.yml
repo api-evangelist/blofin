@@ -1,0 +1,23 @@
+name: BloFin authentication
+generated: '2026-10-13'
+method: searched
+source: https://docs.blofin.com/index.html#rest-authentication
+docs: https://docs.blofin.com/index.html#rest-authentication
+schemes:
+- type: apiKey
+  name: HMAC-signed API key headers
+  in: header
+  headers:
+  - ACCESS-KEY
+  - ACCESS-SIGN
+  - ACCESS-TIMESTAMP
+  - ACCESS-NONCE
+  - ACCESS-PASSPHRASE
+  description: ACCESS-SIGN is a Base64-encoded signature over requestPath + method + timestamp + nonce + body; timestamp must
+    be within 60s; nonce may not repeat within 60 seconds. API keys can be restricted by IP whitelist.
+- type: oauth2
+  name: Broker OAuth
+  description: 'Broker API at https://oauth.blofin.com: authorization redirect, POST /oauth/token, bearer tokens for /oauth/userinfo,
+    /oauth/apikey/create and deposit endpoints.'
+  docs: https://docs.blofin.com/broker.html
+websocket: Private WebSocket channels require a login event with apiKey, passphrase, timestamp, sign and nonce.

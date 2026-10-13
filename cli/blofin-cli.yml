@@ -1,0 +1,47 @@
+name: blofin-cli
+generated: '2026-10-13'
+method: searched
+source: https://github.com/blofin/blofin-cli
+install:
+- npm install -g blofin-cli
+commands:
+- group: market
+  subcommands:
+  - tickers
+  - instruments
+  - orderbook
+  - candles
+  - mark-price
+  - trades
+  - funding-rate
+- group: account
+  subcommands:
+  - balance
+  - positions
+  - config
+  - leverage
+  - margin-mode
+  - position-mode
+- group: trade
+  subcommands:
+  - place
+  - cancel
+  - close
+  - orders
+  - fills
+  - tpsl
+  - tpsl-orders
+  - cancel-tpsl
+  - algo
+  - algo-orders
+  - cancel-algo
+- group: asset
+  subcommands:
+  - balances
+  - transfer
+  - bills
+  - deposits
+  - withdrawals
+  - apikey-info
+flags:
+  --demo: https://demo-trading-openapi.blofin.com

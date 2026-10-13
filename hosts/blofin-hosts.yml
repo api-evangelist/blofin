@@ -1,0 +1,112 @@
+generated: '2026-10-13'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 8
+  own: 7
+  other_domain: 0
+  platform: 1
+  roles:
+  - api
+  - docs
+  - other
+  - source
+  - support
+  - website
+hosts:
+- host: api.blofin.com
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: blofin.com
+  role: api
+  relation: own
+- host: blofin.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Website
+  serves:
+  - cdn
+  vendor: cloudflare
+  registrable_domain: blofin.com
+  role: website
+  relation: own
+- host: docs.blofin.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - site-links
+  - docs-index
+  - contract-discovery
+  - well-known
+  types:
+  - Documentation
+  - APIReference
+  - ChangeLog
+  serves:
+  - docs
+  registrable_domain: blofin.com
+  role: docs
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: oauth.blofin.com
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: blofin.com
+  role: other
+  relation: own
+- host: openapi.blofin.com
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: blofin.com
+  role: other
+  relation: own
+- host: support.blofin.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - Support
+  serves: []
+  registrable_domain: blofin.com
+  role: support
+  relation: own
+- host: wallet.blofin.com
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: blofin.com
+  role: other
+  relation: own

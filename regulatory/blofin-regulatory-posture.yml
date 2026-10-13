@@ -1,0 +1,6 @@
+name: BloFin regulatory posture
+generated: '2026-10-13'
+method: none
+signals: {}
+note: No horizontal regulatory signals harvested; blofin.com pages answered 403 to scripted fetches from this run except via
+  the browser fetcher.

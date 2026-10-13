@@ -1,0 +1,32 @@
+name: BloFin API rate limits
+generated: '2026-10-13'
+method: searched
+source: https://docs.blofin.com/index.html
+limit_count: 4
+exhaustion:
+  status: 429
+  message: Rate limit reached. Please refer to API documentation and throttle requests accordingly
+limits:
+- name: REST per-IP per minute
+  limit_text: Limit the call of the endpoint by IP, up to 500 requests per minute, if triggered, the service will be suspended
+    for 5 minutes
+  max: 500
+  window: 1 minute
+  scope: per-ip
+- name: REST per-IP per 5 minutes
+  limit_text: up to 1500 requests per 5 minutes, if triggered, the service will be suspended for 1 hour
+  max: 1500
+  window: 5 minutes
+  scope: per-ip
+- name: Trading APIs per user
+  limit_text: Rate limits of trading-related APIs at 30 requests every 10 seconds (based on UserId)
+  max: 30
+  window: 10 seconds
+  scope: per-user
+- name: WebSocket new connections
+  limit_text: 'New Connections : 1 per second per IP'
+  max: 1
+  window: 1 second
+  scope: per-ip
+note: No rate-limit response headers are documented. HTTP 403 indicates a network firewall rule violation, usually a five-minute
+  temporary ban.

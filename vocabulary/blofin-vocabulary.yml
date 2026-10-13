@@ -1,0 +1,434 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/_ae-authored/blofin-openapi-generated.yml
+vocabulary:
+  name: BloFin Domain Vocabulary
+  description: 'Terms declared by BloFin''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-13'
+  terms:
+  - term: GetApiV1AccountBalanceResponse
+    definition: 'Object declared by the contract with fields: ts, totalEquity, isolatedEquity, details, currency, equity, balance, available,
+      availableEquity, frozen, orderFrozen, equityUsd. (2 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AccountBalanceResponse
+  - term: GetApiV1AccountBatchLeverageInfoResponse
+    definition: 'Object declared by the contract with fields: instId, leverage, marginMode, positionSide.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AccountBatchLeverageInfoResponse
+  - term: GetApiV1AccountConfigResponse
+    definition: 'Object declared by the contract with fields: accountLevel.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AccountConfigResponse
+  - term: GetApiV1AccountFundingFeesResponse
+    definition: 'Object declared by the contract with fields: billId, instId, currency, fundingFee, fundingTime, positionSize, marginMode, ts.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AccountFundingFeesResponse
+  - term: GetApiV1AccountLeverageInfoResponse
+    definition: 'Object declared by the contract with fields: instId, leverage, marginMode.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AccountLeverageInfoResponse
+  - term: GetApiV1AccountMarginModeResponse
+    definition: 'Object declared by the contract with fields: marginMode.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AccountMarginModeResponse
+  - term: GetApiV1AccountPositionModeResponse
+    definition: 'Object declared by the contract with fields: positionMode, multiPosition.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AccountPositionModeResponse
+  - term: GetApiV1AccountPositionsResponse
+    definition: 'Object declared by the contract with fields: positionId, instId, instType, marginMode, positionSide, leverage, positions, availablePositions,
+      averagePrice, markPrice, marginRatio, liquidationPrice. (8 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AccountPositionsResponse
+  - term: GetApiV1AccountPositionsHistoryResponse
+    definition: 'Object declared by the contract with fields: historyId, positionId, instId, instType, side, marginMode, positionSide, closePositions,
+      maxPositions, liquidationPositions, openAveragePrice, closeAveragePrice. (6 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AccountPositionsHistoryResponse
+  - term: PostApiV1AccountSetLeverageRequest
+    definition: 'Object declared by the contract with fields: instId, leverage, marginMode, positionSide, positionId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AccountSetLeverageRequest
+  - term: PostApiV1AccountSetLeverageResponse
+    definition: 'Object declared by the contract with fields: instId, leverage, marginMode, positionSide.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AccountSetLeverageResponse
+  - term: PostApiV1AccountSetMarginModeRequest
+    definition: 'Object declared by the contract with fields: marginMode.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AccountSetMarginModeRequest
+  - term: PostApiV1AccountSetMarginModeResponse
+    definition: 'Object declared by the contract with fields: marginMode.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AccountSetMarginModeResponse
+  - term: PostApiV1AccountSetPositionModeRequest
+    definition: 'Object declared by the contract with fields: positionMode, multiPosition.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AccountSetPositionModeRequest
+  - term: PostApiV1AccountSetPositionModeResponse
+    definition: 'Object declared by the contract with fields: positionMode, multiPosition.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AccountSetPositionModeResponse
+  - term: GetApiV1AffiliateBasicResponse
+    definition: 'Object declared by the contract with fields: commissionRate, cashbackRate, totalCommission, referralCode, referralLink, directInvitees,
+      subInvitees, tradeInvitees, updateTime, totalTradingVolume, directCommission7d, directCommission30d. (6 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AffiliateBasicResponse
+  - term: GetApiV1AffiliateInviteesResponse
+    definition: 'Object declared by the contract with fields: id, uid, registerTime, totalTradingVolume, totalTradingFee, totalCommision, totalDeposit,
+      totalWithdrawal, kycLevel, equity, totalEquity, referralCode. (9 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AffiliateInviteesResponse
+  - term: GetApiV1AffiliateInviteesDailyInfoResponse
+    definition: 'Object declared by the contract with fields: uid, commission, commissionTime, cashback, fee, kycLevel, tradingVolume.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AffiliateInviteesDailyInfoResponse
+  - term: GetApiV1AffiliateReferralCodeResponse
+    definition: 'Object declared by the contract with fields: referralCode, commissionRate, cashbackRate, invitees, remark, isDefaultReferralCode,
+      makerFeeRate, takerFeeRate, referralLink.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AffiliateReferralCodeResponse
+  - term: GetApiV1AffiliateSubAffiliatesResponse
+    definition: 'Object declared by the contract with fields: id, uid, commissionRate, createTime, upperAffiliate, invitees, totalTradedUsers,
+      totalTradingVolume, totalTradingFee, totalCommision, myCommision, tag. (1 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AffiliateSubAffiliatesResponse
+  - term: GetApiV1AffiliateSubInviteesResponse
+    definition: 'Object declared by the contract with fields: id, uid, subAffiliateUid, subAffiliateLevel, registerTime, totalTradingVolume, totalTradingFee,
+      totalCommision, totalDeposit, totalWithdrawal, kycLevel, equity. (1 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AffiliateSubInviteesResponse
+  - term: GetApiV1AssetBalancesResponse
+    definition: 'Object declared by the contract with fields: code, msg, data.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AssetBalancesResponse
+  - term: GetApiV1AssetBillsResponse
+    definition: 'Object declared by the contract with fields: transferId, currency, fromAccount, toAccount, amount, ts, clientId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AssetBillsResponse
+  - term: GetApiV1AssetCurrenciesResponse
+    definition: 'Object declared by the contract with fields: currency, chain, depositMinAmount, depositUnsafeConfirmation, depositConfirmation,
+      withdrawMinAmount, withdrawFee, withdrawPrecision, supportMemo, isDepositAvailable, isWithdrawAvailable, recoveryEtaDeposit. (2 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AssetCurrenciesResponse
+  - term: PostApiV1AssetDemoApplyMoneyRequest
+    definition: 'Object declared by the contract with fields: adjustType, accountType, demoApplyMoney, currency, amountStr.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AssetDemoApplyMoneyRequest
+  - term: GetApiV1AssetDepositAddressResponse
+    definition: 'Object declared by the contract with fields: code, msg, currency, chain, address, tag.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AssetDepositAddressResponse
+  - term: GetApiV1AssetDepositHistoryResponse
+    definition: 'Object declared by the contract with fields: currency, chain, address, type, txId, amount, state, confirm, ts, depositId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AssetDepositHistoryResponse
+  - term: PostApiV1AssetTransferRequest
+    definition: 'Object declared by the contract with fields: currency, fromAccount, toAccount, amount, clientId, subAccount, mainToSubAccount.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AssetTransferRequest
+  - term: PostApiV1AssetTransferResponse
+    definition: 'Object declared by the contract with fields: transferId, clientId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AssetTransferResponse
+  - term: PostApiV1AssetWithdrawalApplyRequest
+    definition: 'Object declared by the contract with fields: currency, address, dest, amount, chain, addrType, tag, areaCode, clientId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AssetWithdrawalApplyRequest
+  - term: PostApiV1AssetWithdrawalApplyResponse
+    definition: 'Object declared by the contract with fields: code, msg, withdrawId, clientId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1AssetWithdrawalApplyResponse
+  - term: GetApiV1AssetWithdrawalHistoryResponse
+    definition: 'Object declared by the contract with fields: currency, chain, address, type, txId, amount, fee, feeCurrency, state, clientId,
+      ts, tag. (2 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AssetWithdrawalHistoryResponse
+  - term: GetApiV1CopytradingAccountBalanceResponse
+    definition: 'Object declared by the contract with fields: ts, totalEquity, isolatedEquity, details, currency, equity, balance, available,
+      availableEquity, frozen, orderFrozen, equityUsd. (2 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingAccountBalanceResponse
+  - term: GetApiV1CopytradingAccountLeverageInfoResponse
+    definition: 'Object declared by the contract with fields: instId, leverage, marginMode, positionSide.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingAccountLeverageInfoResponse
+  - term: GetApiV1CopytradingAccountPositionModeResponse
+    definition: 'Object declared by the contract with fields: positionMode.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingAccountPositionModeResponse
+  - term: GetApiV1CopytradingAccountPositionsByContractResponse
+    definition: 'Object declared by the contract with fields: positionId, instId, instType, marginMode, positionSide, adl, leverage, positions,
+      availablePositions, averagePrice, markPrice, marginRatio. (7 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingAccountPositionsByContractResponse
+  - term: GetApiV1CopytradingAccountPositionsByOrderResponse
+    definition: 'Object declared by the contract with fields: orderId, instId, instType, marginMode, positionSide, leverage, positions, availablePositions,
+      averagePrice, markPrice, unrealizedPnl, unrealizedPnlRatio. (3 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingAccountPositionsByOrderResponse
+  - term: GetApiV1CopytradingAccountPositionsDetailsByOrderResponse
+    definition: 'Object declared by the contract with fields: closeOrderId, instId, positionSide, closeType, side, orderTime, size, filledAmount,
+      averagePrice, fee, realizedPnl, realizedPnlRatio.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingAccountPositionsDetailsByOrderResponse
+  - term: PostApiV1CopytradingAccountSetLeverageRequest
+    definition: 'Object declared by the contract with fields: instId, leverage, marginMode, positionSide.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingAccountSetLeverageRequest
+  - term: PostApiV1CopytradingAccountSetLeverageResponse
+    definition: 'Object declared by the contract with fields: instId, leverage, marginMode, positionSide.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingAccountSetLeverageResponse
+  - term: PostApiV1CopytradingAccountSetPositionModeRequest
+    definition: 'Object declared by the contract with fields: positionMode.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingAccountSetPositionModeRequest
+  - term: PostApiV1CopytradingAccountSetPositionModeResponse
+    definition: 'Object declared by the contract with fields: positionMode.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingAccountSetPositionModeResponse
+  - term: GetApiV1CopytradingConfigResponse
+    definition: 'Object declared by the contract with fields: nickName, roleType.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingConfigResponse
+  - term: GetApiV1CopytradingInstrumentsResponse
+    definition: 'Object declared by the contract with fields: instIdList.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingInstrumentsResponse
+  - term: PostApiV1CopytradingTradeCancelOrderRequest
+    definition: 'Object declared by the contract with fields: orderId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradeCancelOrderRequest
+  - term: PostApiV1CopytradingTradeCancelOrderResponse
+    definition: 'Object declared by the contract with fields: code, msg.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradeCancelOrderResponse
+  - term: PostApiV1CopytradingTradeCancelTpslByContractRequest
+    definition: 'Object declared by the contract with fields: algoId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradeCancelTpslByContractRequest
+  - term: PostApiV1CopytradingTradeCancelTpslByContractResponse
+    definition: 'Object declared by the contract with fields: code, msg.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradeCancelTpslByContractResponse
+  - term: PostApiV1CopytradingTradeCancelTpslByOrderRequest
+    definition: 'Object declared by the contract with fields: orderId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradeCancelTpslByOrderRequest
+  - term: PostApiV1CopytradingTradeCancelTpslByOrderResponse
+    definition: 'Object declared by the contract with fields: code, msg.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradeCancelTpslByOrderResponse
+  - term: PostApiV1CopytradingTradeClosePositionByContractRequest
+    definition: 'Object declared by the contract with fields: instId, marginMode, positionSide, closeType, size, brokerId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradeClosePositionByContractRequest
+  - term: PostApiV1CopytradingTradeClosePositionByContractResponse
+    definition: 'Object declared by the contract with fields: code, msg, data, orderIds.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradeClosePositionByContractResponse
+  - term: PostApiV1CopytradingTradeClosePositionByOrderRequest
+    definition: 'Object declared by the contract with fields: orderId, size, brokerId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradeClosePositionByOrderRequest
+  - term: PostApiV1CopytradingTradeClosePositionByOrderResponse
+    definition: 'Object declared by the contract with fields: code, msg.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradeClosePositionByOrderResponse
+  - term: GetApiV1CopytradingTradeOrdersHistoryResponse
+    definition: 'Object declared by the contract with fields: code, msg, orderId, instId, marginMode, positionSide, side, orderType, price, size,
+      leverage, state. (8 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingTradeOrdersHistoryResponse
+  - term: GetApiV1CopytradingTradeOrdersPendingResponse
+    definition: 'Object declared by the contract with fields: orderId, instId, marginMode, positionSide, side, orderType, price, size, reduceOnly,
+      leverage, state, filledSize. (9 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingTradeOrdersPendingResponse
+  - term: GetApiV1CopytradingTradePendingTpslByContractResponse
+    definition: 'Object declared by the contract with fields: algoId, instId, marginMode, positionSide, tpTriggerPrice, tpOrderPrice, slTriggerPrice,
+      slOrderPrice, size, state, leverage, actualSize. (2 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingTradePendingTpslByContractResponse
+  - term: GetApiV1CopytradingTradePendingTpslByOrderResponse
+    definition: 'Object declared by the contract with fields: code, msg, orderId, instId, marginMode, positionSide, tpTriggerPrice, tpOrderPrice,
+      slTriggerPrice, slOrderPrice, size, state. (3 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingTradePendingTpslByOrderResponse
+  - term: PostApiV1CopytradingTradePlaceOrderRequest
+    definition: 'Object declared by the contract with fields: instId, marginMode, positionSide, side, orderType, price, size, brokerId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradePlaceOrderRequest
+  - term: PostApiV1CopytradingTradePlaceOrderResponse
+    definition: 'Object declared by the contract with fields: orderId, clientOrderId, code, msg.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradePlaceOrderResponse
+  - term: PostApiV1CopytradingTradePlaceTpslByContractRequest
+    definition: 'Object declared by the contract with fields: instId, marginMode, positionSide, tpTriggerPrice, slTriggerPrice, size, type, brokerId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradePlaceTpslByContractRequest
+  - term: PostApiV1CopytradingTradePlaceTpslByContractResponse
+    definition: 'Object declared by the contract with fields: algoId, code, msg.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradePlaceTpslByContractResponse
+  - term: PostApiV1CopytradingTradePlaceTpslByOrderRequest
+    definition: 'Object declared by the contract with fields: orderId, tpTriggerPrice, slTriggerPrice, size, brokerId.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradePlaceTpslByOrderRequest
+  - term: PostApiV1CopytradingTradePlaceTpslByOrderResponse
+    definition: 'Object declared by the contract with fields: code, msg.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1CopytradingTradePlaceTpslByOrderResponse
+  - term: GetApiV1CopytradingTradePositionHistoryByOrderResponse
+    definition: 'Object declared by the contract with fields: code, msg, orderId, instId, leverage, positionSide, side, positions, createTime,
+      openAveragePrice, closeTime, closeAveragePrice. (5 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1CopytradingTradePositionHistoryByOrderResponse
+  - term: GetApiV1MarketBooksResponse
+    definition: 'Object declared by the contract with fields: asks, bids, ts.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketBooksResponse
+  - term: GetApiV1MarketCandlesResponse
+    definition: 'Object declared by the contract with fields: ts, open, high, low, close, vol, volCurrency, volCurrencyQuote, confirm.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketCandlesResponse
+  - term: GetApiV1MarketFundingRateResponse
+    definition: 'Object declared by the contract with fields: instId, fundingRate, fundingTime, fundingInterval, fundingIntervalUnit, fundingRateCap,
+      fundingRateFloor.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketFundingRateResponse
+  - term: GetApiV1MarketFundingRateHistoryResponse
+    definition: 'Object declared by the contract with fields: instId, fundingRate, fundingTime.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketFundingRateHistoryResponse
+  - term: GetApiV1MarketIndexCandlesResponse
+    definition: 'Object declared by the contract with fields: ts, open, high, low, close, confirm.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketIndexCandlesResponse
+  - term: GetApiV1MarketInstrumentsResponse
+    definition: 'Object declared by the contract with fields: instId, baseCurrency, quoteCurrency, contractValue, listTime, expireTime, offTime,
+      maxLeverage, minSize, lotSize, tickSize, instType. (6 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketInstrumentsResponse
+  - term: GetApiV1MarketInstrumentsHistoryResponse
+    definition: 'Object declared by the contract with fields: instId, baseCurrency, quoteCurrency, contractValue, maxLeverage, minSize, lotSize,
+      tickSize, instType, contractType, maxLimitSize, maxMarketSize. (3 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketInstrumentsHistoryResponse
+  - term: GetApiV1MarketMarkPriceResponse
+    definition: 'Object declared by the contract with fields: instId, indexPrice, markPrice, ts.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketMarkPriceResponse
+  - term: GetApiV1MarketMarkPriceCandlesResponse
+    definition: 'Object declared by the contract with fields: ts, open, high, low, close, confirm.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketMarkPriceCandlesResponse
+  - term: GetApiV1MarketPositionTiersResponse
+    definition: 'Object declared by the contract with fields: symbol, marginMode, minSize, maxSize, maintenanceMarginRate, maxLeverage.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketPositionTiersResponse
+  - term: GetApiV1MarketTickersResponse
+    definition: 'Object declared by the contract with fields: instId, last, lastSize, askPrice, askSize, bidPrice, bidSize, high24h, open24h,
+      low24h, volCurrency24h, vol24h. (1 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketTickersResponse
+  - term: GetApiV1MarketTradesResponse
+    definition: 'Object declared by the contract with fields: tradeId, instId, price, size, side, ts.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1MarketTradesResponse
+  - term: GetApiV1SpotMarketBooksResponse
+    definition: 'Object declared by the contract with fields: asks, bids, ts.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1SpotMarketBooksResponse
+  - term: GetApiV1SpotMarketCandlesResponse
+    definition: 'Object declared by the contract with fields: ts, open, high, low, close, vol, volCurrency, volCurrencyQuote, confirm.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1SpotMarketCandlesResponse
+  - term: GetApiV1SpotMarketInstrumentsResponse
+    definition: 'Object declared by the contract with fields: instId, baseCurrency, quoteCurrency, contractValue, listTime, expireTime, maxLeverage,
+      minSize, lotSize, tickSize, instType, contractType. (4 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1SpotMarketInstrumentsResponse

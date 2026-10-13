@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blofin/main/json-schema/blofin-get-api-v1-affiliate-invitees-response-schema.json",
+  "title": "GetApiV1AffiliateInviteesResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/GetApiV1AffiliateInviteesResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID"
+    },
+    "uid": {
+      "type": "string",
+      "description": "UID of invitee"
+    },
+    "registerTime": {
+      "type": "string",
+      "description": "Register time of invitee. Unix timestamp format in milliseconds, e.g. 1597026383085"
+    },
+    "totalTradingVolume": {
+      "type": "string",
+      "description": "Total futures trading amount of invitee"
+    },
+    "totalTradingFee": {
+      "type": "string",
+      "description": "Total futures trading fee of invitee"
+    },
+    "totalCommision": {
+      "type": "string",
+      "description": "Total commission of invitee"
+    },
+    "totalDeposit": {
+      "type": "string",
+      "description": "The total deposited amount, expressed in USDT. The conversion to USDT is based on the last spot price of the deposited currency pair at the moment the deposit is credited."
+    },
+    "totalWithdrawal": {
+      "type": "string",
+      "description": "Total withdrawan amount, expressed in USDT. The conversion to USDT is based on the last spot price of the withdrawn currency pair at the moment the deposit is credited."
+    },
+    "kycLevel": {
+      "type": "string",
+      "description": "KYC level of invitee. 0 Non KYC, 1 Complete personal infomation verification, 2 Complete address proof verification"
+    },
+    "equity": {
+      "type": "string",
+      "description": "The total equity of futures account in USDT. 0 when needEquity is false."
+    },
+    "totalEquity": {
+      "type": "string",
+      "description": "The total equity of all accounts in USDT. 0 when needEquity is false."
+    },
+    "referralCode": {
+      "type": "string",
+      "description": "Referral code that the user was invited with, e.g. 7tdIua"
+    },
+    "couponDiscount": {
+      "type": "string",
+      "description": "The amount discounted by invitees using the coupon."
+    },
+    "takerVol30Day": {
+      "type": "string",
+      "description": "Taker volume in last 30 days (USDT), updated every six hours."
+    },
+    "makerVol30Day": {
+      "type": "string",
+      "description": "Maker volume in last 30 days (USDT), updated every six hours."
+    },
+    "tradeVol30Day": {
+      "type": "string",
+      "description": "Total trading volume in last 30 days (USDT), updated every six hours."
+    },
+    "depositAmount30Day": {
+      "type": "string",
+      "description": "Deposit amount in last 30 days (USDT), updated every six hours."
+    },
+    "takerVol90Day": {
+      "type": "string",
+      "description": "Taker volume in last 90 days (USDT), updated every six hours."
+    },
+    "makerVol90Day": {
+      "type": "string",
+      "description": "Maker volume in last 90 days (USDT), updated every six hours."
+    },
+    "tradeVol90Day": {
+      "type": "string",
+      "description": "Total trading volume in last 90 days (USDT), updated every six hours."
+    },
+    "vipLevel": {
+      "type": "integer",
+      "description": "VIP level. This parameter is not displayed when requesting the list, but it will be shown when using the uid to request the invitees' details."
+    }
+  }
+}

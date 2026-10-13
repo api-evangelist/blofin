@@ -1,0 +1,99 @@
+name: BloFin MCP Server
+generated: '2026-10-13'
+method: searched
+source: https://github.com/blofin/blofin-mcp
+status: official
+description: Official MCP server for the BloFin exchange API (market data, account, trading, asset management), documented
+  at https://docs.blofin.com/index.html#mcp-server.
+deployment:
+  mode: local-stdio
+  install: npx -y blofin-mcp
+  package: https://www.npmjs.com/package/blofin-mcp
+  auth: api-key
+  verified: searched
+  note: Also distributed as a Claude Desktop extension (blofin-mcp.mcpb on GitHub Releases). Credentials via BLOFIN_API_KEY,
+    BLOFIN_API_SECRET, BLOFIN_PASSPHRASE; BLOFIN_BASE_URL defaults to demo trading. A probe of https://api.blofin.com/api/mcp
+    returned 403 for request and control alike (opaque) and is not recorded as a remote endpoint.
+tool_source: documented
+tool_count: 40
+tools:
+- name: get_instruments
+  category: Public Market Data
+- name: get_tickers
+  category: Public Market Data
+- name: get_orderbook
+  category: Public Market Data
+- name: get_trades
+  category: Public Market Data
+- name: get_mark_price
+  category: Public Market Data
+- name: get_candlesticks
+  category: Public Market Data
+- name: get_funding_rate
+  category: Public Market Data
+- name: get_funding_rate_history
+  category: Public Market Data
+- name: get_balance
+  category: Account
+- name: get_positions
+  category: Account
+- name: get_leverage_info
+  category: Account
+- name: set_leverage
+  category: Account
+- name: get_margin_mode
+  category: Account
+- name: set_margin_mode
+  category: Account
+- name: get_position_mode
+  category: Account
+- name: set_position_mode
+  category: Account
+- name: get_account_config
+  category: Account
+- name: place_order
+  category: Trading
+- name: cancel_order
+  category: Trading
+- name: batch_orders
+  category: Trading
+- name: cancel_batch_orders
+  category: Trading
+- name: close_position
+  category: Trading
+- name: get_open_orders
+  category: Trading
+- name: get_order_history
+  category: Trading
+- name: get_order_detail
+  category: Trading
+- name: get_fills_history
+  category: Trading
+- name: place_tpsl
+  category: Trading
+- name: cancel_tpsl
+  category: Trading
+- name: get_pending_tpsl
+  category: Trading
+- name: get_tpsl_history
+  category: Trading
+- name: place_algo_order
+  category: Trading
+- name: cancel_algo_order
+  category: Trading
+- name: get_pending_algo_orders
+  category: Trading
+- name: get_algo_order_history
+  category: Trading
+- name: get_asset_balances
+  category: Asset Management
+- name: fund_transfer
+  category: Asset Management
+- name: get_fund_transfer_history
+  category: Asset Management
+- name: get_deposit_history
+  category: Asset Management
+- name: get_withdrawal_history
+  category: Asset Management
+- name: get_apikey_info
+  category: Asset Management

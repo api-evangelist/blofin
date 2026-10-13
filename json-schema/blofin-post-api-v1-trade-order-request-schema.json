@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blofin/main/json-schema/blofin-post-api-v1-trade-order-request-schema.json",
+  "title": "PostApiV1TradeOrderRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1TradeOrderRequest",
+  "type": "object",
+  "properties": {
+    "instId": {
+      "type": "string",
+      "description": "Instrument ID, e.g. BTC-USDT"
+    },
+    "marginMode": {
+      "type": "string",
+      "description": "Margin mode cross isolated"
+    },
+    "positionSide": {
+      "type": "string",
+      "description": "Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode."
+    },
+    "side": {
+      "type": "string",
+      "description": "Order side, buy sell"
+    },
+    "orderType": {
+      "type": "string",
+      "description": "Order type market : market order limit : limit order post_only : Post-only order fok : Fill-or-kill order ioc : Immediate-or-cancel order"
+    },
+    "price": {
+      "type": "string",
+      "description": "Order price. Not applicable to market"
+    },
+    "size": {
+      "type": "string",
+      "description": "Number of contracts to buy or sell. For contract size details, refer to the /api/v1/market/instruments endpoint"
+    },
+    "reduceOnly": {
+      "type": "string",
+      "description": "Whether orders can only reduce in position size. Valid options: true or false . The default value is false . Not supported under Hedge Mode and ignored if passed."
+    },
+    "clientOrderId": {
+      "type": "string",
+      "description": "Client Order ID as assigned by the client A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 32 characters."
+    },
+    "tpTriggerPrice": {
+      "type": "string",
+      "description": "Take-profit trigger price If you fill in this parameter, you should fill in the tpOrderPrice as well."
+    },
+    "tpOrderPrice": {
+      "type": "string",
+      "description": "Take-profit order price. If you fill in this parameter, you should fill in the tpTriggerPrice as well. If the price is -1, take-profit will be executed at the market price."
+    },
+    "tpTriggerPriceType": {
+      "type": "string",
+      "description": "Take-profit trigger price type last : last price mark : mark price index : index price The default is last ."
+    },
+    "slTriggerPrice": {
+      "type": "string",
+      "description": "Stop-loss trigger price If you fill in this parameter, you should fill in the slOrderPrice as well."
+    },
+    "slOrderPrice": {
+      "type": "string",
+      "description": "Stop-loss order price. If you fill in this parameter, you should fill in the slTriggerPrice as well. If the price is -1, stop-loss will be executed at the market price."
+    },
+    "slTriggerPriceType": {
+      "type": "string",
+      "description": "Stop-loss trigger price type"
+    },
+    "positionId": {
+      "type": "string",
+      "description": "Position ID"
+    }
+  },
+  "required": [
+    "instId",
+    "marginMode",
+    "positionSide",
+    "side",
+    "orderType",
+    "price",
+    "size"
+  ]
+}

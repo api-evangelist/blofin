@@ -1,0 +1,13 @@
+name: BloFin demo trading
+generated: '2026-10-13'
+method: searched
+source: https://docs.blofin.com/index.html
+description: Demo trading environment with separate REST and WebSocket roots; demo funds can be requested via POST /api/v1/asset/demo-apply-money.
+docs: https://docs.blofin.com/index.html#demo-trading
+environments:
+- name: demo
+  rest: https://demo-trading-openapi.blofin.com
+  ws_public: wss://demo-trading-openapi.blofin.com/ws/public
+  ws_private: wss://demo-trading-openapi.blofin.com/ws/private
+- name: production
+  rest: https://openapi.blofin.com

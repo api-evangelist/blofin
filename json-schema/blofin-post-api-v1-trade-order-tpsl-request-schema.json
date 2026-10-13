@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/blofin/main/json-schema/blofin-post-api-v1-trade-order-tpsl-request-schema.json",
+  "title": "PostApiV1TradeOrderTpslRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/blofin-openapi-generated.yml#/components/schemas/PostApiV1TradeOrderTpslRequest",
+  "type": "object",
+  "properties": {
+    "instId": {
+      "type": "string",
+      "description": "Instrument ID, e.g. BTC-USDT"
+    },
+    "marginMode": {
+      "type": "string",
+      "description": "Margin mode cross isolated"
+    },
+    "positionSide": {
+      "type": "string",
+      "description": "Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode."
+    },
+    "side": {
+      "type": "string",
+      "description": "Order side, buy sell"
+    },
+    "tpTriggerPrice": {
+      "type": "string",
+      "description": "Take-profit trigger price If you fill in this parameter, you should fill in the tpOrderPrice as well. Either tpTriggerPrice or slTriggerPrice must be provided."
+    },
+    "tpOrderPrice": {
+      "type": "string",
+      "description": "Take-profit order price. If you fill in this parameter, you should fill in the tpTriggerPrice as well. If the price is -1, take-profit will be executed at the market price."
+    },
+    "tpTriggerPriceType": {
+      "type": "string",
+      "description": "Take-profit trigger price type last : last price mark : mark price index : index price The default is last ."
+    },
+    "slTriggerPrice": {
+      "type": "string",
+      "description": "Stop-loss trigger price If you fill in this parameter, you should fill in the slOrderPrice as well. Either tpTriggerPrice or slTriggerPrice must be provided."
+    },
+    "slOrderPrice": {
+      "type": "string",
+      "description": "Stop-loss order price. If you fill in this parameter, you should fill in the slTriggerPrice as well. If the price is -1, stop-loss will be executed at the market price."
+    },
+    "slTriggerPriceType": {
+      "type": "string",
+      "description": "Stop-loss trigger price type last : last price mark : mark price index : index price The default is last ."
+    },
+    "size": {
+      "type": "string",
+      "description": "Quantity If the quantity is -1, it means entire positions"
+    },
+    "reduceOnly": {
+      "type": "string",
+      "description": "Whether orders can only reduce in position size. Valid options: true or false . The default value is false . Not supported under Hedge Mode and ignored if passed."
+    },
+    "clientOrderId": {
+      "type": "string",
+      "description": "Client Order ID as assigned by the client A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 32 characters."
+    },
+    "brokerId": {
+      "type": "string",
+      "description": "Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters."
+    },
+    "positionId": {
+      "type": "string",
+      "description": "Position ID. Required in Multi-Position mode. The target position the TP/SL order is bound to. If the quantity is -1 , it means the entire specified position."
+    }
+  },
+  "required": [
+    "instId",
+    "marginMode",
+    "positionSide",
+    "side",
+    "size"
+  ]
+}

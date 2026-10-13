@@ -1,0 +1,44 @@
+name: BloFin API conventions
+generated: '2026-10-13'
+method: searched
+source: https://docs.blofin.com/index.html
+auth: HMAC-signed headers (see authentication/blofin-authentication.yml)
+idempotency:
+  coverage: partial
+  scope:
+  - POST /api/v1/trade/order
+  - POST /api/v1/trade/batch-orders
+  - POST /api/v1/spot/trade/order
+  - POST /api/v1/asset/withdrawal-apply
+  mechanism: Client-assigned clientOrderId on orders (duplicate customized order ID rejected, code 102002) and clientId on
+    withdrawals (code 152030 Duplicated clientId); ACCESS-NONCE replay protection rejects a reused nonce within 60 seconds
+    (152407).
+pagination:
+  style: cursor
+  params:
+  - before
+  - after
+  - limit
+  note: History endpoints page by before/after ids with limit, per the reference.
+envelope:
+  fields:
+  - code
+  - msg
+  - data
+  success_code: '0'
+errors: errors/blofin-error-codes.yml
+rate_limits: rate-limits/blofin-rate-limits.yml
+versioning: Path version /api/v1; dated change log at https://docs.blofin.com/changelog.html
+reversibility:
+  status: documented
+  operations:
+  - write: place order
+    reversal: POST /api/v1/trade/cancel-order
+    window: null
+    note: 'Cancel applies to pending orders only (code 102068: cancel failed as the order has been filled, triggered or canceled);
+      no time window is stated.'
+  - write: place TP/SL or algo order
+    reversal: POST /api/v1/trade/cancel-tpsl, POST /api/v1/trade/cancel-algo
+  irreversible:
+  - POST /api/v1/asset/withdrawal-apply (no cancel endpoint documented)
+  - POST /api/v1/asset/transfer

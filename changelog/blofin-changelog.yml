@@ -1,0 +1,27 @@
+name: BloFin API change log
+generated: '2026-10-13'
+method: searched
+source: https://docs.blofin.com/changelog.html
+scheme: dated
+entries:
+- version: '2026-09-09'
+  date: '2026-09-09'
+  breaking: false
+  highlights:
+  - Trailing stop orders live in the Open API via Place Algo Order (orderType trailing_stop; callbackRatio, callbackSpread,
+    activePrice)
+- version: '2026-09-04'
+  date: '2026-09-04'
+  breaking: false
+  highlights:
+  - Broker API documentation made public
+- version: '2026-08-27'
+  date: '2026-08-27'
+  breaking: false
+  highlights:
+  - Spot API launched and open to the public
+- version: '2026-08-19'
+  date: '2026-08-19'
+  breaking: false
+  highlights:
+  - 'Order amendment APIs added: /api/v1/trade/amend-order and amend multiple orders'
