@@ -1,0 +1,253 @@
+openapi: 3.2.0
+info:
+  title: BloFin OAuth API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 110 operation(s) read from 3 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; BloFin has published no machine-readable contract that the pipeline could find. Engine: anthropic.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 110
+    pages-with-code: 0
+    pages-read: 3
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: anthropic
+  x-sources:
+  - https://docs.blofin.com/spot.html
+  - https://docs.blofin.com/index.html
+  - https://docs.blofin.com/broker.html
+servers:
+- url: https://openapi.blofin.com
+security:
+- accessKey: []
+  accessSign: []
+  accessTimestamp: []
+  accessNonce: []
+  accessPassphrase: []
+tags:
+- name: OAuth
+paths:
+  /oauth:
+    servers:
+    - url: https://oauth.blofin.com
+    get:
+      operationId: get_oauth
+      tags:
+      - OAuth
+      summary: Redirect the user to BloFin's authorization page to obtain an authorization code
+      x-source: https://docs.blofin.com/broker.html
+      parameters:
+      - name: response_type
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Fixed value: code (identifies Authorization Code Grant).'
+      - name: client_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your unique client ID from BloFin.
+      - name: redirect_uri
+        in: query
+        required: true
+        schema:
+          type: string
+        description: HTTPS URI filed with BloFin, URL-encoded.
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Space-separated permission scopes (e.g., user:read create:apikey).
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Random string (16–32 characters) for CSRF prevention.
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOauthResponse'
+      x-evidence:
+        kind: documentation
+      security:
+      - bearer: []
+  /oauth/apikey/create:
+    servers:
+    - url: https://oauth.blofin.com
+    post:
+      operationId: post_oauth_apikey_create
+      tags:
+      - OAuth
+      summary: Create a Broker API key on behalf of the authorized user
+      x-source: https://docs.blofin.com/broker.html
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+      security:
+      - bearer: []
+  /oauth/deposit/address:
+    servers:
+    - url: https://oauth.blofin.com
+    post:
+      operationId: post_oauth_deposit_address
+      tags:
+      - OAuth
+      summary: Get the authorized user's deposit address for a specified currency and chain
+      x-source: https://docs.blofin.com/broker.html
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+      security:
+      - bearer: []
+  /oauth/deposit/status:
+    servers:
+    - url: https://oauth.blofin.com
+    get:
+      operationId: get_oauth_deposit_status
+      tags:
+      - OAuth
+      summary: Check whether the authorized user has completed their first deposit on BloFin
+      x-source: https://docs.blofin.com/broker.html
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+      security:
+      - bearer: []
+  /oauth/token:
+    servers:
+    - url: https://oauth.blofin.com
+    post:
+      operationId: post_oauth_token
+      tags:
+      - OAuth
+      summary: Exchange an authorization code for tokens, or refresh an expired access_token
+      x-source: https://docs.blofin.com/broker.html
+      parameters:
+      - name: grant_type
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Fixed as authorization_code or refresh_token.
+      - name: client_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your BloFin client ID.
+      - name: client_secret
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your BloFin client secret.
+      - name: code
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Authorization code from Get Authorization Code (Mode 1 only).
+      - name: redirect_uri
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Same as the one used in the authorization request (Mode 1 only).
+      - name: refresh_token
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Valid refresh_token from a previous success response (Mode 2 only).
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostOauthTokenResponse'
+      x-evidence:
+        kind: documentation
+      security:
+      - bearer: []
+  /oauth/userinfo:
+    servers:
+    - url: https://oauth.blofin.com
+    get:
+      operationId: get_oauth_userinfo
+      tags:
+      - OAuth
+      summary: Read desensitized basic info of the authorized user (e.g., desensitized UID…
+      x-source: https://docs.blofin.com/broker.html
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+      security:
+      - bearer: []
+components:
+  schemas:
+    PostOauthTokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Token used to call BloFin Resource APIs.
+        token_type:
+          type: string
+          description: Token type (Bearer).
+    GetOauthResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Authorization code (valid for 10 minutes, usable only once).
+        state:
+          type: string
+          description: Exact value you passed in the request.
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessNonce:
+      type: apiKey
+      in: header
+      name: ACCESS-NONCE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessPassphrase:
+      type: apiKey
+      in: header
+      name: ACCESS-PASSPHRASE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+x-ae-postprocess: '2026-10-13: /oauth/* paths given the oauth.blofin.com server and bearer security named on https://docs.blofin.com/broker.html; REST auth headers from https://docs.blofin.com/index.html#rest-authentication; /api/v1/market/* and /api/v1/spot/market/* marked public (docs: Public Data endpoints do not require authentication).'

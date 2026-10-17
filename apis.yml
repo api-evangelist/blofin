@@ -101,21 +101,44 @@ common:
   url: https://support.blofin.com/hc/en-us
 
 apis:
-- aid: blofin:blofin-api
-  name: BloFin API
-  description: 'BloFin REST API (futures, spot, account, asset, affiliate, copy trading and the oauth.blofin.com broker endpoints) as documented
-    publicly: 110 operations. Contract generated from the documentation by API Evangelist (2026-10-13); not the provider''s own document.'
+- aid: blofin:blofin-broker-api
+  name: BloFin Broker API
+  description: >-
+    OAuth-based broker API at oauth.blofin.com for brokers to obtain tokens and user info, create API
+    keys on a user's behalf and query deposit addresses and status. Its operations are in the generated
+    BloFin API contract under the oauth.blofin.com server.
+  humanURL: https://docs.blofin.com/broker.html
+  baseURL: https://oauth.blofin.com
+  tags:
+  - Broker
+  - OAuth
+  properties:
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+- aid: blofin:blofin-websocket-api
+  name: BloFin WebSocket API
+  description: >-
+    Public and private WebSocket channels for futures (wss://openapi.blofin.com/ws/public, /ws/private),
+    spot (/ws/spot/public, /ws/spot/private) and copy trading (/ws/copytrading/private); demo equivalents
+    on wss://demo-trading-openapi.blofin.com.
   humanURL: https://docs.blofin.com/index.html
   baseURL: https://openapi.blofin.com
   tags:
-  - Futures
-  - Spot Trading
-  - Market Data
-  - Trading
+  - WebSocket
+  - Streaming
+  properties:
+  - type: Documentation
+    url: https://docs.blofin.com/index.html
+- aid: blofin:blofin-account-api
+  name: BloFin Account API
+  description: The Account API from BloFin — 12 operation(s) for account.
+  humanURL: https://docs.blofin.com/index.html
+  baseURL: https://openapi.blofin.com
+  tags:
+  - Account
   properties:
   - type: OpenAPI
-    url: openapi/_ae-authored/blofin-openapi-generated.yml
-    x-provenance: generated
+    url: openapi/blofin-account-api-openapi.yml
   - type: Documentation
     url: https://docs.blofin.com/index.html
   - type: Documentation
@@ -134,30 +157,230 @@ apis:
     url: json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json
   - type: JSONSchema
     url: json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json
-- aid: blofin:blofin-broker-api
-  name: BloFin Broker API
-  description: OAuth-based broker API at oauth.blofin.com for brokers to obtain tokens and user info, create API keys on a user's behalf and query
-    deposit addresses and status. Its operations are in the generated BloFin API contract under the oauth.blofin.com server.
-  humanURL: https://docs.blofin.com/broker.html
-  baseURL: https://oauth.blofin.com
-  tags:
-  - Broker
-  - OAuth
-  properties:
-  - type: Documentation
-    url: https://docs.blofin.com/broker.html
-- aid: blofin:blofin-websocket-api
-  name: BloFin WebSocket API
-  description: Public and private WebSocket channels for futures (wss://openapi.blofin.com/ws/public, /ws/private), spot (/ws/spot/public, /ws/spot/private)
-    and copy trading (/ws/copytrading/private); demo equivalents on wss://demo-trading-openapi.blofin.com.
+- aid: blofin:blofin-affiliate-api
+  name: BloFin Affiliate API
+  description: The Affiliate API from BloFin — 6 operation(s) for affiliate.
   humanURL: https://docs.blofin.com/index.html
   baseURL: https://openapi.blofin.com
   tags:
-  - WebSocket
-  - Streaming
+  - Affiliate
   properties:
+  - type: OpenAPI
+    url: openapi/blofin-affiliate-api-openapi.yml
   - type: Documentation
     url: https://docs.blofin.com/index.html
+  - type: Documentation
+    url: https://docs.blofin.com/spot.html
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-batch-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-affiliate-invitees-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-tpsl-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json
+- aid: blofin:blofin-asset-api
+  name: BloFin Asset API
+  description: The Asset API from BloFin — 9 operation(s) for asset.
+  humanURL: https://docs.blofin.com/index.html
+  baseURL: https://openapi.blofin.com
+  tags:
+  - Asset
+  properties:
+  - type: OpenAPI
+    url: openapi/blofin-asset-api-openapi.yml
+  - type: Documentation
+    url: https://docs.blofin.com/index.html
+  - type: Documentation
+    url: https://docs.blofin.com/spot.html
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-batch-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-affiliate-invitees-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-tpsl-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json
+- aid: blofin:blofin-copytrading-api
+  name: BloFin Copytrading API
+  description: The Copytrading API from BloFin — 23 operation(s) for copytrading.
+  humanURL: https://docs.blofin.com/index.html
+  baseURL: https://openapi.blofin.com
+  tags:
+  - Copytrading
+  properties:
+  - type: OpenAPI
+    url: openapi/blofin-copytrading-api-openapi.yml
+  - type: Documentation
+    url: https://docs.blofin.com/index.html
+  - type: Documentation
+    url: https://docs.blofin.com/spot.html
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-batch-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-affiliate-invitees-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-tpsl-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json
+- aid: blofin:blofin-market-api
+  name: BloFin Market API
+  description: The Market API from BloFin — 12 operation(s) for market.
+  humanURL: https://docs.blofin.com/index.html
+  baseURL: https://openapi.blofin.com
+  tags:
+  - Market
+  properties:
+  - type: OpenAPI
+    url: openapi/blofin-market-api-openapi.yml
+  - type: Documentation
+    url: https://docs.blofin.com/index.html
+  - type: Documentation
+    url: https://docs.blofin.com/spot.html
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-batch-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-affiliate-invitees-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-tpsl-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json
+- aid: blofin:blofin-oauth-api
+  name: BloFin OAuth API
+  description: The Oauth API from BloFin — 6 operation(s) for oauth.
+  humanURL: https://docs.blofin.com/index.html
+  baseURL: https://openapi.blofin.com
+  tags:
+  - Oauth
+  properties:
+  - type: OpenAPI
+    url: openapi/blofin-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.blofin.com/index.html
+  - type: Documentation
+    url: https://docs.blofin.com/spot.html
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-batch-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-affiliate-invitees-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-tpsl-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json
+- aid: blofin:blofin-spot-api
+  name: BloFin Spot API
+  description: The Spot API from BloFin — 18 operation(s) for spot.
+  humanURL: https://docs.blofin.com/index.html
+  baseURL: https://openapi.blofin.com
+  tags:
+  - Spot
+  properties:
+  - type: OpenAPI
+    url: openapi/blofin-spot-api-openapi.yml
+  - type: Documentation
+    url: https://docs.blofin.com/index.html
+  - type: Documentation
+    url: https://docs.blofin.com/spot.html
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-batch-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-affiliate-invitees-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-tpsl-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json
+- aid: blofin:blofin-trade-api
+  name: BloFin Trade API
+  description: The Trade API from BloFin — 23 operation(s) for trade.
+  humanURL: https://docs.blofin.com/index.html
+  baseURL: https://openapi.blofin.com
+  tags:
+  - Trade
+  properties:
+  - type: OpenAPI
+    url: openapi/blofin-trade-api-openapi.yml
+  - type: Documentation
+    url: https://docs.blofin.com/index.html
+  - type: Documentation
+    url: https://docs.blofin.com/spot.html
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-batch-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-affiliate-invitees-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-tpsl-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json
+- aid: blofin:blofin-user-api
+  name: BloFin User API
+  description: The User API from BloFin — 1 operation(s) for user.
+  humanURL: https://docs.blofin.com/index.html
+  baseURL: https://openapi.blofin.com
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/blofin-user-api-openapi.yml
+  - type: Documentation
+    url: https://docs.blofin.com/index.html
+  - type: Documentation
+    url: https://docs.blofin.com/spot.html
+  - type: Documentation
+    url: https://docs.blofin.com/broker.html
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-batch-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-affiliate-invitees-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-tpsl-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-post-api-v1-trade-order-request-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-trade-orders-history-response-schema.json
+  - type: JSONSchema
+    url: json-schema/blofin-get-api-v1-copytrading-trade-orders-pending-response-schema.json
 x-enrichment:
   date: '2026-10-13'
   status: enriched

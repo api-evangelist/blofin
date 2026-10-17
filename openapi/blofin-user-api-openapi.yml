@@ -1,0 +1,112 @@
+openapi: 3.2.0
+info:
+  title: BloFin User API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 110 operation(s) read from 3 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; BloFin has published no machine-readable contract that the pipeline could find. Engine: anthropic.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 110
+    pages-with-code: 0
+    pages-read: 3
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: anthropic
+  x-sources:
+  - https://docs.blofin.com/spot.html
+  - https://docs.blofin.com/index.html
+  - https://docs.blofin.com/broker.html
+servers:
+- url: https://openapi.blofin.com
+security:
+- accessKey: []
+  accessSign: []
+  accessTimestamp: []
+  accessNonce: []
+  accessPassphrase: []
+tags:
+- name: User
+paths:
+  /api/v1/user/query-apikey:
+    get:
+      operationId: get_api_v1_user_query_apikey
+      tags:
+      - User
+      summary: Get the information of the api key
+      x-source: https://docs.blofin.com/spot.html
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1UserQueryApikeyResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetApiV1UserQueryApikeyResponse:
+      type: object
+      properties:
+        referralCode:
+          type: string
+          description: Referral code
+        uid:
+          type: string
+          description: UID
+        apiName:
+          type: string
+          description: API key name
+        apiKey:
+          type: string
+          description: API key
+        readOnly:
+          type: integer
+          description: '0: Read and Write. 1: Read only'
+        type:
+          type: integer
+          description: '1: Transaction, 2: Connect to third-party'
+        expireTime:
+          type: string
+          description: Expiration time, Unix timestamp format in milliseconds
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds
+        ips:
+          type: array
+          description: IP bound
+        parentUid:
+          type: string
+          description: If use sub account api key, it shows main account uid; if use main account api key, it shows '0'
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessNonce:
+      type: apiKey
+      in: header
+      name: ACCESS-NONCE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessPassphrase:
+      type: apiKey
+      in: header
+      name: ACCESS-PASSPHRASE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+x-ae-postprocess: '2026-10-13: /oauth/* paths given the oauth.blofin.com server and bearer security named on https://docs.blofin.com/broker.html; REST auth headers from https://docs.blofin.com/index.html#rest-authentication; /api/v1/market/* and /api/v1/spot/market/* marked public (docs: Public Data endpoints do not require authentication).'

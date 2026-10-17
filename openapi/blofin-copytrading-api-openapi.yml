@@ -1,0 +1,1489 @@
+openapi: 3.2.0
+info:
+  title: BloFin Copytrading API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 110 operation(s) read from 3 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; BloFin has published no machine-readable contract that the pipeline could find. Engine: anthropic.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 110
+    pages-with-code: 0
+    pages-read: 3
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: anthropic
+  x-sources:
+  - https://docs.blofin.com/spot.html
+  - https://docs.blofin.com/index.html
+  - https://docs.blofin.com/broker.html
+servers:
+- url: https://openapi.blofin.com
+security:
+- accessKey: []
+  accessSign: []
+  accessTimestamp: []
+  accessNonce: []
+  accessPassphrase: []
+tags:
+- name: Copytrading
+paths:
+  /api/v1/copytrading/account/balance:
+    get:
+      operationId: get_api_v1_copytrading_account_balance
+      tags:
+      - Copytrading
+      summary: Retrieve a list of assets (with non-zero balance), remaining balance, and…
+      x-source: https://docs.blofin.com/index.html
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingAccountBalanceResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/account/leverage-info:
+    get:
+      operationId: get_api_v1_copytrading_account_leverage_info
+      tags:
+      - Copytrading
+      summary: Get leverage information for one or multiple instruments
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Instrument ID Single instrument ID or multiple instrument IDs (no more than 20) separated with comma
+      - name: marginMode
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Margin mode cross isolated
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingAccountLeverageInfoResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/account/position-mode:
+    get:
+      operationId: get_api_v1_copytrading_account_position_mode
+      tags:
+      - Copytrading
+      summary: Get user's position mode (Hedge Mode or One-way Mode) on every symbol
+      x-source: https://docs.blofin.com/index.html
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingAccountPositionModeResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/account/positions-by-contract:
+    get:
+      operationId: get_api_v1_copytrading_account_positions_by_contract
+      tags:
+      - Copytrading
+      summary: Retrieve information on your positions in "By Contract" mode
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingAccountPositionsByContractResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/account/positions-by-order:
+    get:
+      operationId: get_api_v1_copytrading_account_positions_by_order
+      tags:
+      - Copytrading
+      summary: Retrieve information on your positions in by order mode
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: orderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order ID
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 20 ; The default is 20
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested orderId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested orderId
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingAccountPositionsByOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/account/positions-details-by-order:
+    get:
+      operationId: get_api_v1_copytrading_account_positions_details_by_order
+      tags:
+      - Copytrading
+      summary: Retrieve the close History of the position (By Order)
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: orderId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Order ID
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingAccountPositionsDetailsByOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/account/set-leverage:
+    post:
+      operationId: post_api_v1_copytrading_account_set_leverage
+      tags:
+      - Copytrading
+      summary: Set leverage for an instrument
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1CopytradingAccountSetLeverageRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1CopytradingAccountSetLeverageResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/account/set-position-mode:
+    post:
+      operationId: post_api_v1_copytrading_account_set_position_mode
+      tags:
+      - Copytrading
+      summary: Change user's position mode (Hedge Mode or One-way Mode) on every symbol
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1CopytradingAccountSetPositionModeRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1CopytradingAccountSetPositionModeResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/config:
+    get:
+      operationId: get_api_v1_copytrading_config
+      tags:
+      - Copytrading
+      summary: Retrieve account configuration for copy trading
+      x-source: https://docs.blofin.com/index.html
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingConfigResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/instruments:
+    get:
+      operationId: get_api_v1_copytrading_instruments
+      tags:
+      - Copytrading
+      summary: Retrieve a list of available instruments for copy trading
+      x-source: https://docs.blofin.com/index.html
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingInstrumentsResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/cancel-order:
+    post:
+      operationId: post_api_v1_copytrading_trade_cancel_order
+      tags:
+      - Copytrading
+      summary: Cancel an order
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1CopytradingTradeCancelOrderRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1CopytradingTradeCancelOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/cancel-tpsl-by-contract:
+    post:
+      operationId: post_api_v1_copytrading_trade_cancel_tpsl_by_contract
+      tags:
+      - Copytrading
+      summary: Cancel a take-profit/stop-loss order by contract
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1CopytradingTradeCancelTpslByContractRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1CopytradingTradeCancelTpslByContractResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/cancel-tpsl-by-order:
+    post:
+      operationId: post_api_v1_copytrading_trade_cancel_tpsl_by_order
+      tags:
+      - Copytrading
+      summary: Cancel TPSL (By Order)
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1CopytradingTradeCancelTpslByOrderRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1CopytradingTradeCancelTpslByOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/close-position-by-contract:
+    post:
+      operationId: post_api_v1_copytrading_trade_close_position_by_contract
+      tags:
+      - Copytrading
+      summary: Close Position (By Contract)
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Instrument ID
+      - name: marginMode
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Margin mode cross isolated
+      - name: positionSide
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+      - name: closeType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Close type. pnl : Close by PnL order fixedRatio : All copy trading positions will close the same ratio'
+      - name: size
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Contracts when you choose to close by pnl . Close ratio when you choose to close by fixedRatio , 0.1 represents 10% of total position.
+      - name: brokerId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1CopytradingTradeClosePositionByContractRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1CopytradingTradeClosePositionByContractResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/close-position-by-order:
+    post:
+      operationId: post_api_v1_copytrading_trade_close_position_by_order
+      tags:
+      - Copytrading
+      summary: Close Position (By Order)
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1CopytradingTradeClosePositionByOrderRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1CopytradingTradeClosePositionByOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/orders-history:
+    get:
+      operationId: get_api_v1_copytrading_trade_orders_history
+      tags:
+      - Copytrading
+      summary: GET Order History
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested orderId
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested orderId
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 20 ; The default is 20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingTradeOrdersHistoryResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/orders-pending:
+    get:
+      operationId: get_api_v1_copytrading_trade_orders_pending
+      tags:
+      - Copytrading
+      summary: Retrieve all incomplete orders under the current account
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: orderType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Order type market : market order limit : limit order post_only : Post-only order fok : Fill-or-kill order ioc : Immediate-or-cancel order'
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: State live partially_filled
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested orderId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested orderId
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100 ; The default is 20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingTradeOrdersPendingResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/pending-tpsl-by-contract:
+    get:
+      operationId: get_api_v1_copytrading_trade_pending_tpsl_by_contract
+      tags:
+      - Copytrading
+      summary: Retrieve all incomplete take-profit/stop-loss orders by contract
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: algoId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Algo order ID
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingTradePendingTpslByContractResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/pending-tpsl-by-order:
+    get:
+      operationId: get_api_v1_copytrading_trade_pending_tpsl_by_order
+      tags:
+      - Copytrading
+      summary: GET Active TPSL (By Order)
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: orderId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Order ID
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingTradePendingTpslByOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/place-order:
+    post:
+      operationId: post_api_v1_copytrading_trade_place_order
+      tags:
+      - Copytrading
+      summary: Place a new order
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1CopytradingTradePlaceOrderRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1CopytradingTradePlaceOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/place-tpsl-by-contract:
+    post:
+      operationId: post_api_v1_copytrading_trade_place_tpsl_by_contract
+      tags:
+      - Copytrading
+      summary: Place a take-profit/stop-loss order by contract
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1CopytradingTradePlaceTpslByContractRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1CopytradingTradePlaceTpslByContractResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/place-tpsl-by-order:
+    post:
+      operationId: post_api_v1_copytrading_trade_place_tpsl_by_order
+      tags:
+      - Copytrading
+      summary: Place TPSL (By Order)
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1CopytradingTradePlaceTpslByOrderRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1CopytradingTradePlaceTpslByOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/copytrading/trade/position-history-by-order:
+    get:
+      operationId: get_api_v1_copytrading_trade_position_history_by_order
+      tags:
+      - Copytrading
+      summary: GET Position History (By order)
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested orderId
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested orderId
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 20 ; The default is 20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1CopytradingTradePositionHistoryByOrderResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    PostApiV1CopytradingTradeCancelTpslByContractRequest:
+      type: object
+      properties:
+        algoId:
+          type: string
+          description: TP/SL order ID
+      required:
+      - algoId
+    PostApiV1CopytradingTradeCancelOrderRequest:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+      required:
+      - orderId
+    GetApiV1CopytradingTradeOrdersHistoryResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+        orderId:
+          type: string
+          description: Order ID
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+        side:
+          type: string
+          description: Order side, buy sell
+        orderType:
+          type: string
+          description: Order type
+        price:
+          type: string
+          description: Order price
+        size:
+          type: string
+          description: Number of contracts to buy or sell. For contract size details, refer to the /api/v1/market/instruments endpoint
+        leverage:
+          type: string
+          description: Leverage
+        state:
+          type: string
+          description: State
+        filledSize:
+          type: string
+          description: Accumulated fill quantity.
+        pnl:
+          type: string
+          description: PnL
+        averagePrice:
+          type: string
+          description: Average filled price. If none is filled, it will return "".
+        fee:
+          type: string
+          description: Fee and rebate
+        createTime:
+          type: string
+          description: Order create time. Unix timestamp format in milliseconds, e.g. 1597026383085
+        updateTime:
+          type: string
+          description: Update time. Unix timestamp format in milliseconds, e.g. 1597026383085
+        orderCategory:
+          type: string
+          description: Order category. normal liquidation adl tp sl
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+    PostApiV1CopytradingAccountSetPositionModeResponse:
+      type: object
+      properties:
+        positionMode:
+          type: string
+          description: 'Position mode net_mode : net long_short_mode : long/short'
+    PostApiV1CopytradingAccountSetLeverageResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID
+        leverage:
+          type: string
+          description: Leverage
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side long short net
+    PostApiV1CopytradingTradeClosePositionByOrderRequest:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        size:
+          type: string
+          description: Close amount
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+      required:
+      - orderId
+      - size
+    PostApiV1CopytradingTradeCancelTpslByOrderResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    GetApiV1CopytradingAccountPositionModeResponse:
+      type: object
+      properties:
+        positionMode:
+          type: string
+          description: 'Position mode net_mode : net long_short_mode : long/short'
+    GetApiV1CopytradingAccountPositionsDetailsByOrderResponse:
+      type: object
+      properties:
+        closeOrderId:
+          type: string
+          description: Close order ID
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        positionSide:
+          type: string
+          description: 'Position side. long : positions are positive short : positions are positive net (Positive positions means long position and negative positions means short position.)'
+        closeType:
+          type: string
+          description: Close type close liquidation adl tp sl
+        side:
+          type: string
+          description: Order side buy sell
+        orderTime:
+          type: string
+          description: Order create time. Unix timestamp format in milliseconds, e.g. 1597026383085
+        size:
+          type: string
+          description: Order amount
+        filledAmount:
+          type: string
+          description: Filled amount
+        averagePrice:
+          type: string
+          description: Average open price
+        fee:
+          type: string
+          description: Fee
+        realizedPnl:
+          type: string
+          description: Realized PnL of this order
+        realizedPnlRatio:
+          type: string
+          description: Realized PnL ratio of this order
+    GetApiV1CopytradingTradePositionHistoryByOrderResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+        orderId:
+          type: string
+          description: Order ID
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        leverage:
+          type: string
+          description: Leverage
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+        side:
+          type: string
+          description: Order side, buy sell
+        positions:
+          type: string
+          description: Positions amount
+        createTime:
+          type: string
+          description: Order create time. Unix timestamp format in milliseconds, e.g. 1597026383085
+        openAveragePrice:
+          type: string
+          description: Average open price
+        closeTime:
+          type: string
+          description: Closing time. Unix timestamp format in milliseconds, e.g. 1597026383085
+        closeAveragePrice:
+          type: string
+          description: Average closing price
+        pnl:
+          type: string
+          description: PnL
+        pnlRatio:
+          type: string
+          description: PnL ratio
+        copiers:
+          type: string
+          description: Number of copiers who have successfully copied this position
+        closeType:
+          type: string
+          description: Close type mannual liquidation adl tp sl multiple
+        preSharing:
+          type: string
+          description: Pre-sharing Amount
+    GetApiV1CopytradingInstrumentsResponse:
+      type: object
+      properties:
+        instIdList:
+          type: array
+          description: List of Instruments, e.g. BTC-USDT
+    PostApiV1CopytradingTradeClosePositionByContractResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Response code
+        msg:
+          type: string
+          description: Response message
+        data:
+          type: object
+          description: Response data containing orderIds
+        orderIds:
+          type: array
+          description: Array of order IDs
+    PostApiV1CopytradingTradePlaceOrderRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+        side:
+          type: string
+          description: Order side, buy sell
+        orderType:
+          type: string
+          description: 'Order type market : market order limit : limit order fok : Fill-or-kill order ioc : Immediate-or-cancel order'
+        price:
+          type: string
+          description: Order price. Not applicable to market
+        size:
+          type: string
+          description: Number of contracts to buy or sell. For contract size details, refer to the /api/v1/market/instruments endpoint
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+      required:
+      - instId
+      - marginMode
+      - positionSide
+      - side
+      - orderType
+      - price
+      - size
+    GetApiV1CopytradingTradePendingTpslByContractResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+          description: TP/SL order ID
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price
+        tpOrderPrice:
+          type: string
+          description: Take-profit order price. If the price is -1 , take-profit will be executed at the market price.
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price
+        slOrderPrice:
+          type: string
+          description: Stop-loss order price. If the price is -1 , stop-loss will be executed at the market price.
+        size:
+          type: string
+          description: Quantity If the quantity is -1 , it means entire positions
+        state:
+          type: string
+          description: State live , effective , canceled , order_failed
+        leverage:
+          type: string
+          description: Leverage
+        actualSize:
+          type: string
+          description: Actual order quantity
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds, e.g. 1597026383085
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+    GetApiV1CopytradingAccountBalanceResponse:
+      type: object
+      properties:
+        ts:
+          type: string
+          description: Update time. Unix timestamp format in milliseconds, e.g. 1597026383085
+        totalEquity:
+          type: string
+          description: The total amount of equity in USD
+        isolatedEquity:
+          type: string
+          description: Daily Isolated margin equity in USD
+        details:
+          type: array
+          description: Detailed asset information in all currencies
+        currency:
+          type: string
+          description: Currency
+        equity:
+          type: string
+          description: Equity of currency
+        balance:
+          type: string
+          description: Cash balance
+        available:
+          type: string
+          description: Available balance of currency
+        availableEquity:
+          type: string
+          description: Available equity of currency
+        frozen:
+          type: string
+          description: Frozen balance of currency
+        orderFrozen:
+          type: string
+          description: Margin frozen for open orders
+        equityUsd:
+          type: string
+          description: Equity in USD of currency
+        isolatedUnrealizedPnl:
+          type: string
+          description: Isolated unrealized profit and loss of currency
+        bonus:
+          type: string
+          description: Bonus balance
+    GetApiV1CopytradingAccountPositionsByContractResponse:
+      type: object
+      properties:
+        positionId:
+          type: string
+          description: Position ID
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        instType:
+          type: string
+          description: Instrument type
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: 'Position side. long : positions are positive short : positions are positive net (Positive positions means long position and negative positions means short position.)'
+        adl:
+          type: string
+          description: ADL lever
+        leverage:
+          type: string
+          description: Leverage
+        positions:
+          type: string
+          description: Quantity of positions
+        availablePositions:
+          type: string
+          description: Position that can be closed
+        averagePrice:
+          type: string
+          description: Average open price
+        markPrice:
+          type: string
+          description: Mark Price
+        marginRatio:
+          type: string
+          description: Margin Ratio
+        liquidationPrice:
+          type: string
+          description: Estimated liquidation price.
+        unrealizedPnl:
+          type: string
+          description: Unrealized profit and loss calculated by mark price
+        unrealizedPnlRatio:
+          type: string
+          description: Unrealized profit and loss ratio calculated by mark price
+        initialMargin:
+          type: string
+          description: Initial margin requirement, only applicable to cross
+        maintenanceMargin:
+          type: string
+          description: Maintenance margin requirement
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds, e.g. 1597026383085
+        updateTime:
+          type: string
+          description: The latest time position was adjusted, Unix timestamp format in milliseconds, e.g. 1597026383085
+    GetApiV1CopytradingAccountLeverageInfoResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID
+        leverage:
+          type: string
+          description: Leverage
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side long short net
+    GetApiV1CopytradingConfigResponse:
+      type: object
+      properties:
+        nickName:
+          type: string
+          description: Nickname
+        roleType:
+          type: string
+          description: 'Role type. 0 : General user 1 : Trader'
+    PostApiV1CopytradingTradeClosePositionByContractRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+        closeType:
+          type: string
+          description: 'Close type. pnl : Close by PnL order fixedRatio : All copy trading positions will close the same ratio'
+        size:
+          type: string
+          description: Contracts when you choose to close by pnl . Close ratio when you choose to close by fixedRatio , 0.1 represents 10% of total position.
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+      required:
+      - instId
+      - marginMode
+      - positionSide
+      - closeType
+      - size
+    PostApiV1CopytradingAccountSetPositionModeRequest:
+      type: object
+      properties:
+        positionMode:
+          type: string
+          description: 'Position mode net_mode : net long_short_mode : long/short'
+      required:
+      - positionMode
+    GetApiV1CopytradingTradeOrdersPendingResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        instId:
+          type: string
+          description: Instrument ID
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side
+        side:
+          type: string
+          description: Order side
+        orderType:
+          type: string
+          description: Order type
+        price:
+          type: string
+          description: Price
+        size:
+          type: string
+          description: Number of contracts to buy or sell. For contract size details, refer to the /api/v1/market/instruments endpoint
+        reduceOnly:
+          type: string
+          description: Whether orders can only reduce in position size.
+        leverage:
+          type: string
+          description: Leverage
+        state:
+          type: string
+          description: State
+        filledSize:
+          type: string
+          description: Accumulated fill quantity.
+        averagePrice:
+          type: string
+          description: Average filled price. If none is filled, it will return "".
+        pnl:
+          type: string
+          description: Profit and loss, Applicable to orders which have a trade and aim to close position.
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds, e.g. 1597026383085
+        updateTime:
+          type: string
+          description: Update time, Unix timestamp format in milliseconds, e.g. 1597026383085
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price
+        tpOrderPrice:
+          type: string
+          description: Take-profit order price. If the price is -1 , take-profit will be executed at the market price.
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price
+        slOrderPrice:
+          type: string
+          description: Stop-loss order price. If the price is -1 , stop-loss will be executed at the market price.
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+    PostApiV1CopytradingTradePlaceOrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    GetApiV1CopytradingAccountPositionsByOrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        instType:
+          type: string
+          description: Instrument type
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: 'Position side. long : positions are positive short : positions are positive net (Positive positions means long position and negative positions means short position.)'
+        leverage:
+          type: string
+          description: Leverage
+        positions:
+          type: string
+          description: Quantity of positions. The initial opening position remains unchanged by subsequent closing trades.
+        availablePositions:
+          type: string
+          description: Position that can be closed. Equals the positions less the cumulative closed position.
+        averagePrice:
+          type: string
+          description: Average open price
+        markPrice:
+          type: string
+          description: Latest Mark price
+        unrealizedPnl:
+          type: string
+          description: Unrealized profit and loss calculated by mark price
+        unrealizedPnlRatio:
+          type: string
+          description: Unrealized profit and loss ratio calculated by mark price
+        realizedPnl:
+          type: string
+          description: Realized profit and loss
+        createTime:
+          type: string
+          description: Order create time. Unix timestamp format in milliseconds, e.g. 1597026383085
+        updateTime:
+          type: string
+          description: Update time. Unix timestamp format in milliseconds, e.g. 1597026383085
+    PostApiV1CopytradingTradeCancelOrderResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1CopytradingTradePlaceTpslByContractResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+          description: TP/SL order ID
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1CopytradingTradeCancelTpslByContractResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1CopytradingTradeClosePositionByOrderResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1CopytradingTradePlaceTpslByOrderResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1CopytradingTradeCancelTpslByOrderRequest:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+      required:
+      - orderId
+    PostApiV1CopytradingAccountSetLeverageRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        leverage:
+          type: string
+          description: Leverage
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side long short Only required when margin mode is isolated in long/short mode
+      required:
+      - instId
+      - leverage
+      - marginMode
+    GetApiV1CopytradingTradePendingTpslByOrderResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+        orderId:
+          type: string
+          description: Order ID
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price
+        tpOrderPrice:
+          type: string
+          description: Take-profit order price. If the price is -1 , take-profit will be executed at the market price.
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price
+        slOrderPrice:
+          type: string
+          description: Stop-loss order price. If the price is -1 , stop-loss will be executed at the market price.
+        size:
+          type: string
+          description: Quantity If the quantity is -1 , it means entire positions
+        state:
+          type: string
+          description: State live , effective , canceled , order_failed
+        leverage:
+          type: string
+          description: Leverage
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds, e.g. 1597026383085
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+    PostApiV1CopytradingTradePlaceTpslByContractRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price
+        size:
+          type: string
+          description: Quantity If the quantity is -1 , it means entire positions
+        type:
+          type: string
+          description: TP/SL Type pnl :close by the order of pnl volume fixedRatio :close all orders with same ratio, 0.1 represents 10% of total position. The default value is pnl
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+      required:
+      - instId
+      - marginMode
+      - positionSide
+      - tpTriggerPrice
+      - slTriggerPrice
+      - size
+    PostApiV1CopytradingTradePlaceTpslByOrderRequest:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price
+        size:
+          type: string
+          description: Quantity If the quantity is -1 , it means entire positions
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+      required:
+      - orderId
+      - tpTriggerPrice
+      - slTriggerPrice
+      - size
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessNonce:
+      type: apiKey
+      in: header
+      name: ACCESS-NONCE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessPassphrase:
+      type: apiKey
+      in: header
+      name: ACCESS-PASSPHRASE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+x-ae-postprocess: '2026-10-13: /oauth/* paths given the oauth.blofin.com server and bearer security named on https://docs.blofin.com/broker.html; REST auth headers from https://docs.blofin.com/index.html#rest-authentication; /api/v1/market/* and /api/v1/spot/market/* marked public (docs: Public Data endpoints do not require authentication).'

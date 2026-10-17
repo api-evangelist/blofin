@@ -1,0 +1,580 @@
+openapi: 3.2.0
+info:
+  title: BloFin Affiliate API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 110 operation(s) read from 3 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; BloFin has published no machine-readable contract that the pipeline could find. Engine: anthropic.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 110
+    pages-with-code: 0
+    pages-read: 3
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: anthropic
+  x-sources:
+  - https://docs.blofin.com/spot.html
+  - https://docs.blofin.com/index.html
+  - https://docs.blofin.com/broker.html
+servers:
+- url: https://openapi.blofin.com
+security:
+- accessKey: []
+  accessSign: []
+  accessTimestamp: []
+  accessNonce: []
+  accessPassphrase: []
+tags:
+- name: Affiliate
+paths:
+  /api/v1/affiliate/basic:
+    get:
+      operationId: get_api_v1_affiliate_basic
+      tags:
+      - Affiliate
+      summary: This API is used for affiliate to get their affiliate basic info
+      x-source: https://docs.blofin.com/index.html
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AffiliateBasicResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/affiliate/invitees:
+    get:
+      operationId: get_api_v1_affiliate_invitees
+      tags:
+      - Affiliate
+      summary: Retrieve the direct invitees info of affiliates
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: uid
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Invitee's UID
+      - name: needEquity
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Whether to return the user's equity in the results.
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested id
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested id
+      - name: begin
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with a begin timestamp. Unix timestamp format in milliseconds, e.g. 1597026383085
+      - name: end
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with an end timestamp. Unix timestamp format in milliseconds, e.g. 1597026383085
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. When needEquity is false , the maximum limit is 200 . When needEquity is true , the maximum limit is 30 . The default value is 10
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AffiliateInviteesResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/affiliate/invitees/daily/info:
+    get:
+      operationId: get_api_v1_affiliate_invitees_daily_info
+      tags:
+      - Affiliate
+      summary: Retrieve the daily commission data of direct invitees
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: uid
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Invitee's UID， Required if only begin / end paging is used, otherwise the data will be inaccurate if only begin / end is used.
+      - name: begin
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with a begin timestamp. Unix timestamp format in milliseconds, e.g. 1597026383085
+      - name: end
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with an end timestamp. Unix timestamp format in milliseconds, e.g. 1597026383085
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100 ; The default is 10
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AffiliateInviteesDailyInfoResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/affiliate/referral-code:
+    get:
+      operationId: get_api_v1_affiliate_referral_code
+      tags:
+      - Affiliate
+      summary: This API is used for affiliate to get their referral code list
+      x-source: https://docs.blofin.com/index.html
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AffiliateReferralCodeResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/affiliate/sub-affiliates:
+    get:
+      operationId: get_api_v1_affiliate_sub_affiliates
+      tags:
+      - Affiliate
+      summary: Retrieve the info of sub affiliates
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested id
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested id
+      - name: subAffiliateUid
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Sub affiliate's UID
+      - name: subAffiliateLevel
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Sub affiliate's UID 2 3 4
+      - name: begin
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with a begin timestamp. Unix timestamp format in milliseconds, e.g. 1597026383085
+      - name: end
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with an end timestamp. Unix timestamp format in milliseconds, e.g. 1597026383085
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100 ; The default is 10
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AffiliateSubAffiliatesResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/affiliate/sub-invitees:
+    get:
+      operationId: get_api_v1_affiliate_sub_invitees
+      tags:
+      - Affiliate
+      summary: Retrieve the invitees info of sub affiliates
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: uid
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Invitee's UID
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested id
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested id
+      - name: subAffiliateUid
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Sub affiliate's UID
+      - name: subAffiliateLevel
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Sub affiliate's UID 2 3 4
+      - name: begin
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with a begin timestamp. Unix timestamp format in milliseconds, e.g. 1597026383085
+      - name: end
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with an end timestamp. Unix timestamp format in milliseconds, e.g. 1597026383085
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 30 ; The default is 10
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AffiliateSubInviteesResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetApiV1AffiliateInviteesDailyInfoResponse:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: Invitee's UID
+        commission:
+          type: string
+          description: Daily Commission of invitee
+        commissionTime:
+          type: string
+          description: Commission time. Unix timestamp format in milliseconds, e.g. 1597026383085
+        cashback:
+          type: string
+          description: Cashback of invitee
+        fee:
+          type: string
+          description: Daily trading fee of invitee
+        kycLevel:
+          type: string
+          description: KYC level of invitee. 0 Non KYC, 1 Complete personal infomation verification, 2 Complete address proof verification
+        tradingVolume:
+          type: string
+          description: Daily trading amount of invitee
+    GetApiV1AffiliateReferralCodeResponse:
+      type: object
+      properties:
+        referralCode:
+          type: string
+          description: Referral code
+        commissionRate:
+          type: string
+          description: Total commission rate
+        cashbackRate:
+          type: string
+          description: Cashback rate for invitees
+        invitees:
+          type: string
+          description: Total invitees invited with this referral code
+        remark:
+          type: string
+          description: Remark
+        isDefaultReferralCode:
+          type: string
+          description: Whether this referral code is the default code. true false
+        makerFeeRate:
+          type: string
+          description: Futures maker fee rate for invitees
+        takerFeeRate:
+          type: string
+          description: Futures taker fee rate for invitees
+        referralLink:
+          type: string
+          description: Referral link
+    GetApiV1AffiliateBasicResponse:
+      type: object
+      properties:
+        commissionRate:
+          type: string
+          description: Total commission rate
+        cashbackRate:
+          type: string
+          description: Cashback rate
+        totalCommission:
+          type: string
+          description: Cumulative commission of all-level sub-invitees. Updated every 6 hours.
+        referralCode:
+          type: string
+          description: Default referral code
+        referralLink:
+          type: string
+          description: Default referral link
+        directInvitees:
+          type: string
+          description: Total invitees invited by user.
+        subInvitees:
+          type: string
+          description: Total invitees invited by sub-affiliates.
+        tradeInvitees:
+          type: string
+          description: Number of traded users of invitees invited both by user and sub-affiliates.
+        updateTime:
+          type: string
+          description: Update time of data. Unix timestamp format in milliseconds, e.g. 1597026383085
+        totalTradingVolume:
+          type: string
+          description: Cumulative total trading volume of all-level sub-invitees and direct invitees.
+        directCommission7d:
+          type: string
+          description: Total Commission from direct invitees in the last 7 days.
+        directCommission30d:
+          type: string
+          description: Total Commission from direct invitees in the last 30 days.
+        subCommission7d:
+          type: string
+          description: Total Commission from sub-invitees in the last 7 days.
+        subCommission30d:
+          type: string
+          description: Total Commission from sub-invitees in the last 30 days.
+        directInvitee7d:
+          type: string
+          description: Number of direct invitees in the last 7 days
+        directInvitee30d:
+          type: string
+          description: Number of direct invitees in the last 30 days
+        subInvitee7d:
+          type: string
+          description: Number of sub-invitees in the last 7 days
+        subInvitee30d:
+          type: string
+          description: Number of sub-invitees in the last 30 days
+    GetApiV1AffiliateInviteesResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID
+        uid:
+          type: string
+          description: UID of invitee
+        registerTime:
+          type: string
+          description: Register time of invitee. Unix timestamp format in milliseconds, e.g. 1597026383085
+        totalTradingVolume:
+          type: string
+          description: Total futures trading amount of invitee
+        totalTradingFee:
+          type: string
+          description: Total futures trading fee of invitee
+        totalCommision:
+          type: string
+          description: Total commission of invitee
+        totalDeposit:
+          type: string
+          description: The total deposited amount, expressed in USDT. The conversion to USDT is based on the last spot price of the deposited currency pair at the moment the deposit is credited.
+        totalWithdrawal:
+          type: string
+          description: Total withdrawan amount, expressed in USDT. The conversion to USDT is based on the last spot price of the withdrawn currency pair at the moment the deposit is credited.
+        kycLevel:
+          type: string
+          description: KYC level of invitee. 0 Non KYC, 1 Complete personal infomation verification, 2 Complete address proof verification
+        equity:
+          type: string
+          description: The total equity of futures account in USDT. 0 when needEquity is false.
+        totalEquity:
+          type: string
+          description: The total equity of all accounts in USDT. 0 when needEquity is false.
+        referralCode:
+          type: string
+          description: Referral code that the user was invited with, e.g. 7tdIua
+        couponDiscount:
+          type: string
+          description: The amount discounted by invitees using the coupon.
+        takerVol30Day:
+          type: string
+          description: Taker volume in last 30 days (USDT), updated every six hours.
+        makerVol30Day:
+          type: string
+          description: Maker volume in last 30 days (USDT), updated every six hours.
+        tradeVol30Day:
+          type: string
+          description: Total trading volume in last 30 days (USDT), updated every six hours.
+        depositAmount30Day:
+          type: string
+          description: Deposit amount in last 30 days (USDT), updated every six hours.
+        takerVol90Day:
+          type: string
+          description: Taker volume in last 90 days (USDT), updated every six hours.
+        makerVol90Day:
+          type: string
+          description: Maker volume in last 90 days (USDT), updated every six hours.
+        tradeVol90Day:
+          type: string
+          description: Total trading volume in last 90 days (USDT), updated every six hours.
+        vipLevel:
+          type: integer
+          description: VIP level. This parameter is not displayed when requesting the list, but it will be shown when using the uid to request the invitees' details.
+    GetApiV1AffiliateSubAffiliatesResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID
+        uid:
+          type: string
+          description: UID of sub affiliate
+        commissionRate:
+          type: string
+          description: Commission rate of sub affiliate
+        createTime:
+          type: string
+          description: Create time of sub affiliate. Unix timestamp format in milliseconds, e.g. 1597026383085
+        upperAffiliate:
+          type: string
+          description: Upper affiliate of sub affiliate
+        invitees:
+          type: string
+          description: Total invitees of sub affiliate
+        totalTradedUsers:
+          type: string
+          description: Total traded invitees of sub affiliate
+        totalTradingVolume:
+          type: string
+          description: Total futures trading volume of sub affiliate's invitees
+        totalTradingFee:
+          type: string
+          description: Total fututres trading fee of sub affiliate's invitees
+        totalCommision:
+          type: string
+          description: Total commission of sub affiliate
+        myCommision:
+          type: string
+          description: My commission got from sub affiliate
+        tag:
+          type: string
+          description: Tag
+        kycLevel:
+          type: string
+          description: KYC level of invitee. 0 Non KYC, 1 Complete personal infomation verification, 2 Complete address proof verification
+    GetApiV1AffiliateSubInviteesResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID
+        uid:
+          type: string
+          description: UID of invitee
+        subAffiliateUid:
+          type: string
+          description: UID of sub affiliate
+        subAffiliateLevel:
+          type: string
+          description: Level of invitee
+        registerTime:
+          type: string
+          description: Register time of invitee. Unix timestamp format in milliseconds, e.g. 1597026383085
+        totalTradingVolume:
+          type: string
+          description: Total futures trading amount of invitee
+        totalTradingFee:
+          type: string
+          description: Total futures trading fee of invitee
+        totalCommision:
+          type: string
+          description: Total commission of invitee
+        totalDeposit:
+          type: string
+          description: The total deposited amount, expressed in USDT. The conversion to USDT is based on the last spot price of the deposited currency pair at the moment the deposit is credited.
+        totalWithdrawal:
+          type: string
+          description: Total withdrawan amount, expressed in USDT. The conversion to USDT is based on the last spot price of the withdrawn currency pair at the moment the deposit is credited.
+        kycLevel:
+          type: string
+          description: KYC level of invitee. 0 Non KYC, 1 Complete personal infomation verification, 2 Complete address proof verification
+        equity:
+          type: string
+          description: The total equity of futures account in USDT
+        totalEquity:
+          type: string
+          description: The total equity of all accounts in USDT
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessNonce:
+      type: apiKey
+      in: header
+      name: ACCESS-NONCE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessPassphrase:
+      type: apiKey
+      in: header
+      name: ACCESS-PASSPHRASE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+x-ae-postprocess: '2026-10-13: /oauth/* paths given the oauth.blofin.com server and bearer security named on https://docs.blofin.com/broker.html; REST auth headers from https://docs.blofin.com/index.html#rest-authentication; /api/v1/market/* and /api/v1/spot/market/* marked public (docs: Public Data endpoints do not require authentication).'

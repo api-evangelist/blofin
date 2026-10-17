@@ -1,0 +1,698 @@
+openapi: 3.2.0
+info:
+  title: BloFin Asset API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 110 operation(s) read from 3 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; BloFin has published no machine-readable contract that the pipeline could find. Engine: anthropic.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 110
+    pages-with-code: 0
+    pages-read: 3
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: anthropic
+  x-sources:
+  - https://docs.blofin.com/spot.html
+  - https://docs.blofin.com/index.html
+  - https://docs.blofin.com/broker.html
+servers:
+- url: https://openapi.blofin.com
+security:
+- accessKey: []
+  accessSign: []
+  accessTimestamp: []
+  accessNonce: []
+  accessPassphrase: []
+tags:
+- name: Asset
+paths:
+  /api/v1/asset/balances:
+    get:
+      operationId: get_api_v1_asset_balances
+      tags:
+      - Asset
+      summary: Query account balances of all assets
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: accountType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Account type (e.g., futures)
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AssetBalancesResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/asset/bills:
+    get:
+      operationId: get_api_v1_asset_bills
+      tags:
+      - Asset
+      summary: Query the funds transfer records
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Transfer currency, e.g. USDT
+      - name: fromAccount
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The remitting account funding futures copy_trading earn spot inverse_contract unified account use futures
+      - name: toAccount
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The beneficiary account funding futures copy_trading earn spot inverse_contract unified account use futures
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested ts, Unix timestamp format in milliseconds, e.g. 1656633600000
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested ts, Unix timestamp format in milliseconds, e.g. 1654041600000
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100; The default is 100
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AssetBillsResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/asset/currencies:
+    get:
+      operationId: get_api_v1_asset_currencies
+      tags:
+      - Asset
+      summary: Retrieve currency information
+      x-source: https://docs.blofin.com/index.html
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AssetCurrenciesResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/asset/demo-apply-money:
+    post:
+      operationId: post_api_v1_asset_demo_apply_money
+      tags:
+      - Asset
+      summary: Request Demo Trading Funds
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1AssetDemoApplyMoneyRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /api/v1/asset/deposit-address:
+    get:
+      operationId: get_api_v1_asset_deposit_address
+      tags:
+      - Asset
+      summary: Retrieve the deposit addresses of currencies, including previously-used…
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: currency
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Currency, e.g. USDT
+      - name: chain
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Chain name, e.g. TRC20 , ERC20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AssetDepositAddressResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/asset/deposit-history:
+    get:
+      operationId: get_api_v1_asset_deposit_history
+      tags:
+      - Asset
+      summary: Retrieve the deposit records according to the currency, status, and time range…
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Currency, e.g. USDT
+      - name: depositId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Deposit ID
+      - name: txId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Hash record of the deposit
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Status of deposit 0 : pending 1 : done 2 : failed 3 : kyt'
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested ts, Unix timestamp format in milliseconds, e.g. 1656633600000
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested ts, Unix timestamp format in milliseconds, e.g. 1654041600000
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100; The default is 20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AssetDepositHistoryResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/asset/transfer:
+    post:
+      operationId: post_api_v1_asset_transfer
+      tags:
+      - Asset
+      summary: Transfer funds between your accounts
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: currency
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Transfer currency, e.g. USDT
+      - name: amount
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Amount to be transferred
+      - name: fromAccount
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The remitting account funding futures copy_trading earn spot inverse_contract unified account use futures
+      - name: toAccount
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The beneficiary account funding futures copy_trading earn spot inverse_contract unified account use futures
+      - name: clientId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client-supplied ID A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 32 characters.
+      - name: subAccount
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Sub Account Uid
+      - name: mainToSubAccount
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'true : master->sub false : sub->master Required for inter-account transfer'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1AssetTransferRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1AssetTransferResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/asset/withdrawal-apply:
+    post:
+      operationId: post_api_v1_asset_withdrawal_apply
+      tags:
+      - Asset
+      summary: Only withdrawal of assets from the funding account is supported
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1AssetWithdrawalApplyRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1AssetWithdrawalApplyResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/asset/withdrawal-history:
+    get:
+      operationId: get_api_v1_asset_withdrawal_history
+      tags:
+      - Asset
+      summary: Retrieve the withdrawal records according to the currency, withdrawal status…
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Currency, e.g. USDT
+      - name: withdrawId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Withdrawal ID
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Withdraw type 0 : blockchain withdraw 1 : internal transfers'
+      - name: txId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Hash record of the withdrawal
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Status of withdrawal 0 : waiting manual review 2 : failed 3 : success 4 : canceled 6 : kyt 7 : processing'
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested ts, Unix timestamp format in milliseconds, e.g. 1656633600000
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested ts, Unix timestamp format in milliseconds, e.g. 1654041600000
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100; The default is 20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1AssetWithdrawalHistoryResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    PostApiV1AssetDemoApplyMoneyRequest:
+      type: object
+      properties:
+        adjustType:
+          type: integer
+          description: '0(default): add demo funds; 1: reduce demo funds'
+        accountType:
+          type: string
+          description: Account type futures / spot unified account use futures
+        demoApplyMoney:
+          type: array
+          description: Array of demo apply money objects
+        currency:
+          type: string
+          description: Applied coin, supports BTC, ETH, USDT
+        amountStr:
+          type: string
+          description: 'Applied amount, the max applied amount in each request BTC: "5" ETH: "50" USDT: "5000,000"'
+      required:
+      - accountType
+      - demoApplyMoney
+      - currency
+      - amountStr
+    GetApiV1AssetBalancesResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        msg:
+          type: string
+        data:
+          type: object
+          description: Balance data for assets
+    GetApiV1AssetDepositHistoryResponse:
+      type: object
+      properties:
+        currency:
+          type: string
+          description: Currency
+        chain:
+          type: string
+          description: Chain name, e.g. ERC20 , TRC20
+        address:
+          type: string
+          description: Deposit address
+        type:
+          type: string
+          description: 'Deposit type 0 : blockchain deposit 1 : internal transfers'
+        txId:
+          type: string
+          description: Hash record of the deposit
+        amount:
+          type: string
+          description: Deposit amount
+        state:
+          type: string
+          description: 'Status of deposit 0 : pending 1 : done 2 : failed 3 : kyt'
+        confirm:
+          type: string
+          description: Confirmations
+        ts:
+          type: string
+          description: Time the deposit request was submitted, Unix timestamp format in milliseconds, e.g. 1656633600000
+        depositId:
+          type: string
+          description: Deposit ID
+    GetApiV1AssetCurrenciesResponse:
+      type: object
+      properties:
+        currency:
+          type: string
+          description: Currency
+        chain:
+          type: string
+          description: Chain name
+        depositMinAmount:
+          type: string
+          description: Minimum deposit amount
+        depositUnsafeConfirmation:
+          type: integer
+          description: Deposit unsafe confirmation count
+        depositConfirmation:
+          type: integer
+          description: Deposit confirmation count
+        withdrawMinAmount:
+          type: string
+          description: Minimum withdrawal amount
+        withdrawFee:
+          type: string
+          description: Withdrawal fee
+        withdrawPrecision:
+          type: integer
+          description: Withdrawal precision
+        supportMemo:
+          type: integer
+          description: 'Whether memo/tag is supported 0 : not supported 1 : supported'
+        isDepositAvailable:
+          type: integer
+          description: 'Whether deposit is available 0 : not available 1 : available'
+        isWithdrawAvailable:
+          type: integer
+          description: 'Whether withdrawal is available 0 : not available 1 : available'
+        recoveryEtaDeposit:
+          type: string
+          description: Estimated recovery time for deposit
+        recoveryEtaWithdraw:
+          type: string
+          description: Estimated recovery time for withdrawal
+        logo:
+          type: string
+          description: Currency logo URL
+    PostApiV1AssetWithdrawalApplyResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        msg:
+          type: string
+        withdrawId:
+          type: string
+          description: Withdrawal ID
+        clientId:
+          type: string
+          description: Client-supplied ID
+    PostApiV1AssetWithdrawalApplyRequest:
+      type: object
+      properties:
+        currency:
+          type: string
+          description: Currency, e.g. USDT
+        address:
+          type: string
+          description: The withdrawal address, which should be a trusted address. If you choose internal transfer, the address can be the recipient's UID, email address, or mobile phone number.
+        dest:
+          type: string
+          description: 'Withdrawal method internal : internal transfer onchain : on-chain withdrawal'
+        amount:
+          type: string
+          description: Withdrawal amount. The withdrawal fee is not included in the withdrawal amount. Please reserve sufficient transaction fees when withdrawing. You can get the fee amount via Get Currencies . For internal transfer, the transaction fee is always 0.
+        chain:
+          type: string
+          description: Chain name. It is required for on-chain withdrawal; it is optional for internal transfer.
+        addrType:
+          type: string
+          description: 'Address type. Supported values include: 1 : wallet address 2 : UID 3 : email 4 : mobile phone'
+        tag:
+          type: string
+          description: Additional identifier required by certain networks or receiving platforms to credit the withdrawal correctly. For some tokens, a deposit to a centralized exchange requires a tag (e.g. Memo/Payment ID) to guarantee the uniqueness of the deposit address. Follow the deposit procedure carefully, or you may risk losing your assets.
+        areaCode:
+          type: string
+          description: Area code for the phone number, e.g. 1 . If address is a phone number, this parameter is required. Applies to internal transfer.
+        clientId:
+          type: string
+          description: Client-supplied ID A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 32 characters.
+      required:
+      - currency
+      - address
+      - dest
+      - amount
+    PostApiV1AssetTransferResponse:
+      type: object
+      properties:
+        transferId:
+          type: string
+          description: Transfer ID
+        clientId:
+          type: string
+          description: Client-supplied ID
+    GetApiV1AssetBillsResponse:
+      type: object
+      properties:
+        transferId:
+          type: string
+          description: Transfer ID
+        currency:
+          type: string
+          description: Transfer currency
+        fromAccount:
+          type: string
+          description: The remitting account funding futures copy_trading earn spot
+        toAccount:
+          type: string
+          description: The beneficiary account funding futures copy_trading earn spot
+        amount:
+          type: string
+          description: Balance at the account level
+        ts:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds, e.g. 1597026383085
+        clientId:
+          type: string
+          description: Client-supplied ID for transfer
+    GetApiV1AssetWithdrawalHistoryResponse:
+      type: object
+      properties:
+        currency:
+          type: string
+          description: Withdraw currency
+        chain:
+          type: string
+          description: Chain name, e.g. ERC20 , TRC20
+        address:
+          type: string
+          description: Receiving address
+        type:
+          type: string
+          description: 'Withdraw type 0 : blockchain withdraw 1 : internal transfers'
+        txId:
+          type: string
+          description: Hash record of the withdrawal
+        amount:
+          type: string
+          description: Withdrawal amount
+        fee:
+          type: string
+          description: Withdrawal fee amount
+        feeCurrency:
+          type: string
+          description: Withdrawal fee currency, e.g. USDT
+        state:
+          type: string
+          description: 'Status of withdrawal 0 : waiting manual review 2 : failed 3 : success 4 : canceled 6 : kyt 7 : processing'
+        clientId:
+          type: string
+          description: Client-supplied ID
+        ts:
+          type: string
+          description: Time the withdrawal request was submitted, Unix timestamp format in milliseconds, e.g. 1655251200000
+        tag:
+          type: string
+          description: Some currencies require a tag for withdrawals. This is not returned if not required.
+        memo:
+          type: string
+          description: Some currencies require this parameter for withdrawals. This is not returned if not required.
+        withdrawId:
+          type: string
+          description: Withdrawal ID
+    PostApiV1AssetTransferRequest:
+      type: object
+      properties:
+        currency:
+          type: string
+          description: Transfer currency, e.g. USDT
+        fromAccount:
+          type: string
+          description: The remitting account funding futures copy_trading earn spot inverse_contract unified account use futures
+        toAccount:
+          type: string
+          description: The beneficiary account funding futures copy_trading earn spot inverse_contract unified account use futures
+        amount:
+          type: string
+          description: Amount to be transferred
+        clientId:
+          type: string
+          description: Client-supplied ID A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 32 characters.
+        subAccount:
+          type: string
+          description: Sub Account Uid
+        mainToSubAccount:
+          type: string
+          description: 'true : master->sub false : sub->master Required for inter-account transfer'
+      required:
+      - currency
+      - fromAccount
+      - toAccount
+      - amount
+    GetApiV1AssetDepositAddressResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        msg:
+          type: string
+        currency:
+          type: string
+          description: Currency
+        chain:
+          type: string
+          description: Chain name
+        address:
+          type: string
+          description: Deposit address
+        tag:
+          type: string
+          description: Additional identifier required by certain networks or receiving platforms to credit the deposit correctly.
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessNonce:
+      type: apiKey
+      in: header
+      name: ACCESS-NONCE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessPassphrase:
+      type: apiKey
+      in: header
+      name: ACCESS-PASSPHRASE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+x-ae-postprocess: '2026-10-13: /oauth/* paths given the oauth.blofin.com server and bearer security named on https://docs.blofin.com/broker.html; REST auth headers from https://docs.blofin.com/index.html#rest-authentication; /api/v1/market/* and /api/v1/spot/market/* marked public (docs: Public Data endpoints do not require authentication).'

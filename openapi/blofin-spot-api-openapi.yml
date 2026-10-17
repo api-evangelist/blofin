@@ -1,0 +1,1562 @@
+openapi: 3.2.0
+info:
+  title: BloFin Spot API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 110 operation(s) read from 3 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; BloFin has published no machine-readable contract that the pipeline could find. Engine: anthropic.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 110
+    pages-with-code: 0
+    pages-read: 3
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: anthropic
+  x-sources:
+  - https://docs.blofin.com/spot.html
+  - https://docs.blofin.com/index.html
+  - https://docs.blofin.com/broker.html
+servers:
+- url: https://openapi.blofin.com
+security:
+- accessKey: []
+  accessSign: []
+  accessTimestamp: []
+  accessNonce: []
+  accessPassphrase: []
+tags:
+- name: Spot
+paths:
+  /api/v1/spot/market/books:
+    get:
+      operationId: get_api_v1_spot_market_books
+      tags:
+      - Spot
+      summary: Retrieve order book of the instrument
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotMarketBooksResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/spot/market/candles:
+    get:
+      operationId: get_api_v1_spot_market_candles
+      tags:
+      - Spot
+      summary: Retrieve the candlestick charts
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: bar
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotMarketCandlesResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/spot/market/instruments:
+    get:
+      operationId: get_api_v1_spot_market_instruments
+      tags:
+      - Spot
+      summary: Retrieve a list of instruments with open spot
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotMarketInstrumentsResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/spot/market/tickers:
+    get:
+      operationId: get_api_v1_spot_market_tickers
+      tags:
+      - Spot
+      summary: Retrieve the latest price snapshot, best bid/ask price, and trading volume in…
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotMarketTickersResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/spot/market/trades:
+    get:
+      operationId: get_api_v1_spot_market_trades
+      tags:
+      - Spot
+      summary: Retrieve the recent transactions of an instrument
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotMarketTradesResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/spot/trade/batch-orders:
+    post:
+      operationId: post_api_v1_spot_trade_batch_orders
+      tags:
+      - Spot
+      summary: Place multiple orders
+      x-source: https://docs.blofin.com/spot.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1SpotTradeBatchOrdersRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1SpotTradeBatchOrdersResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/cancel-algo:
+    post:
+      operationId: post_api_v1_spot_trade_cancel_algo
+      tags:
+      - Spot
+      summary: Cancel Algo Order
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: algoId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1SpotTradeCancelAlgoRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1SpotTradeCancelAlgoResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/cancel-batch-orders:
+    post:
+      operationId: post_api_v1_spot_trade_cancel_batch_orders
+      tags:
+      - Spot
+      summary: Cancel Multiple Orders
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: orderId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1SpotTradeCancelBatchOrdersRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1SpotTradeCancelBatchOrdersResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/cancel-order:
+    post:
+      operationId: post_api_v1_spot_trade_cancel_order
+      tags:
+      - Spot
+      summary: Cancel Order
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: orderId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1SpotTradeCancelOrderRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1SpotTradeCancelOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/fills-history:
+    get:
+      operationId: get_api_v1_spot_trade_fills_history
+      tags:
+      - Spot
+      summary: Retrieve recently-filled transaction details
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Instrument type SPOT: Spot'
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: orderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order ID
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested tradeId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested tradeId
+      - name: begin
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with a begin timestamp. Unix timestamp format in milliseconds
+      - name: end
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with an end timestamp. Unix timestamp format in milliseconds
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100; The default is 20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotTradeFillsHistoryResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/order:
+    post:
+      operationId: post_api_v1_spot_trade_order
+      tags:
+      - Spot
+      summary: Place an order
+      x-source: https://docs.blofin.com/spot.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1SpotTradeOrderRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1SpotTradeOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/order-algo:
+    post:
+      operationId: post_api_v1_spot_trade_order_algo
+      tags:
+      - Spot
+      summary: Place Algo Order
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: side
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: size
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: orderType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: orderPrice
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: brokerId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: triggerPrice
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: triggerPriceType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: targetCurrency
+        in: query
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1SpotTradeOrderAlgoRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1SpotTradeOrderAlgoResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/order-detail:
+    get:
+      operationId: get_api_v1_spot_trade_order_detail
+      tags:
+      - Spot
+      summary: Retrieve order detail
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotTradeOrderDetailResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/order/price-range:
+    get:
+      operationId: get_api_v1_spot_trade_order_price_range
+      tags:
+      - Spot
+      summary: Query price limit range
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Instrument type SPOT: Spot'
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: side
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Order side, buy sell
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotTradeOrderPriceRangeResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/orders-algo-history:
+    get:
+      operationId: get_api_v1_spot_trade_orders_algo_history
+      tags:
+      - Spot
+      summary: Retrieve a list of all Algo orders under the current account
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Instrument type SPOT: Spot'
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: algoId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Algo order ID
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: State, effective canceled order_failed
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested algoId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested algoId
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100; The default is 20
+      - name: orderType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Algo type, trigger
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotTradeOrdersAlgoHistoryResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/orders-algo-pending:
+    get:
+      operationId: get_api_v1_spot_trade_orders_algo_pending
+      tags:
+      - Spot
+      summary: Retrieve a list of untriggered algo orders under the current account
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Instrument type SPOT: Spot'
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: algoId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Algo order ID
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested algoId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested algoId
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100; The default is 20
+      - name: orderType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Algo type, trigger
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotTradeOrdersAlgoPendingResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/orders-history:
+    get:
+      operationId: get_api_v1_spot_trade_orders_history
+      tags:
+      - Spot
+      summary: Get completed order history
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Instrument type SPOT: Spot'
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: State canceled filled partially_canceled
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested orderId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested orderId
+      - name: begin
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with a begin timestamp. Unix timestamp format in milliseconds
+      - name: end
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with an end timestamp. Unix timestamp format in milliseconds
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100; The default is 20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotTradeOrdersHistoryResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/spot/trade/orders-pending:
+    get:
+      operationId: get_api_v1_spot_trade_orders_pending
+      tags:
+      - Spot
+      summary: Retrieve all incomplete orders under the current account
+      x-source: https://docs.blofin.com/spot.html
+      parameters:
+      - name: instType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1SpotTradeOrdersPendingResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    PostApiV1SpotTradeOrderRequest:
+      type: object
+      properties:
+        instType:
+          type: string
+          description: 'Instrument type SPOT : Spot'
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        side:
+          type: string
+          description: Order side, buy sell
+        orderType:
+          type: string
+          description: 'Order type market : market order limit : limit order post_only : Post-only order fok : Fill-or-kill order ioc : Immediate-or-cancel order'
+        price:
+          type: string
+          description: Order price. Not applicable to market
+        size:
+          type: string
+          description: Quantity to buy or sell
+        targetCurrency:
+          type: string
+          description: Whether the target currency uses the quote or base currency. base_currency quote_currency Only applicable to Market Orders
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 32 characters.
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+      required:
+      - instType
+      - instId
+      - side
+      - orderType
+      - price
+      - size
+    GetApiV1SpotTradeOrdersAlgoHistoryResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+          description: Algo order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        instId:
+          type: string
+          description: Instrument ID
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side, long short net
+        side:
+          type: string
+          description: Order side
+        reduceOnly:
+          type: string
+          description: Whether the order can only reduce the position size
+        orderType:
+          type: string
+          description: Algo type, trigger
+        size:
+          type: string
+          description: Quantity to buy or sell
+        leverage:
+          type: string
+          description: Leverage
+        state:
+          type: string
+          description: State, live effective canceled order_failed
+        actualSize:
+          type: string
+          description: Actual order quantity
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds
+        triggerPrice:
+          type: string
+          description: Trigger price
+        triggerPriceType:
+          type: string
+          description: 'Trigger price type last: last price'
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin
+        targetCurrency:
+          type: string
+          description: Order quantity unit setting for size
+        attachAlgoOrders:
+          type: array
+          description: Attached SL/TP orders info
+    PostApiV1SpotTradeCancelAlgoRequest:
+      type: object
+      properties:
+        instType:
+          type: string
+        instId:
+          type: string
+        algoId:
+          type: string
+        clientOrderId:
+          type: string
+      required:
+      - instType
+      - instId
+    PostApiV1SpotTradeCancelAlgoResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+        clientOrderId:
+          type: string
+        code:
+          type: string
+        msg:
+          type: string
+    GetApiV1SpotTradeOrderDetailResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+        clientOrderId:
+          type: string
+        instId:
+          type: string
+        marginMode:
+          type: string
+        positionSide:
+          type: string
+        side:
+          type: string
+        orderType:
+          type: string
+        price:
+          type: string
+        size:
+          type: string
+        reduceOnly:
+          type: string
+        leverage:
+          type: string
+        state:
+          type: string
+        filledSize:
+          type: string
+        averagePrice:
+          type: string
+        fee:
+          type: string
+        pnl:
+          type: string
+        createTime:
+          type: string
+        updateTime:
+          type: string
+        orderCategory:
+          type: string
+        tpTriggerPrice:
+          type: string
+        tpOrderPrice:
+          type: string
+        slTriggerPrice:
+          type: string
+        slOrderPrice:
+          type: string
+        algoClientOrderId:
+          type: string
+        algoId:
+          type: string
+        brokerId:
+          type: string
+        targetCurrency:
+          type: string
+        feeCurrency:
+          type: string
+    PostApiV1SpotTradeCancelBatchOrdersRequest:
+      type: object
+      properties:
+        instType:
+          type: string
+        instId:
+          type: string
+        orderId:
+          type: string
+        clientOrderId:
+          type: string
+      required:
+      - instType
+      - orderId
+    PostApiV1SpotTradeBatchOrdersResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1SpotTradeOrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1SpotTradeOrderAlgoResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+        clientOrderId:
+          type: string
+        code:
+          type: string
+        msg:
+          type: string
+    GetApiV1SpotMarketCandlesResponse:
+      type: object
+      properties:
+        ts:
+          type: string
+        open:
+          type: string
+        high:
+          type: string
+        low:
+          type: string
+        close:
+          type: string
+        vol:
+          type: string
+        volCurrency:
+          type: string
+        volCurrencyQuote:
+          type: string
+        confirm:
+          type: string
+    GetApiV1SpotMarketTradesResponse:
+      type: object
+      properties:
+        tradeId:
+          type: string
+        instId:
+          type: string
+        price:
+          type: string
+        size:
+          type: string
+        side:
+          type: string
+        ts:
+          type: string
+    GetApiV1SpotTradeOrdersHistoryResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        instId:
+          type: string
+          description: Instrument ID
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side
+        side:
+          type: string
+          description: Order side
+        orderType:
+          type: string
+          description: Order type
+        price:
+          type: string
+          description: Price
+        size:
+          type: string
+          description: Quantity to buy or sell
+        reduceOnly:
+          type: string
+          description: Whether orders can only reduce in position size
+        leverage:
+          type: string
+          description: Leverage
+        state:
+          type: string
+          description: State
+        filledSize:
+          type: string
+          description: Accumulated fill quantity
+        pnl:
+          type: string
+          description: Profit and loss
+        averagePrice:
+          type: string
+          description: Average filled price
+        fee:
+          type: string
+          description: Fee and rebate
+        feeCurrency:
+          type: string
+          description: Fee currency
+        createTime:
+          type: string
+          description: Creation time
+        updateTime:
+          type: string
+          description: Update time
+        orderCategory:
+          type: string
+          description: Order category
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price
+        tpOrderPrice:
+          type: string
+          description: Take-profit order price
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price
+        slOrderPrice:
+          type: string
+          description: Stop-loss order price
+        cancelSource:
+          type: string
+          description: Cancel source
+        cancelSourceReason:
+          type: string
+          description: Cancel source reason
+        algoClientOrderId:
+          type: string
+          description: Algo client order ID
+        algoId:
+          type: string
+          description: Algo ID
+        brokerId:
+          type: string
+          description: Broker ID
+    PostApiV1SpotTradeCancelBatchOrdersResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+        clientOrderId:
+          type: string
+        code:
+          type: string
+        msg:
+          type: string
+    GetApiV1SpotMarketInstrumentsResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+        baseCurrency:
+          type: string
+        quoteCurrency:
+          type: string
+        contractValue:
+          type: string
+        listTime:
+          type: string
+        expireTime:
+          type: string
+        maxLeverage:
+          type: string
+        minSize:
+          type: string
+        lotSize:
+          type: string
+        tickSize:
+          type: string
+        instType:
+          type: string
+        contractType:
+          type: string
+        maxLimitSize:
+          type: string
+        maxMarketSize:
+          type: string
+        state:
+          type: string
+        settleCurrency:
+          type: string
+    GetApiV1SpotTradeOrdersPendingResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+        clientOrderId:
+          type: string
+        instId:
+          type: string
+        marginMode:
+          type: string
+        positionSide:
+          type: string
+        side:
+          type: string
+        orderType:
+          type: string
+        price:
+          type: string
+        size:
+          type: string
+        reduceOnly:
+          type: string
+        leverage:
+          type: string
+        state:
+          type: string
+        filledSize:
+          type: string
+        filled_amount:
+          type: string
+        averagePrice:
+          type: string
+        fee:
+          type: string
+        pnl:
+          type: string
+        createTime:
+          type: string
+        updateTime:
+          type: string
+        orderCategory:
+          type: string
+        tpTriggerPrice:
+          type: string
+        slTriggerPrice:
+          type: string
+        slOrderPrice:
+          type: string
+        tpOrderPrice:
+          type: string
+        algoClientOrderId:
+          type: string
+        algoId:
+          type: string
+        brokerId:
+          type: string
+    GetApiV1SpotTradeOrdersAlgoPendingResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+          description: Algo order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        instId:
+          type: string
+          description: Instrument ID
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side, long short net
+        side:
+          type: string
+          description: Order side
+        orderType:
+          type: string
+          description: Algo type, trigger
+        size:
+          type: string
+          description: Quantity to buy or sell
+        reduceOnly:
+          type: string
+          description: Whether the order can only reduce the position size
+        leverage:
+          type: string
+          description: Leverage
+        state:
+          type: string
+          description: State, live effective canceled order_failed
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds
+        triggerPrice:
+          type: string
+          description: Trigger price
+        triggerPriceType:
+          type: string
+          description: 'Trigger price type last: last price'
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin
+        targetCurrency:
+          type: string
+          description: Order quantity unit setting for size
+        attachAlgoOrders:
+          type: array
+          description: Attached SL/TP orders info
+    PostApiV1SpotTradeCancelOrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+        clientOrderId:
+          type: string
+        code:
+          type: string
+        msg:
+          type: string
+    GetApiV1SpotMarketTickersResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+        last:
+          type: string
+        lastSize:
+          type: string
+        askPrice:
+          type: string
+        askSize:
+          type: string
+        bidPrice:
+          type: string
+        bidSize:
+          type: string
+        high24h:
+          type: string
+        open24h:
+          type: string
+        low24h:
+          type: string
+        volCurrency24h:
+          type: string
+        vol24h:
+          type: string
+        ts:
+          type: string
+    GetApiV1SpotTradeFillsHistoryResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID
+        tradeId:
+          type: string
+          description: Trade ID
+        orderId:
+          type: string
+          description: Order ID
+        fillPrice:
+          type: string
+          description: Filled price
+        fillSize:
+          type: string
+          description: Filled quantity
+        fillPnl:
+          type: string
+          description: Last filled profit and loss
+        side:
+          type: string
+          description: Order side
+        fee:
+          type: string
+          description: Fee
+        ts:
+          type: string
+          description: Data generation time, Unix timestamp format in milliseconds
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin
+        feeCurrency:
+          type: string
+          description: Fee currency
+    PostApiV1SpotTradeCancelOrderRequest:
+      type: object
+      properties:
+        instType:
+          type: string
+        instId:
+          type: string
+        orderId:
+          type: string
+        clientOrderId:
+          type: string
+      required:
+      - instType
+      - orderId
+    PostApiV1SpotTradeBatchOrdersRequest:
+      type: object
+      properties:
+        instType:
+          type: string
+          description: 'Instrument type SPOT : Spot'
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        side:
+          type: string
+          description: Order side, buy sell
+        orderType:
+          type: string
+          description: 'Order type market : market order limit : limit order post_only : Post-only order fok : Fill-or-kill order ioc : Immediate-or-cancel order'
+        price:
+          type: string
+          description: Order price. Not applicable to market
+        size:
+          type: string
+          description: Quantity to buy or sell
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 32 characters.
+        targetCurrency:
+          type: string
+          description: Whether the target currency uses the quote or base currency. base_currency quote_currency Only applicable to Market Orders
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+      required:
+      - instType
+      - instId
+      - side
+      - orderType
+      - price
+      - size
+    PostApiV1SpotTradeOrderAlgoRequest:
+      type: object
+      properties:
+        instType:
+          type: string
+        instId:
+          type: string
+        side:
+          type: string
+        size:
+          type: string
+        clientOrderId:
+          type: string
+        orderType:
+          type: string
+        orderPrice:
+          type: string
+        brokerId:
+          type: string
+        triggerPrice:
+          type: string
+        triggerPriceType:
+          type: string
+        targetCurrency:
+          type: string
+      required:
+      - instType
+      - instId
+      - side
+      - size
+      - orderType
+      - triggerPrice
+    GetApiV1SpotMarketBooksResponse:
+      type: object
+      properties:
+        asks:
+          type: array
+        bids:
+          type: array
+        ts:
+          type: string
+    GetApiV1SpotTradeOrderPriceRangeResponse:
+      type: object
+      properties:
+        maxPrice:
+          type: string
+          description: Maximum Price
+        minPrice:
+          type: string
+          description: Minimum Price
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessNonce:
+      type: apiKey
+      in: header
+      name: ACCESS-NONCE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessPassphrase:
+      type: apiKey
+      in: header
+      name: ACCESS-PASSPHRASE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+x-ae-postprocess: '2026-10-13: /oauth/* paths given the oauth.blofin.com server and bearer security named on https://docs.blofin.com/broker.html; REST auth headers from https://docs.blofin.com/index.html#rest-authentication; /api/v1/market/* and /api/v1/spot/market/* marked public (docs: Public Data endpoints do not require authentication).'

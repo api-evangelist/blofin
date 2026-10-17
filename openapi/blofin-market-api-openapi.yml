@@ -1,0 +1,724 @@
+openapi: 3.2.0
+info:
+  title: BloFin Market API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 110 operation(s) read from 3 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; BloFin has published no machine-readable contract that the pipeline could find. Engine: anthropic.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 110
+    pages-with-code: 0
+    pages-read: 3
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: anthropic
+  x-sources:
+  - https://docs.blofin.com/spot.html
+  - https://docs.blofin.com/index.html
+  - https://docs.blofin.com/broker.html
+servers:
+- url: https://openapi.blofin.com
+security:
+- accessKey: []
+  accessSign: []
+  accessTimestamp: []
+  accessNonce: []
+  accessPassphrase: []
+tags:
+- name: Market
+paths:
+  /api/v1/market/books:
+    get:
+      operationId: get_api_v1_market_books
+      tags:
+      - Market
+      summary: Retrieve order book of the instrument
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order book depth per side. Maximum 100, e.g. 100 bids + 100 asks Default returns to 1 depth data
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketBooksResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/candles:
+    get:
+      operationId: get_api_v1_market_candles
+      tags:
+      - Market
+      summary: Retrieve the candlestick charts
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: bar
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketCandlesResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/funding-rate:
+    get:
+      operationId: get_api_v1_market_funding_rate
+      tags:
+      - Market
+      summary: Retrieve funding rate
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketFundingRateResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/funding-rate-history:
+    get:
+      operationId: get_api_v1_market_funding_rate_history
+      tags:
+      - Market
+      summary: Retrieve funding rate history
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketFundingRateHistoryResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/index-candles:
+    get:
+      operationId: get_api_v1_market_index_candles
+      tags:
+      - Market
+      summary: Retrieve the index candlestick charts
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: bar
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketIndexCandlesResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/instruments:
+    get:
+      operationId: get_api_v1_market_instruments
+      tags:
+      - Market
+      summary: Retrieve a list of instruments with open contracts
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketInstrumentsResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/instruments-history:
+    get:
+      operationId: get_api_v1_market_instruments_history
+      tags:
+      - Market
+      summary: Retrieve a list of delisted instruments
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. NTRN-USDT If the instrument has never existed or is still live, code=0 is returned with an empty data array
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketInstrumentsHistoryResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/mark-price:
+    get:
+      operationId: get_api_v1_market_mark_price
+      tags:
+      - Market
+      summary: Retrieve index and mark price
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketMarkPriceResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/mark-price-candles:
+    get:
+      operationId: get_api_v1_market_mark_price_candles
+      tags:
+      - Market
+      summary: Retrieve the mark price candlestick charts
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: bar
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketMarkPriceCandlesResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/position-tiers:
+    get:
+      operationId: get_api_v1_market_position_tiers
+      tags:
+      - Market
+      summary: Retrieve position tier data
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: marginMode
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketPositionTiersResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/tickers:
+    get:
+      operationId: get_api_v1_market_tickers
+      tags:
+      - Market
+      summary: Retrieve the latest price snapshot, best bid/ask price, and trading volume in…
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketTickersResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+  /api/v1/market/trades:
+    get:
+      operationId: get_api_v1_market_trades
+      tags:
+      - Market
+      summary: Retrieve the recent transactions of an instrument
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100 ; The default is 100
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1MarketTradesResponse'
+      x-evidence:
+        kind: documentation
+      security: []
+components:
+  schemas:
+    GetApiV1MarketFundingRateHistoryResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+        fundingRate:
+          type: string
+        fundingTime:
+          type: string
+    GetApiV1MarketBooksResponse:
+      type: object
+      properties:
+        asks:
+          type: array
+          description: Order book on sell side
+        bids:
+          type: array
+          description: Order book on buy side
+        ts:
+          type: string
+          description: Order book generation time e.g. 1597026383085
+    GetApiV1MarketTradesResponse:
+      type: object
+      properties:
+        tradeId:
+          type: string
+          description: Trade ID
+        instId:
+          type: string
+          description: Instrument ID
+        price:
+          type: string
+          description: Trade price
+        size:
+          type: string
+          description: Trade quantity
+        side:
+          type: string
+          description: Trade side buy sell
+        ts:
+          type: string
+          description: Trade time, Unix timestamp format in milliseconds, e.g. 1597026383085
+    GetApiV1MarketMarkPriceResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID
+        indexPrice:
+          type: string
+          description: Index price
+        markPrice:
+          type: string
+          description: Mark price
+        ts:
+          type: string
+          description: Data return time, Unix timestamp format in milliseconds, e.g. 1597026383085
+    GetApiV1MarketIndexCandlesResponse:
+      type: object
+      properties:
+        ts:
+          type: string
+        open:
+          type: string
+        high:
+          type: string
+        low:
+          type: string
+        close:
+          type: string
+        confirm:
+          type: string
+    GetApiV1MarketInstrumentsHistoryResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. NTRN-USDT
+        baseCurrency:
+          type: string
+          description: Base currency, e.g. NTRN in NTRN-USDT
+        quoteCurrency:
+          type: string
+          description: Quote currency, e.g. USDT in NTRN-USDT
+        contractValue:
+          type: string
+          description: Contract value in base currency, frozen at the value effective at delisting
+        maxLeverage:
+          type: string
+          description: Max Leverage
+        minSize:
+          type: string
+          description: Minimum order size in contracts, frozen at the value effective at delisting
+        lotSize:
+          type: string
+          description: Contract size increment, frozen at the value effective at delisting
+        tickSize:
+          type: string
+          description: Tick size, frozen at the value effective at delisting
+        instType:
+          type: string
+          description: Instrument type
+        contractType:
+          type: string
+          description: 'Contract type linear : linear contract inverse : inverse contract'
+        maxLimitSize:
+          type: string
+          description: The maximum order quantity of the limit order
+        maxMarketSize:
+          type: string
+          description: The maximum order quantity of the market order
+        state:
+          type: string
+          description: Instrument status. Always delisted in this endpoint
+        settleCurrency:
+          type: string
+          description: Settlement and margin currency, e.g. USDT
+        assetClass:
+          type: string
+          description: 'The asset class of the instrument. Supported values include: Crypto , Commodities , Stocks , Indices'
+    GetApiV1MarketInstrumentsResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        baseCurrency:
+          type: string
+          description: Base currency, e.g. BTC in BTC-USDT
+        quoteCurrency:
+          type: string
+          description: Quote currency, e.g. USDT in BTC-USDT
+        contractValue:
+          type: string
+          description: Contract value in base currency (e.g. 0.001 BTC per contract for BTC-USDT)
+        listTime:
+          type: string
+          description: Listing time, Unix timestamp format in milliseconds, e.g. 1597026383085
+        expireTime:
+          type: string
+          description: The trading end time of the instrument, in Unix timestamp milliseconds, e.g. 1767225600000
+        offTime:
+          type: string
+          description: Scheduled instrument offline / delisting time, Unix timestamp in milliseconds, e.g. 1767225600000 . Returns an empty string "" when there is no offline / delisting plan
+        maxLeverage:
+          type: string
+          description: Max Leverage
+        minSize:
+          type: string
+          description: Minimum order size in contracts (e.g. 0.1 contracts = 0.0001 BTC for BTC-USDT)
+        lotSize:
+          type: string
+          description: Contract size increment (e.g. 0.1 for BTC-USDT)
+        tickSize:
+          type: string
+          description: Tick size, e.g. 0.0001
+        instType:
+          type: string
+          description: Instrument type
+        contractType:
+          type: string
+          description: 'Contract type linear : linear contract inverse : inverse contract'
+        maxLimitSize:
+          type: string
+          description: The maximum order quantity of the limit order
+        maxMarketSize:
+          type: string
+          description: The maximum order quantity of the market order
+        state:
+          type: string
+          description: Instrument status live suspend
+        settleCurrency:
+          type: string
+          description: Settlement and margin currency, e.g. BTC
+        assetClass:
+          type: string
+          description: 'The asset class of the instrument. Supported values include: Crypto , Commodities , Stocks , Indices'
+    GetApiV1MarketTickersResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        last:
+          type: string
+          description: Last traded price
+        lastSize:
+          type: string
+          description: Last traded size
+        askPrice:
+          type: string
+          description: Best ask price
+        askSize:
+          type: string
+          description: Best ask size
+        bidPrice:
+          type: string
+          description: Best bid price
+        bidSize:
+          type: string
+          description: Best bid size
+        high24h:
+          type: string
+          description: Highest price in the past 24 hours
+        open24h:
+          type: string
+          description: Open price in the past 24 hours
+        low24h:
+          type: string
+          description: Lowest price in the past 24 hours
+        volCurrency24h:
+          type: string
+          description: 24h trading volume, with a unit of base currency .
+        vol24h:
+          type: string
+          description: 24h trading volume, with a unit of contract .
+        ts:
+          type: string
+          description: Ticker data generation time, Unix timestamp format in milliseconds, e.g. 1597026383085
+    GetApiV1MarketCandlesResponse:
+      type: object
+      properties:
+        ts:
+          type: string
+        open:
+          type: string
+        high:
+          type: string
+        low:
+          type: string
+        close:
+          type: string
+        vol:
+          type: string
+        volCurrency:
+          type: string
+        volCurrencyQuote:
+          type: string
+        confirm:
+          type: string
+    GetApiV1MarketMarkPriceCandlesResponse:
+      type: object
+      properties:
+        ts:
+          type: string
+        open:
+          type: string
+        high:
+          type: string
+        low:
+          type: string
+        close:
+          type: string
+        confirm:
+          type: string
+    GetApiV1MarketPositionTiersResponse:
+      type: object
+      properties:
+        symbol:
+          type: string
+        marginMode:
+          type: string
+        minSize:
+          type: string
+        maxSize:
+          type: string
+        maintenanceMarginRate:
+          type: string
+        maxLeverage:
+          type: string
+    GetApiV1MarketFundingRateResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+        fundingRate:
+          type: string
+        fundingTime:
+          type: string
+        fundingInterval:
+          type: string
+        fundingIntervalUnit:
+          type: string
+        fundingRateCap:
+          type: string
+        fundingRateFloor:
+          type: string
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessNonce:
+      type: apiKey
+      in: header
+      name: ACCESS-NONCE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessPassphrase:
+      type: apiKey
+      in: header
+      name: ACCESS-PASSPHRASE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+x-ae-postprocess: '2026-10-13: /oauth/* paths given the oauth.blofin.com server and bearer security named on https://docs.blofin.com/broker.html; REST auth headers from https://docs.blofin.com/index.html#rest-authentication; /api/v1/market/* and /api/v1/spot/market/* marked public (docs: Public Data endpoints do not require authentication).'

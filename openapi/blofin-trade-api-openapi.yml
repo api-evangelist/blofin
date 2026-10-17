@@ -1,0 +1,2303 @@
+openapi: 3.2.0
+info:
+  title: BloFin Trade API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 110 operation(s) read from 3 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; BloFin has published no machine-readable contract that the pipeline could find. Engine: anthropic.'
+  x-evidence-tiers:
+    code-example: 0
+    documentation: 110
+    pages-with-code: 0
+    pages-read: 3
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: anthropic
+  x-sources:
+  - https://docs.blofin.com/spot.html
+  - https://docs.blofin.com/index.html
+  - https://docs.blofin.com/broker.html
+servers:
+- url: https://openapi.blofin.com
+security:
+- accessKey: []
+  accessSign: []
+  accessTimestamp: []
+  accessNonce: []
+  accessPassphrase: []
+tags:
+- name: Trade
+paths:
+  /api/v1/trade/amend-algo:
+    post:
+      operationId: post_api_v1_trade_amend_algo
+      tags:
+      - Trade
+      summary: 'Amend a plan / trigger order: its size, trigger price, order price, and its…'
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeAmendAlgoRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeAmendAlgoResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/amend-batch-orders:
+    post:
+      operationId: post_api_v1_trade_amend_batch_orders
+      tags:
+      - Trade
+      summary: Amend up to 20 orders in a single request
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeAmendBatchOrdersRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeAmendBatchOrdersResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/amend-order:
+    post:
+      operationId: post_api_v1_trade_amend_order
+      tags:
+      - Trade
+      summary: Amend the price, size, and/or attached take-profit / stop-loss of a single…
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: orderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order ID Either orderId or clientOrderId is required.
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client-supplied order ID Either orderId or clientOrderId is required.
+      - name: requestId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client-supplied idempotency key for safe retries.
+      - name: ttl
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Request validity in milliseconds
+      - name: newSize
+        in: query
+        required: false
+        schema:
+          type: string
+        description: New size. At least one amend-content field ( newSize / newPrice / TP/SL) is required.
+      - name: newPrice
+        in: query
+        required: false
+        schema:
+          type: string
+        description: New price. At least one amend-content field ( newSize / newPrice / TP/SL) is required.
+      - name: newTpTriggerPrice
+        in: query
+        required: false
+        schema:
+          type: string
+        description: New take-profit trigger price. Set to 0 to remove the take-profit.
+      - name: newTpTriggerPriceType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Take-profit trigger price type last : last price index : index price mark : mark price'
+      - name: newTpOrderPrice
+        in: query
+        required: false
+        schema:
+          type: string
+        description: New take-profit order price; -1 for market.
+      - name: newSlTriggerPrice
+        in: query
+        required: false
+        schema:
+          type: string
+        description: New stop-loss trigger price. Set to 0 to remove the stop-loss.
+      - name: newSlTriggerPriceType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Stop-loss trigger price type last : last price index : index price mark : mark price'
+      - name: newSlOrderPrice
+        in: query
+        required: false
+        schema:
+          type: string
+        description: New stop-loss order price; -1 for market.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeAmendOrderRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeAmendOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/amend-tpsl:
+    post:
+      operationId: post_api_v1_trade_amend_tpsl
+      tags:
+      - Trade
+      summary: Amend the size and take-profit / stop-loss parameters of a standalone TP/SL…
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeAmendTpslRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeAmendTpslResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/batch-orders:
+    post:
+      operationId: post_api_v1_trade_batch_orders
+      tags:
+      - Trade
+      summary: Place Multiple Orders
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeBatchOrdersRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeBatchOrdersResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/cancel-algo:
+    post:
+      operationId: post_api_v1_trade_cancel_algo
+      tags:
+      - Trade
+      summary: Cancel Algo Order
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: algoId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Algo order ID
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      - name: orderType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Algo type of the order to cancel trigger : trigger order trailing_stop : trailing stop order'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeCancelAlgoRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeCancelAlgoResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/cancel-batch-orders:
+    post:
+      operationId: post_api_v1_trade_cancel_batch_orders
+      tags:
+      - Trade
+      summary: Cancel Multiple Orders
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: orderId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Order ID
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeCancelBatchOrdersRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeCancelBatchOrdersResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/cancel-order:
+    post:
+      operationId: post_api_v1_trade_cancel_order
+      tags:
+      - Trade
+      summary: Cancel Order
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: orderId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Order ID
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeCancelOrderRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeCancelOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/cancel-tpsl:
+    post:
+      operationId: post_api_v1_trade_cancel_tpsl
+      tags:
+      - Trade
+      summary: Cancel TPSL Order
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: tpslId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: TP/SL order ID
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeCancelTpslRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeCancelTpslResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/close-position:
+    post:
+      operationId: post_api_v1_trade_close_position
+      tags:
+      - Trade
+      summary: Close the position of an instrument via a market order
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeClosePositionRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeClosePositionResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/fills-history:
+    get:
+      operationId: get_api_v1_trade_fills_history
+      tags:
+      - Trade
+      summary: Retrieve recently-filled transaction details
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: orderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order ID
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested tradeId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested tradeId
+      - name: begin
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with a begin timestamp. Unix timestamp format in milliseconds, e.g. 1597026383085
+      - name: end
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with an end timestamp. Unix timestamp format in milliseconds, e.g. 1597026383085
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100 ; The default is 20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TradeFillsHistoryResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/order:
+    post:
+      operationId: post_api_v1_trade_order
+      tags:
+      - Trade
+      summary: Place Order
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeOrderRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeOrderResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/order-algo:
+    post:
+      operationId: post_api_v1_trade_order_algo
+      tags:
+      - Trade
+      summary: Place Algo Order
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: marginMode
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Margin mode cross isolated
+      - name: positionSide
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+      - name: side
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Order side, buy sell
+      - name: size
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Quantity If the quantity is -1 , it means entire positions
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      - name: orderType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: 'Algo type trigger : trigger order trailing_stop : trailing stop order'
+      - name: orderPrice
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order Price If the price is -1 , the order will be executed at the market price.
+      - name: reduceOnly
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Whether the order can only reduce the position size. Valid options: true or false. The default value is false.'
+      - name: brokerId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Broker ID provided by BloFin.
+      - name: positionId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Position ID. Required in Multi-Position mode.
+      - name: triggerPrice
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Trigger price
+      - name: triggerPriceType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Trigger price type last : last price'
+      - name: callbackRatio
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Callback ratio for trailing stop orders
+      - name: activePrice
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Active price for trailing stop orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeOrderAlgoRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeOrderAlgoResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/order-detail:
+    get:
+      operationId: get_api_v1_trade_order_detail
+      tags:
+      - Trade
+      summary: Retrieve order detail
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: algoClientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TradeOrderDetailResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/order-tpsl:
+    post:
+      operationId: post_api_v1_trade_order_tpsl
+      tags:
+      - Trade
+      summary: Place TPSL Order
+      x-source: https://docs.blofin.com/index.html
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostApiV1TradeOrderTpslRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostApiV1TradeOrderTpslResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/order-tpsl-detail:
+    get:
+      operationId: get_api_v1_trade_order_tpsl_detail
+      tags:
+      - Trade
+      summary: Retrieve TP/SL order Detail
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: tpslId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: TP/SL order ID. Either tpslId or clientOrderId is required, if both are passed, tpslId will be used
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TradeOrderTpslDetailResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/order/price-range:
+    get:
+      operationId: get_api_v1_trade_order_price_range
+      tags:
+      - Trade
+      summary: Query price limit range
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: side
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Order side, buy sell
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TradeOrderPriceRangeResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/orders-algo-history:
+    get:
+      operationId: get_api_v1_trade_orders_algo_history
+      tags:
+      - Trade
+      summary: Retrieve a list of all Algo orders under the current account
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: algoId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Algo order ID
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: State
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested algoId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested algoId
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100 ; The default is 20
+      - name: orderType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Algo type
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TradeOrdersAlgoHistoryResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/orders-algo-pending:
+    get:
+      operationId: get_api_v1_trade_orders_algo_pending
+      tags:
+      - Trade
+      summary: Retrieve a list of untriggered algo orders under the current account
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: algoId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Algo order ID
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested algoId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested algoId
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100 ; The default is 20
+      - name: orderType
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Algo type
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TradeOrdersAlgoPendingResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/orders-history:
+    get:
+      operationId: get_api_v1_trade_orders_history
+      tags:
+      - Trade
+      summary: Get completed order history
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: orderType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order type
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: State
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested orderId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested orderId
+      - name: begin
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with a begin timestamp. Unix timestamp format in milliseconds
+      - name: end
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter with an end timestamp. Unix timestamp format in milliseconds
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100 ; The default is 20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TradeOrdersHistoryResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/orders-pending:
+    get:
+      operationId: get_api_v1_trade_orders_pending
+      tags:
+      - Trade
+      summary: Retrieve all incomplete orders under the current account
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: orderType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TradeOrdersPendingResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/orders-tpsl-history:
+    get:
+      operationId: get_api_v1_trade_orders_tpsl_history
+      tags:
+      - Trade
+      summary: Retrieve a list of all TP/SL orders under the current account
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Instrument ID, e.g. BTC-USDT
+      - name: tpslId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: TP/SL order ID
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Client Order ID as assigned by the client
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: State
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records earlier than the requested tpslId
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Pagination of data to return records newer than the requested tpslId
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Number of results per request. The maximum is 100 ; The default is 20
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TradeOrdersTpslHistoryResponse'
+      x-evidence:
+        kind: documentation
+  /api/v1/trade/orders-tpsl-pending:
+    get:
+      operationId: get_api_v1_trade_orders_tpsl_pending
+      tags:
+      - Trade
+      summary: Retrieve a list of untriggered TP/SL orders under the current account
+      x-source: https://docs.blofin.com/index.html
+      parameters:
+      - name: instId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: tpslId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: clientOrderId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApiV1TradeOrdersTpslPendingResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    PostApiV1TradeOrderTpslRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+        side:
+          type: string
+          description: Order side, buy sell
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price If you fill in this parameter, you should fill in the tpOrderPrice as well. Either tpTriggerPrice or slTriggerPrice must be provided.
+        tpOrderPrice:
+          type: string
+          description: Take-profit order price. If you fill in this parameter, you should fill in the tpTriggerPrice as well. If the price is -1, take-profit will be executed at the market price.
+        tpTriggerPriceType:
+          type: string
+          description: 'Take-profit trigger price type last : last price mark : mark price index : index price The default is last .'
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price If you fill in this parameter, you should fill in the slOrderPrice as well. Either tpTriggerPrice or slTriggerPrice must be provided.
+        slOrderPrice:
+          type: string
+          description: Stop-loss order price. If you fill in this parameter, you should fill in the slTriggerPrice as well. If the price is -1, stop-loss will be executed at the market price.
+        slTriggerPriceType:
+          type: string
+          description: 'Stop-loss trigger price type last : last price mark : mark price index : index price The default is last .'
+        size:
+          type: string
+          description: Quantity If the quantity is -1, it means entire positions
+        reduceOnly:
+          type: string
+          description: 'Whether orders can only reduce in position size. Valid options: true or false . The default value is false . Not supported under Hedge Mode and ignored if passed.'
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 32 characters.
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+        positionId:
+          type: string
+          description: Position ID. Required in Multi-Position mode. The target position the TP/SL order is bound to. If the quantity is -1 , it means the entire specified position.
+      required:
+      - instId
+      - marginMode
+      - positionSide
+      - side
+      - size
+    PostApiV1TradeCancelBatchOrdersResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1TradeBatchOrdersResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        positionId:
+          type: string
+          description: Position ID
+    PostApiV1TradeCancelTpslRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        tpslId:
+          type: string
+          description: TP/SL order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+    PostApiV1TradeOrderAlgoResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+          description: Algo order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1TradeOrderAlgoRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode.
+        side:
+          type: string
+          description: Order side, buy sell
+        size:
+          type: string
+          description: Quantity If the quantity is -1 , it means entire positions
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        orderType:
+          type: string
+          description: 'Algo type trigger : trigger order trailing_stop : trailing stop order'
+        orderPrice:
+          type: string
+          description: Order Price If the price is -1 , the order will be executed at the market price.
+        reduceOnly:
+          type: string
+          description: Whether the order can only reduce the position size.
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin.
+        positionId:
+          type: string
+          description: Position ID. Required in Multi-Position mode.
+        triggerPrice:
+          type: string
+          description: Trigger price
+        triggerPriceType:
+          type: string
+          description: 'Trigger price type last : last price'
+        attachAlgoOrders:
+          type: array
+          description: Attached SL/TP orders info
+        callbackRatio:
+          type: string
+          description: Callback ratio for trailing stop orders
+        activePrice:
+          type: string
+          description: Active price for trailing stop orders
+      required:
+      - instId
+      - marginMode
+      - positionSide
+      - side
+      - size
+      - orderType
+    GetApiV1TradeFillsHistoryResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID
+        tradeId:
+          type: string
+          description: Trade ID
+        orderId:
+          type: string
+          description: Order ID
+        fillPrice:
+          type: string
+          description: filled price
+        fillSize:
+          type: string
+          description: Filled quantity
+        fillPnl:
+          type: string
+          description: Last filled profit and loss, applicable to orders which have a trade and aim to close position.
+        positionSide:
+          type: string
+          description: Position side, long , short , net
+        side:
+          type: string
+          description: Order side
+        fee:
+          type: string
+          description: Fee
+        ts:
+          type: string
+          description: Data generation time, Unix timestamp format in milliseconds, e.g. 1597026383085 .
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+    PostApiV1TradeAmendBatchOrdersResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+        clientOrderId:
+          type: string
+        requestId:
+          type: string
+        code:
+          type: string
+        msg:
+          type: string
+        ts:
+          type: string
+    PostApiV1TradeAmendAlgoResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+        clientOrderId:
+          type: string
+        requestId:
+          type: string
+        code:
+          type: string
+        msg:
+          type: string
+        ts:
+          type: string
+    PostApiV1TradeOrderTpslResponse:
+      type: object
+      properties:
+        tpslId:
+          type: string
+          description: TP/SL order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1TradeCancelOrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    GetApiV1TradeOrdersPendingResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+        clientOrderId:
+          type: string
+        instId:
+          type: string
+        marginMode:
+          type: string
+        positionSide:
+          type: string
+        side:
+          type: string
+        orderType:
+          type: string
+        price:
+          type: string
+        size:
+          type: string
+        reduceOnly:
+          type: string
+        leverage:
+          type: string
+        state:
+          type: string
+        filledSize:
+          type: string
+        filled_amount:
+          type: string
+        averagePrice:
+          type: string
+        fee:
+          type: string
+        pnl:
+          type: string
+        createTime:
+          type: string
+        updateTime:
+          type: string
+        orderCategory:
+          type: string
+        tpTriggerPrice:
+          type: string
+        tpTriggerPriceType:
+          type: string
+        slTriggerPrice:
+          type: string
+        slOrderPrice:
+          type: string
+        slTriggerPriceType:
+          type: string
+        tpOrderPrice:
+          type: string
+        algoClientOrderId:
+          type: string
+        algoId:
+          type: string
+        brokerId:
+          type: string
+    GetApiV1TradeOrdersTpslPendingResponse:
+      type: object
+      properties:
+        tpslId:
+          type: string
+        clientOrderId:
+          type: string
+        instId:
+          type: string
+        marginMode:
+          type: string
+        positionSide:
+          type: string
+        side:
+          type: string
+        tpTriggerPrice:
+          type: string
+        tpOrderPrice:
+          type: string
+        tpTriggerPriceType:
+          type: string
+        slTriggerPrice:
+          type: string
+        slOrderPrice:
+          type: string
+        slTriggerPriceType:
+          type: string
+        size:
+          type: string
+        state:
+          type: string
+        leverage:
+          type: string
+        reduceOnly:
+          type: string
+        actualSize:
+          type: string
+        createTime:
+          type: string
+        brokerId:
+          type: string
+    GetApiV1TradeOrdersTpslHistoryResponse:
+      type: object
+      properties:
+        tpslId:
+          type: string
+          description: TP/SL order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client.
+        instId:
+          type: string
+          description: Instrument ID
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side
+        side:
+          type: string
+          description: Order side
+        orderType:
+          type: string
+          description: Order type
+        size:
+          type: string
+          description: Number of contracts to buy or sell.
+        reduceOnly:
+          type: string
+          description: Whether orders can only reduce in position size.
+        leverage:
+          type: string
+          description: Leverage
+        state:
+          type: string
+          description: State
+        actualSize:
+          type: string
+          description: Actual order quantity
+        orderCategory:
+          type: string
+          description: Order category
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price
+        tpOrderPrice:
+          type: string
+          description: Take-profit order price. If the price is -1 , take-profit will be executed at the market price.
+        tpTriggerPriceType:
+          type: string
+          description: Take-profit trigger price type
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price
+        slOrderPrice:
+          type: string
+          description: Stop-loss order price. If the price is -1 , stop-loss will be executed at the market price.
+        slTriggerPriceType:
+          type: string
+          description: Stop-loss trigger price type
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin.
+        positionId:
+          type: string
+          description: Position ID. Empty when Multi-Position is not enabled.
+    PostApiV1TradeOrderRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+        side:
+          type: string
+          description: Order side, buy sell
+        orderType:
+          type: string
+          description: 'Order type market : market order limit : limit order post_only : Post-only order fok : Fill-or-kill order ioc : Immediate-or-cancel order'
+        price:
+          type: string
+          description: Order price. Not applicable to market
+        size:
+          type: string
+          description: Number of contracts to buy or sell. For contract size details, refer to the /api/v1/market/instruments endpoint
+        reduceOnly:
+          type: string
+          description: 'Whether orders can only reduce in position size. Valid options: true or false . The default value is false . Not supported under Hedge Mode and ignored if passed.'
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 32 characters.
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price If you fill in this parameter, you should fill in the tpOrderPrice as well.
+        tpOrderPrice:
+          type: string
+          description: Take-profit order price. If you fill in this parameter, you should fill in the tpTriggerPrice as well. If the price is -1, take-profit will be executed at the market price.
+        tpTriggerPriceType:
+          type: string
+          description: 'Take-profit trigger price type last : last price mark : mark price index : index price The default is last .'
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price If you fill in this parameter, you should fill in the slOrderPrice as well.
+        slOrderPrice:
+          type: string
+          description: Stop-loss order price. If you fill in this parameter, you should fill in the slTriggerPrice as well. If the price is -1, stop-loss will be executed at the market price.
+        slTriggerPriceType:
+          type: string
+          description: Stop-loss trigger price type
+        positionId:
+          type: string
+          description: Position ID
+      required:
+      - instId
+      - marginMode
+      - positionSide
+      - side
+      - orderType
+      - price
+      - size
+    PostApiV1TradeCancelAlgoRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        algoId:
+          type: string
+          description: Algo order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        orderType:
+          type: string
+          description: 'Algo type of the order to cancel trigger : trigger order trailing_stop : trailing stop order'
+    PostApiV1TradeAmendTpslRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+        tpslId:
+          type: string
+        clientOrderId:
+          type: string
+        requestId:
+          type: string
+        ttl:
+          type: string
+        newSize:
+          type: string
+        newTpTriggerPrice:
+          type: string
+        newTpTriggerPriceType:
+          type: string
+        newTpOrderPrice:
+          type: string
+        newSlTriggerPrice:
+          type: string
+        newSlTriggerPriceType:
+          type: string
+        newSlOrderPrice:
+          type: string
+      required:
+      - instId
+    PostApiV1TradeBatchOrdersRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        marginMode:
+          type: string
+          description: Margin mode cross isolated
+        positionSide:
+          type: string
+          description: Position side Default net for One-way Mode long or short for Hedge Mode. It must be sent in Hedge Mode.
+        side:
+          type: string
+          description: Order side, buy sell
+        orderType:
+          type: string
+          description: 'Order type market : market order limit : limit order post_only : Post-only order fok : Fill-or-kill order ioc : Immediate-or-cancel order'
+        price:
+          type: string
+          description: Order price. Not applicable to market
+        size:
+          type: string
+          description: Number of contracts to buy or sell. For contract size details, refer to the /api/v1/market/instruments endpoint
+        reduceOnly:
+          type: string
+          description: 'Whether orders can only reduce in position size. Valid options: true or false . The default value is false . Not supported under Hedge Mode and ignored if passed.'
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 32 characters.
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price If you fill in this parameter, you should fill in the tpOrderPrice as well.
+        tpOrderPrice:
+          type: string
+          description: Take-profit order price. If you fill in this parameter, you should fill in the tpTriggerPrice as well. If the price is -1, take-profit will be executed at the market price.
+        tpTriggerPriceType:
+          type: string
+          description: 'Take-profit trigger price type last : last price mark : mark price index : index price The default is last .'
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price If you fill in this parameter, you should fill in the slOrderPrice as well.
+        slOrderPrice:
+          type: string
+          description: Stop-loss order price. If you fill in this parameter, you should fill in the slTriggerPrice as well. If the price is -1, stop-loss will be executed at the market price.
+        slTriggerPriceType:
+          type: string
+          description: 'Stop-loss trigger price type last : last price mark : mark price index : index price The default is last .'
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin. A combination of case-sensitive alphanumerics, all numbers, or all letters of up to 16 characters.
+        positionId:
+          type: string
+          description: 'Position ID. Only applicable to Multi-Position mode. Closing orders (side opposite to positionSide ) must specify positionId . Opening orders: omit to open a new position, or pass to add to the specified position ( instId , marginMode , and positionSide must match the target position; the added size inherits the position''s existing leverage). Passing it outside Multi-Position mode returns an error.'
+      required:
+      - instId
+      - marginMode
+      - positionSide
+      - side
+      - orderType
+      - price
+      - size
+    PostApiV1TradeAmendOrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client-supplied order ID
+        requestId:
+          type: string
+          description: Echoed request ID
+        code:
+          type: string
+          description: Result code of this order, 0 means success.
+        msg:
+          type: string
+          description: Result message
+        ts:
+          type: string
+          description: Server acceptance time, Unix timestamp format in milliseconds
+    GetApiV1TradeOrderPriceRangeResponse:
+      type: object
+      properties:
+        maxPrice:
+          type: string
+          description: Maximum Price
+        minPrice:
+          type: string
+          description: Minimum Price
+    PostApiV1TradeClosePositionRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin.
+        positionId:
+          type: string
+          description: Position ID. Required in Multi-Position mode.
+      required:
+      - instId
+      - marginMode
+      - positionSide
+    PostApiV1TradeOrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        positionId:
+          type: string
+          description: Position ID. Echoes the request positionId for closing/adding orders. Empty for new opening orders — the position is created on fill; retrieve the generated positionId via Order Detail or WebSocket. Always empty when Multi-Position is not enabled.
+    PostApiV1TradeClosePositionResponse:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID
+        positionSide:
+          type: string
+          description: Position side
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        positionId:
+          type: string
+          description: Position ID. Echoes the request positionId ; empty when Multi-Position is not enabled.
+    GetApiV1TradeOrdersAlgoHistoryResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+          description: Algo order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client.
+        instId:
+          type: string
+          description: Instrument ID
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side
+        side:
+          type: string
+          description: Order side
+        reduceOnly:
+          type: string
+          description: Whether the order can only reduce the position size.
+        orderType:
+          type: string
+          description: Algo type
+        size:
+          type: string
+          description: Number of contracts to buy or sell.
+        leverage:
+          type: string
+          description: Leverage
+        state:
+          type: string
+          description: State
+        actualSize:
+          type: string
+          description: Actual order quantity
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds
+        triggerPrice:
+          type: string
+          description: Trigger price
+        triggerPriceType:
+          type: string
+          description: Trigger price type
+        callbackRatio:
+          type: string
+          description: Callback rate. Only applicable to trailing_stop orders; empty if callbackSpread is used.
+        callbackSpread:
+          type: string
+          description: Callback price distance. Only applicable to trailing_stop orders; empty if callbackRatio is used.
+        activePrice:
+          type: string
+          description: Activation price. Only applicable to trailing_stop orders; empty if not set.
+        moveTriggerPrice:
+          type: string
+          description: Current dynamic trigger price. Only applicable to trailing_stop orders.
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin.
+        positionId:
+          type: string
+          description: Position ID. Empty when Multi-Position is not enabled.
+        attachAlgoOrders:
+          type: array
+          description: Attached SL/TP orders info
+    GetApiV1TradeOrdersAlgoPendingResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+          description: Algo order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client.
+        instId:
+          type: string
+          description: Instrument ID
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side
+        side:
+          type: string
+          description: Order side
+        orderType:
+          type: string
+          description: Algo type
+        size:
+          type: string
+          description: Number of contracts to buy or sell.
+        leverage:
+          type: string
+          description: Leverage
+        state:
+          type: string
+          description: State
+        triggerPrice:
+          type: string
+          description: Trigger price
+        triggerPriceType:
+          type: string
+          description: Trigger price type
+        callbackRatio:
+          type: string
+          description: Callback rate. Only applicable to trailing_stop orders; empty if callbackSpread is used.
+        callbackSpread:
+          type: string
+          description: Callback price distance. Only applicable to trailing_stop orders; empty if callbackRatio is used.
+        activePrice:
+          type: string
+          description: Activation price. Only applicable to trailing_stop orders.
+        moveTriggerPrice:
+          type: string
+          description: Current dynamic trigger price. Only applicable to trailing_stop orders.
+        reduceOnly:
+          type: string
+          description: Whether the order can only reduce the position size.
+        positionId:
+          type: string
+          description: Position ID. Empty when Multi-Position is not enabled.
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin.
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds
+        updateTime:
+          type: string
+          description: Update time
+        attachAlgoOrders:
+          type: array
+          description: Attached SL/TP orders info
+    PostApiV1TradeCancelOrderRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+      required:
+      - orderId
+    PostApiV1TradeCancelTpslResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1TradeCancelAlgoResponse:
+      type: object
+      properties:
+        algoId:
+          type: string
+          description: Algo order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+        code:
+          type: string
+          description: The code of the event execution result, 0 means success.
+        msg:
+          type: string
+          description: Rejection or success message of event execution.
+    PostApiV1TradeCancelBatchOrdersRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client
+      required:
+      - orderId
+    GetApiV1TradeOrderDetailResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+        clientOrderId:
+          type: string
+        instId:
+          type: string
+        marginMode:
+          type: string
+        positionSide:
+          type: string
+        side:
+          type: string
+        orderType:
+          type: string
+        price:
+          type: string
+        size:
+          type: string
+        reduceOnly:
+          type: string
+        leverage:
+          type: string
+        state:
+          type: string
+        filledSize:
+          type: string
+        averagePrice:
+          type: string
+        fee:
+          type: string
+        pnl:
+          type: string
+        createTime:
+          type: string
+        updateTime:
+          type: string
+        orderCategory:
+          type: string
+        tpTriggerPrice:
+          type: string
+        tpOrderPrice:
+          type: string
+        tpTriggerPriceType:
+          type: string
+        slTriggerPrice:
+          type: string
+        slOrderPrice:
+          type: string
+        slTriggerPriceType:
+          type: string
+        algoClientOrderId:
+          type: string
+        algoId:
+          type: string
+    PostApiV1TradeAmendBatchOrdersRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+        orderId:
+          type: string
+        clientOrderId:
+          type: string
+        requestId:
+          type: string
+        ttl:
+          type: string
+        newSize:
+          type: string
+        newPrice:
+          type: string
+      required:
+      - instId
+    PostApiV1TradeAmendAlgoRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+        algoId:
+          type: string
+        clientOrderId:
+          type: string
+        orderType:
+          type: string
+        requestId:
+          type: string
+        ttl:
+          type: string
+        newSize:
+          type: string
+        newTriggerPrice:
+          type: string
+        newTriggerPriceType:
+          type: string
+        newOrderPrice:
+          type: string
+        newCallbackRatio:
+          type: string
+        newCallbackSpread:
+          type: string
+        newActivePrice:
+          type: string
+        attachAlgoOrders:
+          type: array
+      required:
+      - instId
+    PostApiV1TradeAmendOrderRequest:
+      type: object
+      properties:
+        instId:
+          type: string
+          description: Instrument ID, e.g. BTC-USDT
+        orderId:
+          type: string
+          description: Order ID Either orderId or clientOrderId is required.
+        clientOrderId:
+          type: string
+          description: Client-supplied order ID Either orderId or clientOrderId is required.
+        requestId:
+          type: string
+          description: Client-supplied idempotency key for safe retries.
+        ttl:
+          type: string
+          description: Request validity in milliseconds
+        newSize:
+          type: string
+          description: New size. At least one amend-content field ( newSize / newPrice / TP/SL) is required.
+        newPrice:
+          type: string
+          description: New price. At least one amend-content field ( newSize / newPrice / TP/SL) is required.
+        newTpTriggerPrice:
+          type: string
+          description: New take-profit trigger price. Set to 0 to remove the take-profit.
+        newTpTriggerPriceType:
+          type: string
+          description: 'Take-profit trigger price type last : last price index : index price mark : mark price'
+        newTpOrderPrice:
+          type: string
+          description: New take-profit order price; -1 for market.
+        newSlTriggerPrice:
+          type: string
+          description: New stop-loss trigger price. Set to 0 to remove the stop-loss.
+        newSlTriggerPriceType:
+          type: string
+          description: 'Stop-loss trigger price type last : last price index : index price mark : mark price'
+        newSlOrderPrice:
+          type: string
+          description: New stop-loss order price; -1 for market.
+      required:
+      - instId
+    GetApiV1TradeOrderTpslDetailResponse:
+      type: object
+      properties:
+        tpslId:
+          type: string
+          description: TP/SL order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client.
+        instId:
+          type: string
+          description: Instrument ID
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side
+        side:
+          type: string
+          description: Order side
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price
+        tpOrderPrice:
+          type: string
+          description: Take-profit order price. If the price is -1 , take-profit will be executed at the market price.
+        tpTriggerPriceType:
+          type: string
+          description: Take-profit trigger price type
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price
+        slOrderPrice:
+          type: string
+          description: Stop-loss order price. If the price is -1 , stop-loss will be executed at the market price.
+        slTriggerPriceType:
+          type: string
+          description: Stop-loss trigger price type
+        size:
+          type: string
+          description: Number of contracts to buy or sell.
+        state:
+          type: string
+          description: State
+        leverage:
+          type: string
+          description: Leverage
+        reduceOnly:
+          type: string
+          description: Whether orders can only reduce in position size.
+        actualSize:
+          type: string
+          description: Actual order quantity
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin.
+        positionId:
+          type: string
+          description: Position ID. Empty when Multi-Position is not enabled.
+    GetApiV1TradeOrdersHistoryResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Order ID
+        clientOrderId:
+          type: string
+          description: Client Order ID as assigned by the client.
+        instId:
+          type: string
+          description: Instrument ID
+        marginMode:
+          type: string
+          description: Margin mode
+        positionSide:
+          type: string
+          description: Position side
+        side:
+          type: string
+          description: Order side
+        orderType:
+          type: string
+          description: Order type
+        price:
+          type: string
+          description: Price
+        size:
+          type: string
+          description: Number of contracts to buy or sell.
+        reduceOnly:
+          type: string
+          description: Whether orders can only reduce in position size.
+        leverage:
+          type: string
+          description: Leverage
+        state:
+          type: string
+          description: State
+        filledSize:
+          type: string
+          description: Filled size
+        pnl:
+          type: string
+          description: PnL
+        averagePrice:
+          type: string
+          description: Average price
+        fee:
+          type: string
+          description: Fee
+        createTime:
+          type: string
+          description: Creation time, Unix timestamp format in milliseconds
+        updateTime:
+          type: string
+          description: Update time
+        orderCategory:
+          type: string
+          description: Order category
+        tpTriggerPrice:
+          type: string
+          description: Take-profit trigger price
+        tpOrderPrice:
+          type: string
+          description: Take-profit order price
+        tpTriggerPriceType:
+          type: string
+          description: Take-profit trigger price type
+        slTriggerPrice:
+          type: string
+          description: Stop-loss trigger price
+        slOrderPrice:
+          type: string
+          description: Stop-loss order price
+        slTriggerPriceType:
+          type: string
+          description: Stop-loss trigger price type
+        cancelSource:
+          type: string
+          description: Cancel source
+        cancelSourceReason:
+          type: string
+          description: Cancel source reason
+        algoClientOrderId:
+          type: string
+          description: Algo client order ID
+        algoId:
+          type: string
+          description: Algo ID
+        brokerId:
+          type: string
+          description: Broker ID provided by BloFin.
+        positionId:
+          type: string
+          description: Position ID. Empty when Multi-Position is not enabled.
+    PostApiV1TradeAmendTpslResponse:
+      type: object
+      properties:
+        tpslId:
+          type: string
+        clientOrderId:
+          type: string
+        requestId:
+          type: string
+        code:
+          type: string
+        msg:
+          type: string
+        ts:
+          type: string
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+    accessKey:
+      type: apiKey
+      in: header
+      name: ACCESS-KEY
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessSign:
+      type: apiKey
+      in: header
+      name: ACCESS-SIGN
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessTimestamp:
+      type: apiKey
+      in: header
+      name: ACCESS-TIMESTAMP
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessNonce:
+      type: apiKey
+      in: header
+      name: ACCESS-NONCE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+    accessPassphrase:
+      type: apiKey
+      in: header
+      name: ACCESS-PASSPHRASE
+      description: Documented at https://docs.blofin.com/index.html#rest-authentication
+x-ae-postprocess: '2026-10-13: /oauth/* paths given the oauth.blofin.com server and bearer security named on https://docs.blofin.com/broker.html; REST auth headers from https://docs.blofin.com/index.html#rest-authentication; /api/v1/market/* and /api/v1/spot/market/* marked public (docs: Public Data endpoints do not require authentication).'
