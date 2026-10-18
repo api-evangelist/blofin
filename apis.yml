@@ -29,6 +29,15 @@ modified: '2026-10-13'
 tags:
 - Company
 - Cryptocurrency
+- Cryptocurrency Exchange
+- Trading
+- Futures
+- Spot Trading
+- Copy Trading
+- WebSocket
+tags_raw:
+- Company
+- Cryptocurrency
 - Crypto Exchange
 - Trading
 - Futures
@@ -110,6 +119,9 @@ apis:
   humanURL: https://docs.blofin.com/broker.html
   baseURL: https://oauth.blofin.com
   tags:
+  - Brokerage
+  - Authentication
+  tags_raw:
   - Broker
   - OAuth
   properties:
@@ -163,6 +175,8 @@ apis:
   humanURL: https://docs.blofin.com/index.html
   baseURL: https://openapi.blofin.com
   tags:
+  - Affiliates
+  tags_raw:
   - Affiliate
   properties:
   - type: OpenAPI
@@ -219,6 +233,8 @@ apis:
   humanURL: https://docs.blofin.com/index.html
   baseURL: https://openapi.blofin.com
   tags:
+  - Copy Trading
+  tags_raw:
   - Copytrading
   properties:
   - type: OpenAPI
@@ -247,6 +263,8 @@ apis:
   humanURL: https://docs.blofin.com/index.html
   baseURL: https://openapi.blofin.com
   tags:
+  - Markets
+  tags_raw:
   - Market
   properties:
   - type: OpenAPI
@@ -275,6 +293,8 @@ apis:
   humanURL: https://docs.blofin.com/index.html
   baseURL: https://openapi.blofin.com
   tags:
+  - Authentication
+  tags_raw:
   - Oauth
   properties:
   - type: OpenAPI
