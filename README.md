@@ -64,5 +64,140 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-BloFin is a company surfaced via the API Evangelist harvest backlog (source: market-gap:crypto-exchanges) and added to the network as a stub for full-pipeline profiling.
-- https://blofin.com
+BloFin is a cryptocurrency exchange offering spot, perpetual futures and copy trading. Its public Open API (base https://openapi.blofin.com, demo https://demo-trading-openapi.blofin.com) exposes REST endpoints for public market data, account, trading, asset management, affiliate and copy trading, plus public and private WebSocket channels, authenticated with ACCESS-KEY / ACCESS-SIGN HMAC-signed headers; a separate OAuth broker API runs at oauth.blofin.com. BloFin also publishes an official MCP server (blofin-mcp), an agent-first CLI (blofin-cli), a Python SDK and an agent skills hub on GitHub. Surfaced via the API Evangelist harvest backlog (source: market-gap:crypto-exchanges).
+
+**Areas:** Company · Cryptocurrency · Cryptocurrency Exchange · Trading · Futures · Spot Trading · Copy Trading · WebSocket
+
+## BloFin on APIs.io
+
+Everything profiled for BloFin is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/blofin/](https://apis.io/providers/blofin/)** — or go straight to one of the APIs or properties below.
+
+### APIs (11)
+
+- [BloFin Broker API](https://apis.io/apis/blofin/blofin-broker-api/) — OAuth-based broker API at oauth.blofin.com for brokers to obtain tokens and user info, create API keys on a user's behalf and query deposit addresses and…
+- [BloFin WebSocket API](https://apis.io/apis/blofin/blofin-websocket-api/) — Public and private WebSocket channels for futures (wss://openapi.blofin.com/ws/public, /ws/private), spot (/ws/spot/public, /ws/spot/private) and copy…
+- [BloFin Account API](https://apis.io/apis/blofin/blofin-account-api/) — The Account API from BloFin — 12 operation(s) for account.
+- [BloFin Affiliate API](https://apis.io/apis/blofin/blofin-affiliate-api/) — The Affiliate API from BloFin — 6 operation(s) for affiliate.
+- [BloFin Asset API](https://apis.io/apis/blofin/blofin-asset-api/) — The Asset API from BloFin — 9 operation(s) for asset.
+- [BloFin Copytrading API](https://apis.io/apis/blofin/blofin-copytrading-api/) — The Copytrading API from BloFin — 23 operation(s) for copytrading.
+- [BloFin Market API](https://apis.io/apis/blofin/blofin-market-api/) — The Market API from BloFin — 12 operation(s) for market.
+- [BloFin OAuth API](https://apis.io/apis/blofin/blofin-oauth-api/) — The Oauth API from BloFin — 6 operation(s) for oauth.
+- [BloFin Spot API](https://apis.io/apis/blofin/blofin-spot-api/) — The Spot API from BloFin — 18 operation(s) for spot.
+- [BloFin Trade API](https://apis.io/apis/blofin/blofin-trade-api/) — The Trade API from BloFin — 23 operation(s) for trade.
+- [BloFin User API](https://apis.io/apis/blofin/blofin-user-api/) — The User API from BloFin — 1 operation(s) for user.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [BloFin MCP Server](https://apis.io/servers/blofin/blofin-mcp-server/)
+
+#### JSON Schema (6)
+
+The data models the API reads and writes.
+
+- [GetApiV1AffiliateInviteesResponse](https://apis.io/schemas/blofin/blofin-get-api-v1-affiliate-invitees-response/)
+- [GetApiV1CopytradingTradeOrdersPendingResponse](https://apis.io/schemas/blofin/blofin-get-api-v1-copytrading-trade-orders-pending-response/)
+- [GetApiV1TradeOrdersHistoryResponse](https://apis.io/schemas/blofin/blofin-get-api-v1-trade-orders-history-response/)
+- [PostApiV1TradeBatchOrdersRequest](https://apis.io/schemas/blofin/blofin-post-api-v1-trade-batch-orders-request/)
+- [PostApiV1TradeOrderRequest](https://apis.io/schemas/blofin/blofin-post-api-v1-trade-order-request/)
+- [PostApiV1TradeOrderTpslRequest](https://apis.io/schemas/blofin/blofin-post-api-v1-trade-order-tpsl-request/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Blofin Context](https://apis.io/jsonld/blofin/blofin-context/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [BloFin API Rules](https://apis.io/rules/blofin/blofin-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Blofin Authentication](https://apis.io/security/blofin/blofin-authentication/)
+- [Blofin Domain Security](https://apis.io/security/blofin/blofin-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Blofin Plans Pricing](https://apis.io/plans/blofin/blofin-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Blofin Rate Limits](https://apis.io/rate-limits/blofin/blofin-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://blofin.com)
+- [Documentation](https://docs.blofin.com/index.html)
+- [API reference](https://docs.blofin.com/index.html)
+- [Support](https://support.blofin.com/hc/en-us)
+- [Changelog](https://docs.blofin.com/changelog.html)
+- [GitHub](https://github.com/blofin)
+
+## API Evangelist rating
+
+**Kin Score 34.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 76.7 |
+| Contract quality | 25.9 |
+| Contract governance | 22.0 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 54.8 |
+| Access clarity | 0.0 |
+
+**Agent readiness 34.7** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | verified |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 21.3** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/blofin/](https://apis.io/providers/blofin/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for BloFin: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/blofin/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
